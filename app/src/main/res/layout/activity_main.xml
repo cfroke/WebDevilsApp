@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,11 +9,73 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#0d2f4c"
     tools:context="webdevils.webdevilsapp.MainActivity">
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:background="#ffffff"
+        android:id="@+id/userNameEntry"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:singleLine="true"
+        android:selectAllOnFocus="false" />
+
+    <TextView
+        android:text="Username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textSize="18sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_above="@+id/userNameEntry"
+        android:layout_alignStart="@+id/userNameEntry" />
+
+    <Button
+        android:text="Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_marginTop="74dp"
+        android:layout_below="@+id/userNameEntry"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/passwordEntry"
+        android:background="#ffffff"
+        android:layout_marginTop="41dp"
+        android:singleLine="true"
+        android:layout_below="@+id/userNameEntry"
+        android:layout_alignStart="@+id/userNameEntry" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="USAA app"
-        android:id="@+id/textView" />
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textView"
+        android:id="@+id/textView4"
+        android:text="placeholder"
+        android:layout_alignEnd="@+id/userNameEntry"
+        android:layout_above="@+id/textView2"
+        android:background="#ff0000" />
+
+    <TextView
+        android:text="Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="18sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/userNameEntry"
+        android:layout_alignEnd="@+id/textView2" />
+
 </RelativeLayout>
