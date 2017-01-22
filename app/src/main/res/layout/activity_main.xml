@@ -13,17 +13,6 @@
     tools:context="webdevils.webdevilsapp.MainActivity">
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        app:srcCompat="@mipmap/usaa_logo"
-        android:id="@+id/imageView2"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        android:layout_marginBottom="112dp"
-        android:layout_alignBottom="@+id/userNameEntry"
-        android:layout_alignParentStart="true" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,15 +25,6 @@
         android:singleLine="true"
         android:selectAllOnFocus="false" />
 
-    <Button
-        android:text="Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_below="@+id/passwordEntry"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp" />
-
     <TextView
         android:text="Username"
         android:layout_width="wrap_content"
@@ -55,6 +35,15 @@
         android:layout_above="@+id/userNameEntry"
         android:layout_alignStart="@+id/userNameEntry" />
 
+    <Button
+        android:text="Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_marginTop="74dp"
+        android:layout_below="@+id/userNameEntry"
+        android:layout_centerHorizontal="true" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,10 +51,21 @@
         android:ems="10"
         android:id="@+id/passwordEntry"
         android:background="#ffffff"
-        android:layout_marginTop="31dp"
-        android:layout_below="@+id/imageView2"
-        android:layout_alignStart="@+id/userNameEntry"
-        android:singleLine="true" />
+        android:layout_marginTop="41dp"
+        android:singleLine="true"
+        android:layout_below="@+id/userNameEntry"
+        android:layout_alignStart="@+id/userNameEntry" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textView"
+        android:id="@+id/textView4"
+        android:text="placeholder"
+        android:layout_alignEnd="@+id/userNameEntry"
+        android:layout_above="@+id/textView2"
+        android:background="#ff0000" />
 
     <TextView
         android:text="Password"
@@ -74,8 +74,8 @@
         android:id="@+id/textView"
         android:textSize="18sp"
         android:textColor="@android:color/darker_gray"
-        android:layout_below="@+id/imageView2"
-        android:layout_alignStart="@+id/passwordEntry"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/userNameEntry"
+        android:layout_alignEnd="@+id/textView2" />
 
 </RelativeLayout>
