@@ -1,5 +1,7 @@
 *.iml
 .gradle
+.metadata
+.recommenders
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
