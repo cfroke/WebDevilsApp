@@ -16,7 +16,7 @@ import common.User;
 public class Storage {
 	
 	LinkedList<Concept>	conceptList	= new LinkedList<Concept>();
-	LinkedList<User> userList		= new LinkedList<User>();
+	LinkedList<User> 	userList	= new LinkedList<User>();
 
 	public Storage() {
 	}

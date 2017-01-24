@@ -9,10 +9,10 @@ package common;
  */
 public class Concept implements IConcept {
 
-	private String 	description;
+	private String	description;
 	private int		upvoteStatus;
-	private IUser 	userThatCreatedThisConcept;
-	private String 	Status;
+	private IUser	userThatCreatedThisConcept;
+	private String	Status;
 	private String	SUBMITTED_STATUS = "Submitted";
 	private String	EMPLOYEE_VIEWED_STATUS = "Employee Viewed";
 	private String	EMPLOYEE_REVIEWED_STATUS = "Employee Reviewed";
