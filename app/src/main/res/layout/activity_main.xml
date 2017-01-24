@@ -80,11 +80,9 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/logo_sample"
-        android:id="@+id/imageView2"
-        android:layout_above="@+id/textView2"
-        android:layout_alignStart="@+id/imageView"
+        app:srcCompat="@mipmap/webdevil_simplelogo"
         android:layout_alignTop="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView" />
+        android:layout_alignStart="@+id/imageView"
+        android:id="@+id/imageView2" />
 
 </RelativeLayout>
