@@ -6,14 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         Button login = (Button) findViewById(R.id.button);
 
         // Gets username and password and turns them into strings for validation
@@ -23,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
                 EditText inputPass = (EditText) findViewById(R.id.passwordEntry);
                 String uName = inputName.getText().toString();
                 String uPass = inputPass.getText().toString();
+                Intent i = new Intent(getApplicationContext(), LandingActvity.class);
+                startActivity(i);
             }
         });
     }
