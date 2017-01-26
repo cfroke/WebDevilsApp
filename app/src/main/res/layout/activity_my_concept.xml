@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="webdevils.webdevilsapp.MyConceptActivity"
+    android:weightSum="1"
+    android:background="#0d2f4c">
+
+    <TextView
+        android:text="List of Concepts goes here..."
+        android:textColor="#ffffff"
+        android:gravity="top"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/buttonMy"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp" />
+
+    <Button
+        android:text="My Concepts"
+        android:layout_width="match_parent"
+        android:id="@+id/buttonMy"
+        android:textColorLink="?attr/colorPrimaryDark"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:minHeight="134dp"
+        android:background="#f00000"
+        android:textSize="18sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp" />
+
+</RelativeLayout>
