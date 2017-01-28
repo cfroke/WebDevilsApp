@@ -1,19 +1,29 @@
 package webdevils.webdevilsapp;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import java.util.HashMap;
+import android.content.DialogInterface;
+import android.app.AlertDialog.Builder;
+
 
 public class LoginActivity extends AppCompatActivity {
+
+    HashMap<String, String> users = new HashMap<String, String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Button login = (Button) findViewById(R.id.button);
+        users.put("user", "password");
+        final AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
+
 
         // Gets username and password and turns them into strings for validation
         login.setOnClickListener(new View.OnClickListener() {
@@ -22,9 +32,46 @@ public class LoginActivity extends AppCompatActivity {
                 EditText inputPass = (EditText) findViewById(R.id.passwordEntry);
                 String uName = inputName.getText().toString();
                 String uPass = inputPass.getText().toString();
-                Intent i = new Intent(getApplicationContext(), LandingActvity.class);
-                startActivity(i);
+                if (validateUser(uName, uPass)) {
+                    dlgAlert.setMessage("User authenticated.");
+                    dlgAlert.setTitle("Verification");
+                    dlgAlert.setPositiveButton("OK", null);
+                    dlgAlert.setCancelable(true);
+                    dlgAlert.create().show();
+                    dlgAlert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //dismiss the dialog
+                                }
+                            });
+                    Intent i = new Intent(getApplicationContext(), LandingActvity.class);
+                    startActivity(i);
+
+                }else{
+                    dlgAlert.setMessage("Username or password is incorrect.");
+                    dlgAlert.setTitle("Verification");
+                    dlgAlert.setPositiveButton("OK", null);
+                    dlgAlert.setCancelable(true);
+                    dlgAlert.create().show();
+                    dlgAlert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //dismiss the dialog
+                                }
+                            });
+                }
+
             }
         });
     }
+
+    //checks username and password submission against list of known users and credentials
+    public boolean validateUser(String u, String p) {
+        if(users.get(u) != null) {
+            return (users.get(u).equals(p));
+        }else{
+            return false;
+        }
+    }
+
 }
