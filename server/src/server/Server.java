@@ -3,8 +3,10 @@
  */
 package server;
 
-import java.rmi.Naming;
-import java.rmi.RMISecurityManager;
+import java.rmi.*;
+import java.rmi.registry.*;
+
+import common.User;
 
 /**
  * @author Kevin Bryant
@@ -17,16 +19,18 @@ public class Server {
 	/**
 	 * @param args
 	 */
-	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		try {
-			// my not need ?
-//			System.setSecurityManager(new RMISecurityManager());
-			   
-			Services services = new Services();			   		   
-			Naming.rebind("rmi://localhost:8080/serverTestLocation", services);
 			
-			System.out.println("Server bound to 'localhost' and ready for action.");
+			//TODO
+			// initialize storage
+			
+			IServices stub = new Services();
+			Registry reg = LocateRegistry.createRegistry(8080);
+			reg.bind("rmi://localhost:8080", stub);
+			
+			System.out.println("Server bound to 'localhost:8080' and ready for action.");
+			
 			}catch (Exception e) {
 				System.out.println("Server failed: " + e);
 			}

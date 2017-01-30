@@ -1,28 +1,34 @@
 package server;
 
-import common.IConcept;
-import common.IUser;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.LinkedList;
 
-public interface IServices {
+import common.Concept;
+import common.User;
 
-	IConcept getConcept(int key);
+public interface IServices extends Remote{
 
-	IConcept createConcept(IUser user, String description);
+	User validateUser(String userName, String password) throws RemoteException;
 
-	IUser createMemberUser(String Name, String password);
+	LinkedList<Concept> getConceptsByUser(User user) throws RemoteException;
 
-	IUser createEmployeeUser(String Name, String password);
+	Concept createConcept(User user, String description) throws RemoteException;
 
-	boolean saveConcept(IConcept concept);
+	User createMemberUser(String name, String password) throws RemoteException;
 
-	void upVoteConcept(IConcept concept);
+	User createEmployeeUser(String name, String password) throws RemoteException;
 
-	void downVoteConcept(IConcept concept);
+	void saveConcept(Concept concept) throws RemoteException;
 
-	void provideFeedback(IConcept concept, String feedback);
+	void upVoteConcept(Concept concept) throws RemoteException;
 
-	String viewConceptStatus(IConcept concept);
+	void downVoteConcept(Concept concept) throws RemoteException;
 
-	boolean startCollaberation(IUser A, IUser B, String type);
+	void provideConceptFeedback(Concept concept, String feedback) throws RemoteException;
+
+	String viewConceptStatus(Concept concept) throws RemoteException;
+
+	boolean startCollaberation(User A, User B, String type) throws RemoteException;
 
 }
