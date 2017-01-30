@@ -7,21 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import java.util.HashMap;
 import android.content.DialogInterface;
 import android.app.AlertDialog.Builder;
 
 
 public class LoginActivity extends AppCompatActivity {
 
-    HashMap<String, String> users = new HashMap<String, String>();
+    final String testUser = "user";
+    final String testPassword = "password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Button login = (Button) findViewById(R.id.button);
-        users.put("user", "password");
         final AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
 
 
@@ -67,8 +66,8 @@ public class LoginActivity extends AppCompatActivity {
 
     //checks username and password submission against list of known users and credentials
     public boolean validateUser(String u, String p) {
-        if(users.get(u) != null) {
-            return (users.get(u).equals(p));
+        if(u.equals(testUser) && p.equals(testPassword)){
+            return true;
         }else{
             return false;
         }
