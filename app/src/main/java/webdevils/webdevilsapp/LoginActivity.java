@@ -44,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             });
                     Intent i = new Intent(getApplicationContext(), LandingActvity.class);
+                    i.putExtra("userName", uName); //sending username to landing page
                     startActivity(i);
 
                 }else{
