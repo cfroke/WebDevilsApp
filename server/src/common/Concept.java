@@ -3,15 +3,18 @@
  */
 package common;
 
+import java.io.Serializable;
+
 /**
  * @author Kevin Bryant
  *
  */
-public class Concept implements IConcept {
+public class Concept implements Serializable {
 
+	private static final long serialVersionUID = -8873025068773379469L;
 	private String	description;
 	private int		upvoteStatus;
-	private IUser	userThatCreatedThisConcept;
+	private User	userThatCreatedThisConcept;
 	private String	Status;
 	private String	SUBMITTED_STATUS = "Submitted";
 	private String	EMPLOYEE_VIEWED_STATUS = "Employee Viewed";
@@ -20,26 +23,26 @@ public class Concept implements IConcept {
 	/**
 	 *  Instantiate a new concept
 	 */
-	public Concept(IUser user, String description) {
-		setUser(user);
+	public Concept(User user, String description) {
+		this.userThatCreatedThisConcept = user;
 		this.description = description;
+		this.Status = SUBMITTED_STATUS;
 	}
 	
-	public String getDescription(String description){
+	public String getDescription(){
 		return description;
 	}
 	
 	public void updateUpvoteStatus(boolean trueForUpFalseForDown){
 		if(trueForUpFalseForDown){
-			upvoteStatus++;
+			setUpvoteStatus(getUpvoteStatus() + 1);
 		}else{
-			upvoteStatus--;
+			setUpvoteStatus(getUpvoteStatus() - 1);
 		}
 	}
 	
-	private void setUser(IUser user){
-		this.userThatCreatedThisConcept = user;
-		this.Status = SUBMITTED_STATUS;
+	public User getUserThatCreatedThisConcept(){
+		return userThatCreatedThisConcept;
 	}
 	
 	public void setStatusToSubmitted(){
@@ -56,5 +59,13 @@ public class Concept implements IConcept {
 	
 	public String getStatus(){
 		return Status;
+	}
+
+	public int getUpvoteStatus() {
+		return upvoteStatus;
+	}
+
+	private void setUpvoteStatus(int upvoteStatus) {
+		this.upvoteStatus = upvoteStatus;
 	}
 }
