@@ -3,12 +3,17 @@
  */
 package common;
 
+import java.io.Serializable;
+
+import server.Storage;
+
 /**
  * @author Kevin Bryant
  *
  */
-public class User implements IUser {
+public class User implements Serializable {
 	
+	private static final long serialVersionUID = 1866235317697481634L;
 	private String name;
 	private String password;
 	private String MEMBER = "member";
@@ -20,10 +25,22 @@ public class User implements IUser {
 	/**
 	 *  Instantiate a new user
 	 */
-	User(String name, String password){
+	public User(String name, String password){
 		this.name = name;
 		this.password = password;
-		this.userType = UNDEFINED;
+		this.setUserType(UNDEFINED);
+	}
+	
+	public String getUserName(){
+		return name;
+	}
+	
+	public boolean tryPassword(String passwordAttempt){
+		if(password.equals(passwordAttempt)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	public void setPassword(String password){
@@ -31,21 +48,24 @@ public class User implements IUser {
 		//TODO update password in storage;
 	}
 	
-	public boolean validateUserName(String name){
-		//TODO see if user name exist on the server
-		return false;
-	}
-	
 	public void setUserTypeToMemeber(){
-		this.userType = MEMBER;
+		this.setUserType(MEMBER);
 	}
 	
 	public void setUserTypeToEmployee(){
-		this.userType = EMPLOYEE;
+		this.setUserType(EMPLOYEE);
 	}
 	
 	public void setUserTypeToDeveloper(){
-		this.userType = DEVELOPER;
+		this.setUserType(DEVELOPER);
+	}
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 	
 }
