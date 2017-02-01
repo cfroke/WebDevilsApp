@@ -20,11 +20,18 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+      
+        <activity
+            android:name=".ConceptsActivity"
+            android:label="@string/title_activity_my_concept"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <activity android:name=".SubmitConceptActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
