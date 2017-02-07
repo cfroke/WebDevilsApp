@@ -3,10 +3,11 @@ package webdevils.webdevilsapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
+import android.view.View;
+import android.widget.Button;;
 
 /**
- * Created by Kyle3 on 1/23/2017.
+ * Created by Kyle on 1/23/2017.
  */
 
 public class LandingActvity extends AppCompatActivity {
@@ -22,6 +23,13 @@ public class LandingActvity extends AppCompatActivity {
         Button myConceptButton = (Button) findViewById(R.id.buttonMy);
         Button featureConceptButton = (Button) findViewById(R.id.buttonFeatured);
         Button feedbackButton = (Button) findViewById(R.id.buttonFeedback);
+
+        myConceptButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                    Intent i = new Intent(getApplicationContext(), ConceptsActivity.class);
+                    startActivity(i);
+            }
+        });
 
     }
 }
