@@ -1,23 +1,44 @@
 package webdevils.webdevilsapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Looper;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.content.DialogInterface;
-import android.app.AlertDialog.Builder;
+
+import java.io.IOException;
+
+import lipermi.handler.CallHandler;
+import lipermi.net.Client;
+import webdevils.webdevilsapp.common.IServices;
+import webdevils.webdevilsapp.common.User;
 
 
 public class LoginActivity extends AppCompatActivity {
 
     final String testUser = "user";
     final String testPassword = "password";
+    User testUSER = new User(testUser,testPassword);
+
+    private String serverIP = "localhost";
+    public IServices services;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //starts server via the command line (should be run first)
+        //Example:
+        //C:/ ... /WebDevilsApp/server/dist>java -jar WebDevilsServer.jar
+
+        //connect to server ...
+        new Conn().execute();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Button login = (Button) findViewById(R.id.button);
@@ -67,10 +88,41 @@ public class LoginActivity extends AppCompatActivity {
 
     //checks username and password submission against list of known users and credentials
     public boolean validateUser(String u, String p) {
-        if(u.equals(testUser) && p.equals(testPassword)){
+        if( testUSER.getUserName().equals(u) && testUSER.tryPassword(p) ){
             return true;
         }else{
             return false;
+        }
+    }
+
+    class Conn extends AsyncTask<Void, Void, LoginActivity> {
+
+        @Override
+        protected LoginActivity doInBackground(Void... params) {
+            Looper.prepare();
+            try {
+                CallHandler callHandler = new CallHandler();
+                Client client = new Client(serverIP, 8080, callHandler);
+                services = (IServices) client.getGlobal(IServices.class);
+
+                //create new user
+                User returnedUser = services.createMemberUser(testUser, testPassword);
+                System.out.println(returnedUser.getUserName());
+
+                //validate user
+                User validatedUser = services.validateUser(testUser,testPassword);
+                if(validatedUser != null){
+                    System.out.println(validatedUser.getUserName() + " Has been validated and returned from the server!");
+                }else{
+                    System.out.println("Server returned null meaning that the user name already exists, or an invalid" +
+                            " password was used ...");
+                }
+                client.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Looper.loop();
+            return null;
         }
     }
 

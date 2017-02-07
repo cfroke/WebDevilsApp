@@ -4,24 +4,50 @@
 package server;
 
 import java.io.Serializable;
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
+import java.io.IOException;
+import java.net.Socket;
 import java.util.LinkedList;
 
 import common.Concept;
 import common.User;
 
+import lipermi.exception.LipeRMIException;
+import lipermi.handler.CallHandler;
+import lipermi.net.IServerListener;
+import lipermi.net.Server;
+
 /**
  * @author Kevin Bryant
  *
  */
-public class Services extends UnicastRemoteObject implements IServices , Serializable {
+public class Services implements IServices, Serializable {
 
 	private static final long serialVersionUID = -7875091839442836772L;
 	
 	Storage storage;
 	
-	protected Services() throws RemoteException {
+	protected Services(){
+		try {
+            CallHandler callHandler = new CallHandler();
+            callHandler.registerGlobal(IServices.class, this);
+            Server server = new Server();
+            server.bind(8080, callHandler);
+            server.addServerListener(new IServerListener() {
+
+                @Override
+                public void clientDisconnected(Socket socket) {
+                    System.out.println("Client Disconnected: " + socket.getInetAddress());
+                }
+
+                @Override
+                public void clientConnected(Socket socket) {
+                    System.out.println("Client Connected: " + socket.getInetAddress());
+                }
+            });
+            System.out.println("Server Online ... ");
+        } catch (LipeRMIException | IOException e) {
+        	System.out.println("Server failed: " + e);
+        }
 		storage = Storage.getInstance();
 		System.out.println("//// Server Services Loaded ////");
 	}
@@ -43,7 +69,7 @@ public class Services extends UnicastRemoteObject implements IServices , Seriali
 	
 	public LinkedList<Concept> getConceptsByUser(User user){
 		System.out.println("Sent concept list to client");
-		return storage.getConceptByUserName(user.getUserName());
+		return storage.getConceptsByUserName(user.getUserName());
 	}
 	
 	public Concept createConcept(User user, String description){

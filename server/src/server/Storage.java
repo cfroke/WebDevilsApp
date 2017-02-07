@@ -3,6 +3,7 @@
  */
 package server;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -59,7 +60,7 @@ public class Storage implements Serializable {
 	
 	public boolean addConcept(Concept CONCEPT){
 		for(Concept concept : conceptList){
-			if(concept == CONCEPT){
+			if(concept.equals(CONCEPT)){
 				return false;
 			}
 		}
@@ -79,14 +80,14 @@ public class Storage implements Serializable {
 	
 	public boolean updateConcept(Concept CONCEPT){
 		for(Concept concept : conceptList){
-			if(concept == CONCEPT){
+			if( concept.getDescription().equals(CONCEPT.getDescription()) ){
 				concept = CONCEPT;
 			}
 		}
 		return saveLists();
 	}
 	
-	public LinkedList<Concept> getConceptByUserName(String userName){
+	public LinkedList<Concept> getConceptsByUserName(String userName){
 		LinkedList<Concept> result = new LinkedList<Concept>();
 		for(Concept concept : conceptList){
 			if(concept.getUserThatCreatedThisConcept().getUserName().equals(userName)){
@@ -98,12 +99,13 @@ public class Storage implements Serializable {
 	
 	public static boolean saveLists(){
 		
-		String fileName= "data/Storage.obj";
+		File filePath = new File("data");
+		String fileName= "Storage.obj";
 	    FileOutputStream fos = null;
 	    ObjectOutputStream oos = null;
 
 	    try {
-	    	fos = new FileOutputStream(fileName);
+	    	fos = new FileOutputStream(filePath.getAbsoluteFile() + fileName);
 	    	oos = new ObjectOutputStream(fos);
 	    	oos.writeObject(singleton);
 	    	oos.close();
@@ -116,12 +118,13 @@ public class Storage implements Serializable {
 	
 	public static Storage restoreLists(){
 		
-		String fileName= "data/Storage.obj";
+		File filePath = new File("data");
+		String fileName= "Storage.obj";
 		FileInputStream fin;
 		ObjectInputStream ois;
 		
 		try {
-			fin = new FileInputStream(fileName);
+			fin = new FileInputStream(filePath.getAbsolutePath() + fileName);
 			ois = new ObjectInputStream(fin);
 			singleton = (Storage) ois.readObject();
 			ois.close();

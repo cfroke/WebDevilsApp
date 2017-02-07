@@ -3,11 +3,6 @@
  */
 package server;
 
-import java.rmi.*;
-import java.rmi.registry.*;
-
-import common.User;
-
 /**
  * @author Kevin Bryant
  * 
@@ -20,20 +15,16 @@ public class Server {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		try {
+
+			//traditional rmi implementation
+//			IServices stub = new Services();
+//			Registry reg = LocateRegistry.createRegistry(8080);
+//			reg.bind("rmi://localhost:8080", stub);
 			
-			//TODO
-			// initialize storage
-			
-			IServices stub = new Services();
-			Registry reg = LocateRegistry.createRegistry(8080);
-			reg.bind("rmi://localhost:8080", stub);
-			
-			System.out.println("Server bound to 'localhost:8080' and ready for action.");
-			
-			}catch (Exception e) {
-				System.out.println("Server failed: " + e);
-			}
+			//start server by instantiating Services ...
+			Services services = new Services();
+		
+			System.out.println("Server listing on port 8080 and ready for action.");
 		
 	}
 

@@ -1,7 +1,7 @@
 /**
  *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
  */
-package common;
+package webdevils.webdevilsapp.common;
 
 import java.io.Serializable;
 
@@ -43,7 +43,6 @@ public class User implements Serializable {
 
 	public void setPassword(String password){
 		this.password = password;
-		//TODO update password in storage;
 	}
 	
 	public void setUserTypeToMemeber(){

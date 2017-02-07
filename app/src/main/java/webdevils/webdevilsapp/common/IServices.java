@@ -1,19 +1,18 @@
-package server;
+package webdevils.webdevilsapp.common;
 
+//import java.rmi.Remote;
+//import java.rmi.RemoteException;
 import java.util.LinkedList;
 
-import common.Concept;
-import common.User;
-
-public interface IServices {
+public interface IServices { //extends Remote{
 
 	User validateUser(String userName, String password);
 
 	LinkedList<Concept> getConceptsByUser(User user);
 
-	Concept createConcept(User user, String description);
+	Concept createConcept(User user, String description);// throws RemoteException;
 
-	User createMemberUser(String name, String password);
+	User createMemberUser(String name, String password);// throws RemoteException;
 
 	User createEmployeeUser(String name, String password);
 
