@@ -1,7 +1,7 @@
 /**
  *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
  */
-package webdevils.webdevilsapp.common;
+package common;
 
 import java.io.Serializable;
 

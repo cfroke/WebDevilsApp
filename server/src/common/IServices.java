@@ -1,9 +1,6 @@
-package server;
+package common;
 
 import java.util.LinkedList;
-
-import common.Concept;
-import common.User;
 
 public interface IServices {
 

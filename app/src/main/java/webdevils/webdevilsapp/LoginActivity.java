@@ -13,21 +13,20 @@ import android.widget.EditText;
 
 import java.io.IOException;
 
+import common.IServices;
+import common.User;
 import lipermi.handler.CallHandler;
 import lipermi.net.Client;
-import webdevils.webdevilsapp.common.IServices;
-import webdevils.webdevilsapp.common.User;
+import server.Services;
 
 
 public class LoginActivity extends AppCompatActivity {
 
     final String testUser = "user";
     final String testPassword = "password";
-    User testUSER = new User(testUser,testPassword);
+    User testUSER;
 
     private String serverIP = "localhost";
-    public IServices services;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +36,11 @@ public class LoginActivity extends AppCompatActivity {
         //C:/ ... /WebDevilsApp/server/dist>java -jar WebDevilsServer.jar
 
         //connect to server ...
-        new Conn().execute();
+        //new Conn().execute();
+
+        //Work around for now....
+        Services services = new Services();
+        testUSER = services.createMemberUser(testUser , testPassword);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -88,13 +91,14 @@ public class LoginActivity extends AppCompatActivity {
 
     //checks username and password submission against list of known users and credentials
     public boolean validateUser(String u, String p) {
-        if( testUSER.getUserName().equals(u) && testUSER.tryPassword(p) ){
+        if( testUSER.getUserName().equals(u) && testUSER.tryPassword(p)){
             return true;
         }else{
             return false;
         }
     }
 
+    //connect to server to get test user ...
     class Conn extends AsyncTask<Void, Void, LoginActivity> {
 
         @Override
@@ -103,11 +107,11 @@ public class LoginActivity extends AppCompatActivity {
             try {
                 CallHandler callHandler = new CallHandler();
                 Client client = new Client(serverIP, 8080, callHandler);
-                services = (IServices) client.getGlobal(IServices.class);
+                IServices services = (IServices) client.getGlobal(IServices.class);
 
                 //create new user
-                User returnedUser = services.createMemberUser(testUser, testPassword);
-                System.out.println(returnedUser.getUserName());
+                testUSER = services.createMemberUser(testUser, testPassword);
+                System.out.println(testUSER.getUserName());
 
                 //validate user
                 User validatedUser = services.validateUser(testUser,testPassword);

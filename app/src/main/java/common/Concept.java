@@ -1,7 +1,7 @@
 /**
  *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
  */
-package webdevils.webdevilsapp.common;
+package common;
 
 import java.io.Serializable;
 
@@ -14,12 +14,12 @@ public class Concept implements Serializable {
 	private static final long serialVersionUID = -8873025068773379469L;
 	private String	description;
 	private int		upvoteStatus;
-	private User	userThatCreatedThisConcept;
+	private User userThatCreatedThisConcept;
 	private String	Status;
 	private String	SUBMITTED_STATUS = "Submitted";
 	private String	EMPLOYEE_VIEWED_STATUS = "Employee Viewed";
 	private String	EMPLOYEE_REVIEWED_STATUS = "Employee Reviewed";
-	
+
 	/**
 	 *  Instantiate a new concept
 	 */
@@ -28,11 +28,11 @@ public class Concept implements Serializable {
 		this.description = description;
 		this.Status = SUBMITTED_STATUS;
 	}
-	
+
 	public String getDescription(){
 		return description;
 	}
-	
+
 	public void updateUpvoteStatus(boolean trueForUpFalseForDown){
 		if(trueForUpFalseForDown){
 			setUpvoteStatus(getUpvoteStatus() + 1);
@@ -40,7 +40,7 @@ public class Concept implements Serializable {
 			setUpvoteStatus(getUpvoteStatus() - 1);
 		}
 	}
-	
+
 	public User getUserThatCreatedThisConcept(){
 		return userThatCreatedThisConcept;
 	}
