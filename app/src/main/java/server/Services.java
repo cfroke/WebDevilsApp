@@ -21,7 +21,7 @@ public class Services implements IServices, Serializable {
 	
 	Storage storage;
 	
-	protected Services(){
+	public Services(){
 		storage = Storage.getInstance();
 		System.out.println("//// Server Services Loaded ////");
 	}
