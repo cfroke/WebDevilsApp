@@ -46,8 +46,8 @@ public class Services implements IServices, Serializable {
 		return storage.getConceptsByUserName(user.getUserName());
 	}
 	
-	public Concept createConcept(User user, String description){
-		Concept result = new Concept(user,description);
+	public Concept createConcept(User user, String title, String description, String type){
+		Concept result = new Concept(user, title, description, type);
 		storage.addConcept(result);
 		System.out.println("***** Concept created *****");
 		return result;

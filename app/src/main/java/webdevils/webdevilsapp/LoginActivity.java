@@ -24,7 +24,10 @@ public class LoginActivity extends AppCompatActivity {
 
     final String testUser = "user";
     final String testPassword = "password";
+    final String empUser = "employee";
+    final String empPassword = "pass123";
     User testUSER;
+    User empUSER;
 
     private String serverIP = "localhost";
 
@@ -41,6 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         //Work around for now....
         Services services = new Services();
         testUSER = services.createMemberUser(testUser , testPassword);
+        empUSER = services.createEmployeeUser(empUser, empPassword);
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -69,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                             });
                     Intent i = new Intent(getApplicationContext(), LandingActvity.class);
                     i.putExtra("userName", uName); //sending username to landing page
+                    i.putExtra("userObject", testUSER); // temp passing of object
                     startActivity(i);
 
                 }else{

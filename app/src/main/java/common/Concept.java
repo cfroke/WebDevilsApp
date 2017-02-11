@@ -13,8 +13,10 @@ public class Concept implements Serializable {
 
 	private static final long serialVersionUID = -8873025068773379469L;
 	private String	description;
+	private String  title;
+	private String  type;
 	private int		upvoteStatus;
-	private User userThatCreatedThisConcept;
+	private User    userThatCreatedThisConcept;
 	private String	Status;
 	private String	SUBMITTED_STATUS = "Submitted";
 	private String	EMPLOYEE_VIEWED_STATUS = "Employee Viewed";
@@ -23,15 +25,21 @@ public class Concept implements Serializable {
 	/**
 	 *  Instantiate a new concept
 	 */
-	public Concept(User user, String description) {
+	public Concept(User user, String title, String description, String type) {
 		this.userThatCreatedThisConcept = user;
+		this.title = title;
 		this.description = description;
+		this.type = type;
 		this.Status = SUBMITTED_STATUS;
 	}
 
 	public String getDescription(){
 		return description;
 	}
+
+    public String getTitle() { return title; }
+
+    public String getType() { return type; }
 
 	public void updateUpvoteStatus(boolean trueForUpFalseForDown){
 		if(trueForUpFalseForDown){

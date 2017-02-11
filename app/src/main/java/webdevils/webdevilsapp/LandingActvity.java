@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;;
 
+import common.User;
+
 /**
  * Created by Kyle on 1/23/2017.
  */
@@ -18,6 +20,7 @@ public class LandingActvity extends AppCompatActivity {
         //passes username from login to display on banner Welcome
         Intent p = getIntent();
         final String name = p.getStringExtra("userName");
+        final User user = (User) getIntent().getSerializableExtra("userObject");
         setTitle("Welcome " + name);
         //buttons to use for navigation
         Button myConceptButton = (Button) findViewById(R.id.buttonMy);
@@ -27,6 +30,7 @@ public class LandingActvity extends AppCompatActivity {
         myConceptButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                     Intent i = new Intent(getApplicationContext(), ConceptsActivity.class);
+                    i.putExtra("userObject", user); // temp passing of obj
                     startActivity(i);
             }
         });
