@@ -10,7 +10,7 @@ public interface IServices { //extends Remote{
 
 	LinkedList<Concept> getConceptsByUser(User user);
 
-	Concept createConcept(User user, String description);// throws RemoteException;
+	Concept createConcept(User user, String title, String description, String type);// throws RemoteException;
 
 	User createMemberUser(String name, String password);// throws RemoteException;
 
