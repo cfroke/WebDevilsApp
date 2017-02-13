@@ -20,7 +20,7 @@ public class ConceptsActivity extends AppCompatActivity{
         // gets user object passed from previous pages. Can use to get users concepts from storage
         final User user = (User) getIntent().getSerializableExtra("userObject");
 
-        Button submitNewConcept = (Button) findViewById(R.id.button2);
+        Button submitNewConcept = (Button) findViewById(R.id.Submit_new_Concept);
 
         submitNewConcept.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
