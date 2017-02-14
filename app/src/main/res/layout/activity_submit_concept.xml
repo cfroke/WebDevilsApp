@@ -48,7 +48,8 @@
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@android:color/black" />
 
     <EditText
         android:layout_width="0dp"
@@ -68,7 +69,8 @@
         app:layout_constraintTop_toBottomOf="@+id/titleText"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="78dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textColor="@android:color/black" />
 
     <Spinner
         android:layout_width="184dp"

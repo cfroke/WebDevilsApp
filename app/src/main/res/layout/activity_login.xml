@@ -22,8 +22,9 @@
         android:id="@+id/userNameEntry"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:singleLine="true"
-        android:selectAllOnFocus="false" />
+        android:selectAllOnFocus="false"
+        android:maxLines="1"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:text="Username"
@@ -52,9 +53,10 @@
         android:id="@+id/passwordEntry"
         android:background="#ffffff"
         android:layout_marginTop="41dp"
-        android:singleLine="true"
         android:layout_below="@+id/userNameEntry"
-        android:layout_alignStart="@+id/userNameEntry" />
+        android:layout_alignStart="@+id/userNameEntry"
+        android:maxLines="1"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:text="Password"
