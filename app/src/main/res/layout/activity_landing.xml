@@ -24,14 +24,14 @@
         android:textAllCaps="false"
         android:height="50dp"
         tools:ignore="MissingConstraints"
-        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
         android:layout_marginStart="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginEnd="3dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="2dp"
-        app:layout_constraintTop_toBottomOf="@+id/buttonFeatured"
         tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="60dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
@@ -41,14 +41,12 @@
         android:height="134dp"
         android:textColor="#000000"
         android:background="#ffffff"
+        android:layout_height="193dp"
         tools:layout_constraintTop_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/buttonMy"
         android:layout_marginTop="1dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_height="193dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:text="Submit Feedback"
@@ -76,21 +74,24 @@
         android:background="@drawable/blueprint_printing_north_port_fl_0"
         android:textSize="18sp"
         android:scaleType="fitXY"
-        android:layout_height="131dp"
+        android:layout_height="125dp"
         android:visibility="visible"
         android:maxHeight="125dp"
         android:textAlignment="center"
         tools:ignore="MissingConstraints"
+        tools:layout_constraintTop_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/buttonFeatured"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        android:layout_marginTop="191dp"
         tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="191dp"
         app:layout_constraintLeft_toLeftOf="@+id/textView3"
-        android:layout_marginBottom="8dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:text="Featured Concepts"
         android:layout_width="wrap_content"
-        android:layout_height="125dp"
+        android:layout_height="0dp"
         android:id="@+id/buttonFeatured"
         style="@style/Widget.AppCompat.Button.Colored"
         android:minHeight="125dp"
@@ -99,12 +100,12 @@
         android:background="@drawable/blueprint2"
         android:maxHeight="125dip"
         tools:ignore="MissingConstraints"
-        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="@+id/buttonMy"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMy"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="128dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintLeft_toLeftOf="@+id/buttonMy" />
 
 </android.support.constraint.ConstraintLayout>
