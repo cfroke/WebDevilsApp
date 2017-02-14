@@ -1,5 +1,8 @@
 package webdevils.webdevilsapp;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +33,7 @@ public class SubmitConceptActivity extends AppCompatActivity {
         //getting user object that has been passed by other pages
         final User user = (User) getIntent().getSerializableExtra("userObject");
         final Services services = new Services();
+        final AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
 
         //Create concept
         Button submit = (Button) findViewById(R.id.buttonSubmit);
@@ -38,11 +42,27 @@ public class SubmitConceptActivity extends AppCompatActivity {
                 EditText title = (EditText) findViewById(R.id.titleText);
                 EditText description = (EditText) findViewById(R.id.descriptionText);
                 Spinner type = (Spinner) findViewById(R.id.spinnerType);
-                conceptTitle = title.getText().toString();
-                conceptDesc = description.getText().toString();
-                conceptType = type.getSelectedItem().toString();
-                concept = services.createConcept(user, conceptTitle, conceptDesc, conceptType);
-
+                if (type.getSelectedItem().toString().equals("Select Concept Type")) {
+                    dlgAlert.setMessage("Please select a concept type.");
+                    dlgAlert.setTitle("Invalid Selection");
+                    dlgAlert.setPositiveButton("OK", null);
+                    dlgAlert.setCancelable(true);
+                    dlgAlert.create().show();
+                    dlgAlert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //dismiss the dialog
+                                }
+                            });
+                } else {
+                    conceptTitle = title.getText().toString();
+                    conceptDesc = description.getText().toString();
+                    conceptType = type.getSelectedItem().toString();
+                    concept = services.createConcept(user, conceptTitle, conceptDesc, conceptType);
+                    Intent i = new Intent(getApplicationContext(), ConceptsActivity.class);
+                    i.putExtra("userObject", user); // temp passing of object
+                    startActivity(i);
+                }
 
             }
         });

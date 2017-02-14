@@ -20,7 +20,7 @@ public class LandingActvity extends AppCompatActivity {
         Intent p = getIntent();
         final String name = p.getStringExtra("userName");
         final User user = (User) getIntent().getSerializableExtra("userObject");
-        setTitle("Welcome " + name);
+        // setTitle("Welcome " + name); title bar removed for now
         //buttons to use for navigation
         Button myConceptButton = (Button) findViewById(R.id.buttonMy);
         Button featureConceptButton = (Button) findViewById(R.id.buttonFeatured);
@@ -31,6 +31,18 @@ public class LandingActvity extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), ConceptsActivity.class);
                 i.putExtra("userObject", user); // temp passing of object
                 startActivity(i);
+            }
+        });
+
+        featureConceptButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // to do later
+            }
+        });
+
+        feedbackButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // to do later
             }
         });
 
