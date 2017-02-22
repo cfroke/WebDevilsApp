@@ -14,6 +14,7 @@ import java.util.LinkedList;
 
 import common.Concept;
 import common.User;
+import webdevils.webdevilsapp.AppContext;
 
 /**
  * @author Kevin Bryant
@@ -32,8 +33,8 @@ public class Storage implements Serializable {
 	}
 	
 	public static Storage getInstance(){
-//		TODO data persistence
-//		restoreLists();
+        //data persistence
+		restoreLists();
 		return singleton;
 	}
 	
@@ -98,11 +99,11 @@ public class Storage implements Serializable {
 	}
 	
 	public static boolean saveLists(){
-		
-		File filePath = new File("data");
+
 		String fileName= "Storage.obj";
 	    FileOutputStream fos = null;
 	    ObjectOutputStream oos = null;
+		File filePath = new File(AppContext.getAppContext().getFilesDir() , fileName);
 
 	    try {
 	    	fos = new FileOutputStream(filePath.getAbsoluteFile() + fileName);
@@ -117,11 +118,11 @@ public class Storage implements Serializable {
 	}
 	
 	public static Storage restoreLists(){
-		
-		File filePath = new File("data");
+
 		String fileName= "Storage.obj";
 		FileInputStream fin;
 		ObjectInputStream ois;
+		File filePath = new File(AppContext.getAppContext().getFilesDir() , fileName);
 		
 		try {
 			fin = new FileInputStream(filePath.getAbsolutePath() + fileName);
@@ -134,5 +135,4 @@ public class Storage implements Serializable {
 			return null;
 		}
 	}
-
 }
