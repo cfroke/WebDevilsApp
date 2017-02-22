@@ -18,34 +18,27 @@ import common.User;
 import lipermi.handler.CallHandler;
 import lipermi.net.Client;
 import server.Services;
+import server.TestData;
 
 
 public class LoginActivity extends AppCompatActivity {
 
-    final String testUser = "user";
-    final String testPassword = "password";
-    final String empUser = "employee";
-    final String empPassword = "pass123";
-    User testUSER;
-    User empUSER;
-
+    Services services = new Services();
+    //Initialize Test Data
+    TestData data = TestData.getInstance();
+    User currentUser;
     private String serverIP = "localhost";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         //starts server via the command line (should be run first)
+        //NOTE: Android Studio emulator cannot connect to remote server!
         //Example:
         //C:/ ... /WebDevilsApp/server/dist>java -jar WebDevilsServer.jar
 
         //connect to server ...
         //new Conn().execute();
-
-        //Work around for now....
-        Services services = new Services();
-        testUSER = services.createMemberUser(testUser , testPassword);
-        empUSER = services.createEmployeeUser(empUser, empPassword);
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -74,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                             });
                     Intent i = new Intent(getApplicationContext(), LandingActvity.class);
                     i.putExtra("userName", uName); //sending username to landing page
-                    i.putExtra("userObject", testUSER); // temp passing of object
+                    i.putExtra("userObject", currentUser); // temp passing of object
                     startActivity(i);
 
                 }else{
@@ -97,13 +90,15 @@ public class LoginActivity extends AppCompatActivity {
 
     //checks username and password submission against list of known users and credentials
     public boolean validateUser(String u, String p) {
-        if( testUSER.getUserName().equals(u) && testUSER.tryPassword(p)){
+        currentUser = services.validateUser( u , p );
+        if( currentUser.getUserName().equals(u) && currentUser.tryPassword(p)){
             return true;
         }else{
             return false;
         }
     }
 
+    //Example server call
     //connect to server to get test user ...
     class Conn extends AsyncTask<Void, Void, LoginActivity> {
 
@@ -113,14 +108,14 @@ public class LoginActivity extends AppCompatActivity {
             try {
                 CallHandler callHandler = new CallHandler();
                 Client client = new Client(serverIP, 8080, callHandler);
-                IServices services = (IServices) client.getGlobal(IServices.class);
+                IServices Services = (IServices) client.getGlobal(IServices.class);
 
                 //create new user
-                testUSER = services.createMemberUser(testUser, testPassword);
+                User testUSER = Services.createMemberUser("user", "password");
                 System.out.println(testUSER.getUserName());
 
                 //validate user
-                User validatedUser = services.validateUser(testUser,testPassword);
+                User validatedUser = Services.validateUser("user","password");
                 if(validatedUser != null){
                     System.out.println(validatedUser.getUserName() + " Has been validated and returned from the server!");
                 }else{
@@ -135,5 +130,4 @@ public class LoginActivity extends AppCompatActivity {
             return null;
         }
     }
-
 }

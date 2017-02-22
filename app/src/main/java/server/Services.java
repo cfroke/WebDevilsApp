@@ -23,7 +23,6 @@ public class Services implements IServices, Serializable {
 	
 	public Services(){
 		storage = Storage.getInstance();
-		System.out.println("//// Server Services Loaded ////");
 	}
 	
 	public User validateUser(String userName, String password){
@@ -108,7 +107,7 @@ public class Services implements IServices, Serializable {
 		return null;
 	}
 	
-	public boolean startCollaberation(User A, User B, String type){
+	public boolean startCollaboration(User A, User B, String type){
 		//TODO user to user interaction in the form of text, video, or voice chat
 		System.out.println("Service in development ... Sorry =P");
 		return false;
