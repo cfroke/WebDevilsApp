@@ -37,9 +37,14 @@ public class Concept implements Serializable {
 		return description;
 	}
 
-    public String getTitle() { return title; }
+    public String getTitle() {
+		return title;
+	}
 
-    public String getType() { return type; }
+
+    public String getType() {
+		return type;
+	}
 
 	public void updateUpvoteStatus(boolean trueForUpFalseForDown){
 		if(trueForUpFalseForDown){
