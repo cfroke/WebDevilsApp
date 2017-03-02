@@ -65,8 +65,8 @@ public class LoginActivity extends AppCompatActivity {
                                     //dismiss the dialog
                                 }
                             });
-                    Intent i = new Intent(getApplicationContext(), LandingActvity.class);
-                    i.putExtra("userName", uName); //sending username to landing page
+                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                    i.putExtra("userName", uName); //sending username to main page
                     i.putExtra("userObject", currentUser); // temp passing of object
                     startActivity(i);
 
