@@ -1,15 +1,12 @@
 package webdevils.webdevilsapp;
 
-import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -21,6 +18,7 @@ import server.Services;
 
 public class ConceptDetailsActivity extends Fragment {
     private Concept thisConcept;
+    Services services = new Services();
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -59,14 +57,14 @@ public class ConceptDetailsActivity extends Fragment {
         Button btnDownVote = (Button) getView().findViewById(R.id.btnDownVote);
         btnDownVote.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Services.downVoteConcept(thisConcept);
+                services.downVoteConcept(thisConcept);
             }
         });
 
         Button btnUpVote = (Button) getView().findViewById(R.id.btnUpVote);
         btnUpVote.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Services.upVoteConcept(thisConcept);
+                services.upVoteConcept(thisConcept);
             }
         });
     }
