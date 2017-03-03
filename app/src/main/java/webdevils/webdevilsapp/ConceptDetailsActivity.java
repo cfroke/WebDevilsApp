@@ -41,7 +41,7 @@ public class ConceptDetailsActivity extends AppCompatActivity {
     });
 
     Button btnUpVote = (Button) findViewById(R.id.btnUpVote);
-    btnDownVote.setOnClickListener(new View.OnClickListener() {
+    btnUpVote.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
             thisConcept.updateUpvoteStatus(true);
         }
