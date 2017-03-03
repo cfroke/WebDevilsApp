@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * Created by caseyfroke on 1/29/17.
+ */
 
 /**
  * A simple {@link Fragment} subclass.
