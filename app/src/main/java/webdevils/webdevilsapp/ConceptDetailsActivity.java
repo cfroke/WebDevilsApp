@@ -26,44 +26,7 @@ public class ConceptDetailsActivity extends Fragment {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-
-    /*public ConceptDetailsActivity(Concept thisConcept) {
-        this.thisConcept = thisConcept;
-        TextView title = (TextView) findViewById(R.id.txtTitle);
-        title.setText(thisConcept.getTitle());
-        TextView desc = (TextView) findViewById(R.id.txtBody);
-        desc.setText(thisConcept.getDescription());
-        TextView score = (TextView) findViewById(R.id.txtVoteScore);
-        score.setText("Score: " + thisConcept.getUpvoteStatus());
-    }*/
-
-
-
-    //@Override
-    /*protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_concept_details);
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-
-        Button btnDownVote = (Button) findViewById(R.id.btnDownVote);
-        btnDownVote.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                thisConcept.updateUpvoteStatus(false);
-            }
-        });
-
-        Button btnUpVote = (Button) findViewById(R.id.btnUpVote);
-        btnUpVote.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                thisConcept.updateUpvoteStatus(true);
-            }
-        });
-    }*/
-
-
+    
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
