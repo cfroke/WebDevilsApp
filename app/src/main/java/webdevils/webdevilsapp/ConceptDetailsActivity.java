@@ -2,9 +2,12 @@ package webdevils.webdevilsapp;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -14,8 +17,9 @@ import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import common.Concept;
+import server.Services;
 
-public class ConceptDetailsActivity extends AppCompatActivity {
+public class ConceptDetailsActivity extends Fragment {
     private Concept thisConcept;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -23,7 +27,7 @@ public class ConceptDetailsActivity extends AppCompatActivity {
      */
     private GoogleApiClient client;
 
-    public ConceptDetailsActivity(Concept thisConcept) {
+    /*public ConceptDetailsActivity(Concept thisConcept) {
         this.thisConcept = thisConcept;
         TextView title = (TextView) findViewById(R.id.txtTitle);
         title.setText(thisConcept.getTitle());
@@ -31,31 +35,33 @@ public class ConceptDetailsActivity extends AppCompatActivity {
         desc.setText(thisConcept.getDescription());
         TextView score = (TextView) findViewById(R.id.txtVoteScore);
         score.setText("Score: " + thisConcept.getUpvoteStatus());
-    }
+    }*/
 
-    Button btnDownVote = (Button) findViewById(R.id.btnDownVote);
-    btnDownVote.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-            thisConcept.updateUpvoteStatus(false);
-        }
-    });
 
-    Button btnUpVote = (Button) findViewById(R.id.btnUpVote);
-    btnUpVote.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-            thisConcept.updateUpvoteStatus(true);
-        }
-    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    //@Override
+    /*protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_concept_details);
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-    }
+
+        Button btnDownVote = (Button) findViewById(R.id.btnDownVote);
+        btnDownVote.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                thisConcept.updateUpvoteStatus(false);
+            }
+        });
+
+        Button btnUpVote = (Button) findViewById(R.id.btnUpVote);
+        btnUpVote.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                thisConcept.updateUpvoteStatus(true);
+            }
+        });
+    }*/
 
 
     /**
@@ -74,6 +80,10 @@ public class ConceptDetailsActivity extends AppCompatActivity {
                 .build();
     }
 
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        return inflater.inflate(R.layout.activity_concept_details, container, false);
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -82,6 +92,20 @@ public class ConceptDetailsActivity extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
         AppIndex.AppIndexApi.start(client, getIndexApiAction());
+
+        Button btnDownVote = (Button) getView().findViewById(R.id.btnDownVote);
+        btnDownVote.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Services.downVoteConcept(thisConcept);
+            }
+        });
+
+        Button btnUpVote = (Button) getView().findViewById(R.id.btnUpVote);
+        btnUpVote.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Services.upVoteConcept(thisConcept);
+            }
+        });
     }
 
     @Override
