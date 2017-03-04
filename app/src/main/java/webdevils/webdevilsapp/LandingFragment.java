@@ -2,16 +2,12 @@ package webdevils.webdevilsapp;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import common.User;
 
 /**
  * Created by Kyle3 on 1/23/2017.
@@ -50,7 +46,9 @@ public class LandingFragment extends Fragment {
 
         feedbackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // to do later
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, new FeedbackFragment()).commit();
             }
         });
 

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0d2f4c">
+    android:background="#0d2f4c"
+    android:textColor="@android:color/white">
 
     <Button
         android:text="My Concepts"
@@ -43,25 +44,12 @@
         android:textSize="18sp"
         android:textColor="@android:color/white" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/concepts"
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@+id/my_concepts_header"
         android:layout_alignParentStart="true"
-        android:id="@+id/imageView2"
         android:layout_above="@+id/Submit_new_Concept"
-        android:layout_alignParentEnd="true" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:fabSize="mini"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:layout_marginEnd="16dp"
-        android:id="@+id/floatingActionButton"
-        android:layout_below="@+id/imageView2"
-        android:layout_alignParentEnd="true" />
+        android:id="@+id/list" />
 
 </RelativeLayout>
