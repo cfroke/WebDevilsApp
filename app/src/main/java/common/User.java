@@ -64,5 +64,36 @@ public class User implements Serializable {
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
-	
+
+	public boolean isMember(){
+        boolean result = false;
+        if(userType.equals(MEMBER)){
+            result = true;
+        }
+        return result;
+    }
+
+    public boolean isEmployee(){
+        boolean result = false;
+        if(userType.equals(EMPLOYEE)){
+            result = true;
+        }
+        return result;
+    }
+
+    public boolean isDeveloper(){
+        boolean result = false;
+        if(userType.equals(DEVELOPER)){
+            result = true;
+        }
+        return result;
+    }
+
+    public boolean isUndefined(){
+        boolean result = false;
+        if(userType.equals(UNDEFINED)){
+            result = true;
+        }
+        return result;
+    }
 }

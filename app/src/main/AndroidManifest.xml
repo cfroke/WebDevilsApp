@@ -24,6 +24,15 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Employee.EmpMainActivity"
+            android:label="@string/title_activity_emp_main"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="webdevils.webdevilsapp.LoginActivity" />
+        </activity>
     </application>
 
 </manifest>
