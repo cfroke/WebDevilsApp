@@ -18,4 +18,17 @@
             android:icon="@mipmap/ic_add"
             android:title="Submit Concept" />
     </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_connect_with_member"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Connect with Member" />
+            <item
+                android:id="@+id/nav_email_member"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Email Member" />
+        </menu>
+    </item>
 </menu>
