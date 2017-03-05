@@ -97,6 +97,16 @@ public class Storage implements Serializable {
 		}
 		return result;
 	}
+
+    public static LinkedList<Concept> getUnreviewedConcepts() {
+        LinkedList<Concept> result = new LinkedList<Concept>();
+        for(Concept concept : conceptList){
+            if(concept.isSubmitted() || concept.isEmployeeViewed()){
+                result.add(concept);
+            }
+        }
+        return result;
+    }
 	
 	public static boolean saveLists(){
 
@@ -135,4 +145,5 @@ public class Storage implements Serializable {
 			return null;
 		}
 	}
+
 }

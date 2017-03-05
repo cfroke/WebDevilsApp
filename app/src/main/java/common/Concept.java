@@ -33,6 +33,29 @@ public class Concept implements Serializable {
 		this.Status = SUBMITTED_STATUS;
 	}
 
+	public boolean isSubmitted(){
+		boolean result = false;
+		if(Status.equals(SUBMITTED_STATUS)){
+			result = true;
+		}
+		return result;
+	}
+	public boolean isEmployeeViewed(){
+		boolean result = false;
+		if(Status.equals(EMPLOYEE_VIEWED_STATUS)){
+			result = true;
+		}
+		return result;
+	}
+
+	public boolean isEmployeeRivewed(){
+		boolean result = false;
+		if(Status.equals(EMPLOYEE_REVIEWED_STATUS)){
+			result = true;
+		}
+		return result;
+	}
+
 	public String getDescription(){
 		return description;
 	}
@@ -40,7 +63,6 @@ public class Concept implements Serializable {
     public String getTitle() {
 		return title;
 	}
-
 
     public String getType() {
 		return type;

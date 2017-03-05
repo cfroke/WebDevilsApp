@@ -19,12 +19,14 @@ import lipermi.handler.CallHandler;
 import lipermi.net.Client;
 import server.Services;
 import server.TestData;
+import webdevils.webdevilsapp.Employee.EmpMainActivity;
 
 
 public class LoginActivity extends AppCompatActivity {
 
     Services services = new Services();
     //Initialize Test Data
+    //Do Not Instantiate Anywhere Else
     TestData data = TestData.getInstance();
     User currentUser;
     private String serverIP = "localhost";
@@ -54,21 +56,18 @@ public class LoginActivity extends AppCompatActivity {
                 String uName = inputName.getText().toString();
                 String uPass = inputPass.getText().toString();
                 if (validateUser(uName, uPass)) {
-                    dlgAlert.setMessage("User authenticated.");
-                    dlgAlert.setTitle("Verification");
-                    dlgAlert.setPositiveButton("OK", null);
-                    dlgAlert.setCancelable(true);
-                    dlgAlert.create().show();
-                    dlgAlert.setPositiveButton("Ok",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    //dismiss the dialog
-                                }
-                            });
-                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                    i.putExtra("userName", uName); //sending username to main page
-                    i.putExtra("userObject", currentUser); // temp passing of object
-                    startActivity(i);
+                    if(currentUser.isMember()){
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        i.putExtra("userName", uName); //sending username to main page
+                        i.putExtra("userObject", currentUser); // temp passing of object
+                        startActivity(i);
+                    }else if(currentUser.isEmployee()){
+                        Intent i = new Intent(getApplicationContext(), EmpMainActivity.class);
+                        i.putExtra("userName", uName); //sending username to main page
+                        i.putExtra("userObject", currentUser); // temp passing of object
+                        startActivity(i);
+                    }
+
 
                 }else{
                     dlgAlert.setMessage("Username or password is incorrect.");
@@ -91,8 +90,12 @@ public class LoginActivity extends AppCompatActivity {
     //checks username and password submission against list of known users and credentials
     public boolean validateUser(String u, String p) {
         currentUser = services.validateUser( u , p );
-        if( currentUser.getUserName().equals(u) && currentUser.tryPassword(p)){
-            return true;
+        if(currentUser != null){
+            if( currentUser.getUserName().equals(u) && currentUser.tryPassword(p)) {
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }

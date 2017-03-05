@@ -19,7 +19,7 @@ public class Services implements IServices, Serializable {
 
 	private static final long serialVersionUID = -7875091839442836772L;
 	
-	Storage storage;
+	static Storage storage;
 	
 	public Services(){
 		storage = Storage.getInstance();
@@ -44,6 +44,11 @@ public class Services implements IServices, Serializable {
 		System.out.println("Sent concept list to client");
 		return storage.getConceptsByUserName(user.getUserName());
 	}
+
+    public static LinkedList<Concept> getUnreviewedConcepts(){
+        System.out.println("Sent unreviewed concept list to client");
+        return storage.getUnreviewedConcepts();
+    }
 	
 	public Concept createConcept(User user, String title, String description, String type){
 		Concept result = new Concept(user, title, description, type);
