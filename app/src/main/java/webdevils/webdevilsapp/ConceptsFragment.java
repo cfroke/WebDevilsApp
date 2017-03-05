@@ -13,12 +13,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
 import java.util.LinkedList;
 
 import common.Concept;
-import static server.Storage.conceptList;
+import common.User;
+import server.Services;
 
 public class ConceptsFragment extends Fragment {
+    User currentUser = LoginActivity.currentUser;
+    Services services = new Services();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,8 +36,9 @@ public class ConceptsFragment extends Fragment {
         /////////////////////Begin Load of Titles to MyConcepts///////////////////////////////////
         ListView listView1 = (ListView) getView().findViewById(R.id.list);
 
+        LinkedList<Concept> userConceptList = services.getConceptsByUser(currentUser);
         LinkedList<String> titleList = new LinkedList<String>();
-        for(Concept concept:conceptList) {
+        for( Concept concept : userConceptList ) {
             titleList.add(concept.getTitle());
         }
 

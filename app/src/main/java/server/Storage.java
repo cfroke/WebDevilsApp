@@ -26,7 +26,7 @@ public class Storage implements Serializable {
 
 	private static Storage singleton = new Storage();
 	
-	public static LinkedList<Concept>	conceptList	= new LinkedList<Concept>();
+	private static LinkedList<Concept>	conceptList	= new LinkedList<Concept>();
 	private static LinkedList<User>		userList	= new LinkedList<User>();
 
 	private Storage() {

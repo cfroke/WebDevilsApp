@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     Services services = new Services();
     //Initialize Test Data
     TestData data = TestData.getInstance();
-    User currentUser;
+    public static User currentUser;
     private String serverIP = "localhost";
 
     @Override
