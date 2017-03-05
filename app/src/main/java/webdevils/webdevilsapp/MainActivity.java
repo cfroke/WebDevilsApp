@@ -11,7 +11,6 @@ package webdevils.webdevilsapp;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-    
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
