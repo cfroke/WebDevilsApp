@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    public User getUser(){
+    public User getUser() {
         Intent p = getIntent();
         final String name = p.getStringExtra("userName");
         final User user = (User) getIntent().getSerializableExtra("userObject");

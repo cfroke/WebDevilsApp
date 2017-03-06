@@ -47,6 +47,7 @@
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/txtBody"
         android:layout_marginStart="29dp"
+        android:textColor="#000000"
         android:id="@+id/btnUpVote" />
 
     <Button
@@ -55,5 +56,6 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/btnUpVote"
         android:layout_toEndOf="@+id/btnUpVote"
+        android:textColor="#000000"
         android:id="@+id/btnDownVote" />
 </RelativeLayout>

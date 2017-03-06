@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     //Initialize Test Data
     //Do Not Instantiate Anywhere Else
     TestData data = TestData.getInstance();
-    User currentUser;
+    public static User currentUser;
     private String serverIP = "localhost";
 
     @Override

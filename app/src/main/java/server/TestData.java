@@ -15,20 +15,21 @@ public class TestData {
     private String service = "Service";
     private String improvement = "Improvement";
 
-    private TestData(){
+    private TestData() {
         initializeTestData();
     }
 
-    public static TestData getInstance(){
+    public static TestData getInstance() {
         return singleton;
     }
 
-    private void initializeTestData(){
+    private void initializeTestData() {
 
         //Member Data
         User testUser = services.createMemberUser("user","password");
         User bob = services.createMemberUser("bob","bob");
         User jane = services.createMemberUser("jane","jane");
+        User casey = services.createMemberUser("casey","casey");
 
         //Concept Data
         Concept bobConcept = services.createConcept(bob, "New Investment Product", "I think it would be awesome to have " +
