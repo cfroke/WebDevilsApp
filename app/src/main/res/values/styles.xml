@@ -9,7 +9,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:textColorPrimary">@color/primary_text_material_light</item>
-        <item name="android:colorBackground">@color/common_plus_signin_btn_text_dark_default</item>
+        <item name="android:colorBackground">@android:color/background_light</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
