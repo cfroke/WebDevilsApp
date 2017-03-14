@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0d2f4c"
-    android:textColor="@android:color/white">
+    android:background="@drawable/list_selector" >
 
     <Button
         android:text="My Concepts"
@@ -21,35 +18,34 @@
         android:visibility="visible"
         android:maxHeight="125dp"
         android:textAlignment="center"
-        tools:ignore="MissingConstraints"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/buttonFeatured"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/textView3"
-        android:layout_marginBottom="8dp"
         android:textStyle="normal|bold"
-        android:textColor="@color/common_google_signin_btn_text_dark_default" />
-
-    <Button
-        android:text="Submit New Concept"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Submit_new_Concept"
-        android:textAlignment="center"
-        android:padding="0dp"
-        android:paddingBottom="0dp"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="18sp"
         android:textColor="@android:color/white" />
 
+    <Button
+        android:id="@+id/Submit_new_Concept"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_bg"
+        android:padding="0dp"
+        android:paddingBottom="0dp"
+        android:text="Submit New Concept"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
     <ListView
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/my_concepts_header"
-        android:layout_alignParentStart="true"
         android:layout_above="@+id/Submit_new_Concept"
-        android:id="@+id/list" />
+        android:layout_alignParentStart="true"
+        android:divider="#848482"
+        android:dividerHeight="12sp"
+        android:listSelector="@drawable/list_selector"
+        android:textSize="20sp"
+        android:layout_below="@+id/my_concepts_header" />
 
 </RelativeLayout>
