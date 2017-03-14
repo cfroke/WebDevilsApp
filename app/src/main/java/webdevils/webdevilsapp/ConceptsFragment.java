@@ -6,6 +6,7 @@ package webdevils.webdevilsapp;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +14,20 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import common.Concept;
 import common.User;
 import server.Services;
+
+import static webdevils.webdevilsapp.R.id.parent;
 
 public class ConceptsFragment extends Fragment {
     User currentUser = LoginActivity.currentUser;
@@ -37,16 +46,35 @@ public class ConceptsFragment extends Fragment {
         ListView listView1 = (ListView) getView().findViewById(R.id.list);
 
         LinkedList<Concept> userConceptList = services.getConceptsByUser(currentUser);
-        LinkedList<String> titleList = new LinkedList<String>();
+        List<Map<String,String>> titleList = new ArrayList<>();
         for( Concept concept : userConceptList ) {
-            titleList.add(concept.getTitle());
+            Map<String, String> conceptData = new HashMap<>(2);
+            conceptData.put("title", concept.getTitle());
+            conceptData.put("status", concept.getStatus());
+            titleList.add(conceptData);
         }
 
-        String[] listConcept = titleList.toArray(new String[titleList.size()]);
+        SimpleAdapter adapter = new SimpleAdapter(getActivity(),titleList,
+                android.R.layout.simple_list_item_2, new String[] {"title", "status"},
+                new int[] {android.R.id.text1, android.R.id.text2}) {
+            //this override of getView changes the status color text
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, listConcept);
+                View view = super.getView(position, convertView, parent);
+                TextView status = (TextView) view.findViewById(android.R.id.text2);
+
+                if (status.getText().toString() == "Approved") {
+                    status.setTextColor(Color.rgb(0,100,0));
+                } else if ((status.getText().toString() == "Rejected")){
+                    status.setTextColor(Color.RED);
+                }
+
+                return view;
+            }
+        };
         listView1.setAdapter(adapter);
+
         /////////////////////End Load of Titles to MyConcepts/////////////////////////////////////
 
         Button submitNewConcept = (Button) getView().findViewById(R.id.Submit_new_Concept);
