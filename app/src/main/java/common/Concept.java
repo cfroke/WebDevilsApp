@@ -19,6 +19,8 @@ public class Concept implements Serializable {
 	private User    userThatCreatedThisConcept;
 	private String	Status;
 	private String	SUBMITTED_STATUS = "Submitted";
+	private String	APPROVED_STATUS = "Approved";
+	private String	REJECTED_STATUS = "Rejected";
 	private String	EMPLOYEE_VIEWED_STATUS = "Employee Viewed";
 	private String	EMPLOYEE_REVIEWED_STATUS = "Employee Reviewed";
 
@@ -40,6 +42,23 @@ public class Concept implements Serializable {
 		}
 		return result;
 	}
+
+	public boolean isApproved(){
+		boolean result = false;
+		if(Status.equals(APPROVED_STATUS)){
+			result = true;
+		}
+		return result;
+	}
+
+	public boolean isRejected(){
+		boolean result = false;
+		if(Status.equals(REJECTED_STATUS)){
+			result = true;
+		}
+		return result;
+	}
+
 	public boolean isEmployeeViewed(){
 		boolean result = false;
 		if(Status.equals(EMPLOYEE_VIEWED_STATUS)){
@@ -48,7 +67,7 @@ public class Concept implements Serializable {
 		return result;
 	}
 
-	public boolean isEmployeeRivewed(){
+	public boolean isEmployeeReviewed(){
 		boolean result = false;
 		if(Status.equals(EMPLOYEE_REVIEWED_STATUS)){
 			result = true;
@@ -83,6 +102,14 @@ public class Concept implements Serializable {
 	public void setStatusToSubmitted(){
 		this.Status = SUBMITTED_STATUS;
 	}
+
+	public void setStatusToApproved(){
+		this.Status = APPROVED_STATUS;
+	}
+
+	public void setStatusToRejected(){
+		this.Status = REJECTED_STATUS;
+	}
 	
 	public void setStatusToEmployeeViewed(){
 		this.Status = EMPLOYEE_VIEWED_STATUS;
@@ -103,4 +130,5 @@ public class Concept implements Serializable {
 	private void setUpvoteStatus(int upvoteStatus) {
 		this.upvoteStatus = upvoteStatus;
 	}
+
 }
