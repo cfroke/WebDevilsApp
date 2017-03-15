@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.LinkedList;
@@ -13,15 +14,17 @@ import webdevils.webdevilsapp.R;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link Concept} and makes a call to the
- * specified {@link EmpConceptReviewFragment.OnListFragmentInteractionListener}.
+ * specified {@link EmpConceptListFragment.OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyConceptRecyclerViewAdapter extends RecyclerView.Adapter<MyConceptRecyclerViewAdapter.ViewHolder> {
+public class EmpConceptRecyclerViewAdapter extends RecyclerView.Adapter<EmpConceptRecyclerViewAdapter.ViewHolder> {
 
     private final LinkedList<Concept> mValues;
-    private final EmpConceptReviewFragment.OnListFragmentInteractionListener mListener;
+    private final EmpConceptListFragment.OnListFragmentInteractionListener mListener;
+    public static Concept conceptUnderReview;
 
-    public MyConceptRecyclerViewAdapter(LinkedList<Concept> items, EmpConceptReviewFragment.OnListFragmentInteractionListener listener) {
+
+    public EmpConceptRecyclerViewAdapter(LinkedList<Concept> items, EmpConceptListFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -29,19 +32,23 @@ public class MyConceptRecyclerViewAdapter extends RecyclerView.Adapter<MyConcept
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_emp_item, parent, false);
+                .inflate(R.layout.emp_fragment_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
+        conceptUnderReview = holder.mItem;
         holder.mCreatedByView.setText("Concpet Created By: " + mValues.get(position).getUserThatCreatedThisConcept().getUserName());
         holder.mTitleView.setText("Title: " + mValues.get(position).getTitle());
         holder.mUpvoteNumber.setText("Upvote Number: "+ mValues.get(position).getUpvoteStatus());
         holder.mEmpReviewedStatus.setText("Status: " + mValues.get(position).getStatus());
         holder.mConceptType.setText("Concept Type: " + mValues.get(position).getType());
         holder.mConceptDescription.setText("Description: " + mValues.get(position).getDescription());
+        holder.mReviewConceptBtn.setText(/*"Title: " + mValues.get(position).getTitle() + "\n" +
+                "Upvote Number: "+ mValues.get(position).getUpvoteStatus()+ "\n" + */
+                "Review " + mValues.get(position).getUserThatCreatedThisConcept().getUserName() + "'s Concept");
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +58,19 @@ public class MyConceptRecyclerViewAdapter extends RecyclerView.Adapter<MyConcept
                     // fragment is attached to one) that an item has been selected.
                     mListener.onConceptListFragmentInteraction(holder.mItem);
                 }
+
+            }
+        });
+
+        holder.mReviewConceptBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (null != mListener) {
+                    // Notify the active callbacks interface (the activity, if the
+                    // fragment is attached to one) that an item has been selected.
+                    mListener.onConceptListFragmentInteraction(holder.mItem);
+                }
+
             }
         });
     }
@@ -68,6 +88,7 @@ public class MyConceptRecyclerViewAdapter extends RecyclerView.Adapter<MyConcept
         public final TextView mEmpReviewedStatus;
         public final TextView mConceptType;
         public final TextView mConceptDescription;
+        public final Button mReviewConceptBtn;
         public Concept mItem;
 
         public ViewHolder(View view) {
@@ -79,8 +100,7 @@ public class MyConceptRecyclerViewAdapter extends RecyclerView.Adapter<MyConcept
             mEmpReviewedStatus = (TextView) view.findViewById(R.id.concept_employee_reviewed_status);
             mConceptType = (TextView) view.findViewById(R.id.concept_type);
             mConceptDescription = (TextView) view.findViewById(R.id.concept_description);
-
-
+            mReviewConceptBtn = (Button) view.findViewById(R.id.review_concept_button);
 
         }
 

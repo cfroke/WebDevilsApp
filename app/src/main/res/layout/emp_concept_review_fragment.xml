@@ -1,0 +1,54 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="webdevils.webdevilsapp.Employee.EmpConceptReviewFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <TextView
+            android:text="Concept Review Form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/review_concept_text"
+            android:layout_weight="0.37"
+            android:textAlignment="center" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/feedback_text"
+            android:layout_weight="0.20"
+            android:selectAllOnFocus="true"
+            android:text="Click here to enter feedback ..." />
+
+        <Button
+            android:text="Approve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EmpApprove"
+            android:textColor="#eeeeee"
+            android:background="@android:color/holo_green_light"
+            android:onClick="onApproved" />
+
+        <Button
+            android:text="Reject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EmpReject"
+            android:textColor="#eeeeee"
+            android:elevation="0dp"
+            android:background="@android:color/holo_red_light"
+            android:onClick="onRejected" />
+
+    </LinearLayout>
+
+</FrameLayout>

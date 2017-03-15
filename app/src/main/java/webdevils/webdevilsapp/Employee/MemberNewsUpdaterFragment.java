@@ -65,7 +65,7 @@ public class MemberNewsUpdaterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_member_news_updater, container, false);
+        return inflater.inflate(R.layout.emp_fragment_member_news_updater, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -82,7 +82,7 @@ public class MemberNewsUpdaterFragment extends Fragment {
             mListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement onEmpConceptReviewFragmentInteraction");
         }
     }
 
