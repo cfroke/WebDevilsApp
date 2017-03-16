@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="?attr/listPreferredItemHeight"
-    android:mode="twoLine">
+    android:mode="twoLine"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp">
 
     <TextView
         android:id="@+id/text01"
@@ -19,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/text01"
         android:layout_alignStart="@+id/text01"
-        android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+        android:textAppearance="?android:attr/textAppearanceListItem"
         android:lines="1"
         android:ellipsize="end"
         android:maxLines="1"/>
@@ -30,6 +32,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/text02"
         android:layout_alignStart="@+id/text02"
-        android:textAppearance="?android:attr/textAppearanceListItemSecondary"/>
+        android:textAppearance="?android:attr/textAppearanceListItem"/>
 
 </TwoLineListItem>
