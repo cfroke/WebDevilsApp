@@ -40,7 +40,7 @@ public class TestData {
                 "saturdays.",service);
         bobConcept2.setStatusToApproved();
         services.saveConcept(bobConcept2);
-        services.downVoteConcept(bobConcept2);
+        services.upVoteConcept(bobConcept2);
 
         Concept bobConcept3 = services.createConcept(bob,"Make Money on Suggestions","It would be great we got paid for our suggestions.",service);
         bobConcept3.setStatusToRejected();
@@ -55,6 +55,14 @@ public class TestData {
                 "insurance product available for purchase.",product);
         janeConcept2.setStatusToApproved();
         services.downVoteConcept(janeConcept2);
+        services.upVoteConcept(janeConcept2);
+        services.upVoteConcept(janeConcept2);
+        services.upVoteConcept(janeConcept2);
+        services.upVoteConcept(janeConcept2);
+        services.upVoteConcept(janeConcept2);
+        services.upVoteConcept(janeConcept2);
+        services.upVoteConcept(janeConcept2);
+        services.upVoteConcept(janeConcept2);
 
         //Employee Data
         User empUser = services.createEmployeeUser("employee","pass123");

@@ -46,13 +46,15 @@ public class FeaturedFragment extends Fragment {
         for( Concept concept : conceptList ) {
             Map<String, String> conceptData = new HashMap<>(2);
             conceptData.put("title", concept.getTitle());
-            conceptData.put("submitter", "Submitted by: " +
-                    concept.getUserThatCreatedThisConcept().getUserName());
+            // add submitter, vote count, and comment count(to-do)
+            conceptData.put("extra", "Submitted by: " +
+                    concept.getUserThatCreatedThisConcept().getUserName() +
+                    "\nVotes: " + concept.getUpvoteStatus());
             titleList.add(conceptData);
         }
 
         SimpleAdapter adapter = new SimpleAdapter(getActivity(),titleList,
-                android.R.layout.simple_list_item_2, new String[] {"title", "submitter"},
+                android.R.layout.simple_list_item_2, new String[] {"title", "extra"},
                 new int[] {android.R.id.text1, android.R.id.text2}) {
         };
         listView1.setAdapter(adapter);
