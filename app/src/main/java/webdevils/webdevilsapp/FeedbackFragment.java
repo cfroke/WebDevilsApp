@@ -1,6 +1,7 @@
 package webdevils.webdevilsapp;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +19,12 @@ public class FeedbackFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        Button submit = (Button) getView().findViewById(R.id.button3);
-        submit.setOnClickListener(new View.OnClickListener() {
+        Button submitFeedback = (Button) getView().findViewById(R.id.feedback_submit);
+        submitFeedback.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // TO DO
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, new LandingFragment()).commit();
             }
         });
     }
