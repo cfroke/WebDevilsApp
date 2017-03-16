@@ -18,7 +18,7 @@ import webdevils.webdevilsapp.R;
  * {@link onEmpConceptReviewFragmentInteraction} interface
  * to handle interaction events.
  */
-public class EmpConceptReviewFragment extends Fragment {//implements View.OnClickListener {
+public class EmpConceptReviewFragment extends Fragment {
 
     public static Concept conceptUnderReview = EmpConceptRecyclerViewAdapter.conceptUnderReview;
 
@@ -69,26 +69,6 @@ public class EmpConceptReviewFragment extends Fragment {//implements View.OnClic
         mListener = null;
     }
 
-//    @Override
-//    public void onClick(View view) {
-//        switch (view.getId()) {
-//            case R.id.EmpApprove:
-//                mListener.onConceptApprovedButtonPushed();
-//                break;
-//            case R.id.EmpReject:
-//                mListener.onConceptRejectedButtonPushed();
-//                break;
-//        }
-//    }
-
-//    public void onApproved(View view){
-//        mListener.onConceptApprovedButtonPushed();
-//    }
-//
-//    public void onRejected(View view){
-//        mListener.onConceptRejectedButtonPushed();
-//    }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -100,9 +80,6 @@ public class EmpConceptReviewFragment extends Fragment {//implements View.OnClic
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface onEmpConceptReviewFragmentInteraction {
-        // TODO: Update argument type and name
         void onEmpConceptReviewFragmentInteraction(Uri uri);
-//        void onConceptApprovedButtonPushed();
-//        void onConceptRejectedButtonPushed();
     }
 }
