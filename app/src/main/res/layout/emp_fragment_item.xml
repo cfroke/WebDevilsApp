@@ -58,7 +58,7 @@
 
     <Button
         android:text="Review Concept"
-        android:layout_width="316dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/review_concept_button"
         android:onClick="reviewConceptBtn"
