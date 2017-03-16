@@ -18,7 +18,7 @@ import webdevils.webdevilsapp.R;
  * {@link onEmpConceptReviewFragmentInteraction} interface
  * to handle interaction events.
  */
-public class EmpConceptReviewFragment extends Fragment implements View.OnClickListener {
+public class EmpConceptReviewFragment extends Fragment {//implements View.OnClickListener {
 
     public static Concept conceptUnderReview = EmpConceptRecyclerViewAdapter.conceptUnderReview;
 
@@ -69,17 +69,17 @@ public class EmpConceptReviewFragment extends Fragment implements View.OnClickLi
         mListener = null;
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.EmpApprove:
-                mListener.onConceptApprovedButtonPushed();
-                break;
-            case R.id.EmpReject:
-                mListener.onConceptRejectedButtonPushed();
-                break;
-        }
-    }
+//    @Override
+//    public void onClick(View view) {
+//        switch (view.getId()) {
+//            case R.id.EmpApprove:
+//                mListener.onConceptApprovedButtonPushed();
+//                break;
+//            case R.id.EmpReject:
+//                mListener.onConceptRejectedButtonPushed();
+//                break;
+//        }
+//    }
 
 //    public void onApproved(View view){
 //        mListener.onConceptApprovedButtonPushed();
@@ -102,7 +102,7 @@ public class EmpConceptReviewFragment extends Fragment implements View.OnClickLi
     public interface onEmpConceptReviewFragmentInteraction {
         // TODO: Update argument type and name
         void onEmpConceptReviewFragmentInteraction(Uri uri);
-        void onConceptApprovedButtonPushed();
-        void onConceptRejectedButtonPushed();
+//        void onConceptApprovedButtonPushed();
+//        void onConceptRejectedButtonPushed();
     }
 }

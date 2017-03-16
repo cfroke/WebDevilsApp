@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:baselineAligned="false"
-    android:weightSum="1">
-
-    <TextView
-        android:id="@+id/concept_created_by"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem"
-        android:textAlignment="textStart" />
+    android:weightSum=".75"
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/concept_title"
@@ -55,6 +48,14 @@
         android:textAppearance="?attr/textAppearanceListItem"
         android:textAlignment="textStart" />
 
+    <TextView
+        android:id="@+id/concept_feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textAlignment="textStart" />
+
     <Button
         android:text="Review Concept"
         android:layout_width="316dp"
@@ -63,6 +64,7 @@
         android:onClick="reviewConceptBtn"
         android:background="@color/colorPrimaryDark"
         android:layout_weight="0.20"
-        android:elevation="0dp" />
+        android:elevation="0dp"
+        android:textColor="#edf0f5"/>
 
 </LinearLayout>

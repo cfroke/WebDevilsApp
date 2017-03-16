@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import common.Concept;
 import common.User;
@@ -148,33 +149,12 @@ public class EmpMainActivity extends AppCompatActivity
         //General Interaction with Review Concept Fragment
     }
 
-    @Override
-    public void onConceptApprovedButtonPushed() {
-//        Concept conceptUnderReview = EmpConceptReviewFragment.conceptUnderReview;
-//        conceptUnderReview.setStatusToApproved();
-//        services.saveConcept(conceptUnderReview);
-//
-//        FragmentManager fragmentManager = getFragmentManager();
-//        fragmentManager.beginTransaction()
-//                .replace(R.id.content_emp_main
-//                        , new EmpConceptListFragment()).commit();
-    }
-
-    @Override
-    public void onConceptRejectedButtonPushed() {
-//        Concept conceptUnderReview = EmpConceptReviewFragment.conceptUnderReview;
-//        conceptUnderReview.setStatusToRejected();
-//        services.saveConcept(conceptUnderReview);
-//
-//        FragmentManager fragmentManager = getFragmentManager();
-//        fragmentManager.beginTransaction()
-//                .replace(R.id.content_emp_main
-//                        , new EmpConceptListFragment()).commit();
-    }
-
     public void onApproved(View view) {
+        EditText feedback = (EditText) findViewById(R.id.feedback_text);
+
         Concept conceptUnderReview = EmpConceptReviewFragment.conceptUnderReview;
         conceptUnderReview.setStatusToApproved();
+        conceptUnderReview.setFeedback(feedback.getText().toString());
         services.saveConcept(conceptUnderReview);
 
         FragmentManager fragmentManager = getFragmentManager();
@@ -184,8 +164,11 @@ public class EmpMainActivity extends AppCompatActivity
     }
 
     public void onRejected(View view){
+        EditText feedback = (EditText) findViewById(R.id.feedback_text);
+
         Concept conceptUnderReview = EmpConceptReviewFragment.conceptUnderReview;
         conceptUnderReview.setStatusToRejected();
+        conceptUnderReview.setFeedback(feedback.getText().toString());
         services.saveConcept(conceptUnderReview);
 
         FragmentManager fragmentManager = getFragmentManager();

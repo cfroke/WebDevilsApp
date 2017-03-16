@@ -40,15 +40,14 @@ public class EmpConceptRecyclerViewAdapter extends RecyclerView.Adapter<EmpConce
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         conceptUnderReview = holder.mItem;
-        holder.mCreatedByView.setText("Concpet Created By: " + mValues.get(position).getUserThatCreatedThisConcept().getUserName());
+//        holder.mCreatedByView.setText("Concpet Created By: " + mValues.get(position).getUserThatCreatedThisConcept().getUserName());
         holder.mTitleView.setText("Title: " + mValues.get(position).getTitle());
         holder.mUpvoteNumber.setText("Upvote Number: "+ mValues.get(position).getUpvoteStatus());
         holder.mEmpReviewedStatus.setText("Status: " + mValues.get(position).getStatus());
         holder.mConceptType.setText("Concept Type: " + mValues.get(position).getType());
         holder.mConceptDescription.setText("Description: " + mValues.get(position).getDescription());
-        holder.mReviewConceptBtn.setText(/*"Title: " + mValues.get(position).getTitle() + "\n" +
-                "Upvote Number: "+ mValues.get(position).getUpvoteStatus()+ "\n" + */
-                "Review " + mValues.get(position).getUserThatCreatedThisConcept().getUserName() + "'s Concept");
+        holder.mFeedback.setText("Feedback: " + mValues.get(position).getFeedback());
+        holder.mReviewConceptBtn.setText("Review " + mValues.get(position).getUserThatCreatedThisConcept().getUserName() + "'s Concept");
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,24 +81,26 @@ public class EmpConceptRecyclerViewAdapter extends RecyclerView.Adapter<EmpConce
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mCreatedByView;
+//        public final TextView mCreatedByView;
         public final TextView mTitleView;
         public final TextView mUpvoteNumber;
         public final TextView mEmpReviewedStatus;
         public final TextView mConceptType;
         public final TextView mConceptDescription;
+        public final TextView mFeedback;
         public final Button mReviewConceptBtn;
         public Concept mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mCreatedByView = (TextView) view.findViewById(R.id.concept_created_by);
+//            mCreatedByView = (TextView) view.findViewById(R.id.concept_created_by);
             mTitleView = (TextView) view.findViewById(R.id.concept_title);
             mUpvoteNumber = (TextView) view.findViewById(R.id.concept_upvote_number);
             mEmpReviewedStatus = (TextView) view.findViewById(R.id.concept_employee_reviewed_status);
             mConceptType = (TextView) view.findViewById(R.id.concept_type);
             mConceptDescription = (TextView) view.findViewById(R.id.concept_description);
+            mFeedback = (TextView) view.findViewById(R.id.concept_feedback);
             mReviewConceptBtn = (Button) view.findViewById(R.id.review_concept_button);
 
         }
