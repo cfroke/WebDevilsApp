@@ -40,7 +40,9 @@ public class LandingFragment extends Fragment {
 
         featureConceptButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // to do later
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, new FeaturedFragment()).commit();
             }
         });
 
