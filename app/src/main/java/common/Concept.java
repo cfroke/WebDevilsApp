@@ -17,6 +17,7 @@ public class Concept implements Serializable {
 	private String  type;
 	private int		upvoteStatus;
 	private User    userThatCreatedThisConcept;
+    private String  feedback = "";
 	private String	Status;
 	private String	SUBMITTED_STATUS = "Submitted";
 	private String	APPROVED_STATUS = "Approved";
@@ -131,4 +132,11 @@ public class Concept implements Serializable {
 		this.upvoteStatus = upvoteStatus;
 	}
 
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
 }

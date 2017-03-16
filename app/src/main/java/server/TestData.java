@@ -35,17 +35,22 @@ public class TestData {
         Concept bobConcept = services.createConcept(bob, "New Investment Product", "I think it would be awesome to have " +
                 "this awesome investment product available to trade.", product);
         services.upVoteConcept(bobConcept);
+
         Concept bobConcept2 = services.createConcept(bob,"Later hours","It would be great if the bank was open later on " +
                 "saturdays.",service);
         bobConcept2.setStatusToApproved();
+        services.saveConcept(bobConcept2);
         services.downVoteConcept(bobConcept2);
+
         Concept bobConcept3 = services.createConcept(bob,"Make Money on Suggestions","It would be great we got paid for our suggestions.",service);
         bobConcept3.setStatusToRejected();
+        services.saveConcept(bobConcept3);
 
         Concept janeConcept = services.createConcept(jane,"Mortgage Rates","I would love to get a mortgage through you, but" +
                 "xyz competitor is offering lower rates",improvement);
         services.upVoteConcept(janeConcept);
         services.upVoteConcept(janeConcept);
+
         Concept janeConcept2 = services.createConcept(jane,"Insurance Product","I think it would be fantastic to have this" +
                 "insurance product available for purchase.",product);
         services.downVoteConcept(janeConcept2);
