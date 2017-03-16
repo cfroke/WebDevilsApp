@@ -53,6 +53,7 @@ public class TestData {
 
         Concept janeConcept2 = services.createConcept(jane,"Insurance Product","I think it would be fantastic to have this" +
                 "insurance product available for purchase.",product);
+        janeConcept2.setStatusToApproved();
         services.downVoteConcept(janeConcept2);
 
         //Employee Data

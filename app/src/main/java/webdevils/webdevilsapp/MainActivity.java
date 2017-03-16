@@ -100,6 +100,10 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
                     , new ConceptsFragment()).commit();
+        } else if (id == R.id.nav_featured) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new FeaturedFragment()).commit();
         } else if (id == R.id.nav_submit_concept) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
