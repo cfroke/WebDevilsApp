@@ -8,9 +8,11 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -76,6 +78,17 @@ public class ConceptsFragment extends Fragment {
         listView1.setAdapter(adapter);
 
         /////////////////////End Load of Titles to MyConcepts/////////////////////////////////////
+        /////////////////////Begin Load description of selected Concept///////////////////////////
+
+        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3)
+            {
+                Log.v("TAG", "CLICKED row number: " + arg2);
+
+            }
+        });
+        ////////////////////End Load of description///////////////////////////////////////////////
 
         Button submitNewConcept = (Button) getView().findViewById(R.id.Submit_new_Concept);
 
