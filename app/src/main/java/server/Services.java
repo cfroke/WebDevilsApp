@@ -90,25 +90,26 @@ public class Services implements IServices, Serializable {
 	}
 	
 	public void saveConcept(Concept concept){
-		storage.updateConcept(concept);
+		storage.saveConcept(concept);
 		System.out.print("***** Concept Saved on Server *****");
 	}
 	
 	public void upVoteConcept(Concept concept){
 		concept.updateUpvoteStatus(true);
-		storage.updateConcept(concept);
+		storage.saveConcept(concept);
 		System.out.println("Concept Up-Voted and saved on server ... ");
 	}
 	
 	public void downVoteConcept(Concept concept){
 		concept.updateUpvoteStatus(false);
-		storage.updateConcept(concept);
+		storage.saveConcept(concept);
 		System.out.println("Concept Down-Voted and saved on server ... ");
 	}
 	
 	public void provideConceptFeedback(Concept concept, String feedback){
-		//TODO 
-		System.out.println("Service in development ... Sorry =P");
+		concept.setFeedback(feedback);
+        storage.saveConcept(concept);
+		System.out.println("Feedback saved for given concept");
 	}
 	
 	public String viewConceptStatus(Concept concept){

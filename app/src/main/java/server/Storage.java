@@ -79,7 +79,7 @@ public class Storage implements Serializable {
 		return saveLists();
 	}
 	
-	public boolean updateConcept(Concept CONCEPT){
+	public boolean saveConcept(Concept CONCEPT){
 		for(Concept concept : conceptList){
 			if( concept.getDescription().equals(CONCEPT.getDescription()) ){
 				concept = CONCEPT;

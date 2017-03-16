@@ -8,10 +8,7 @@ import common.Concept;
 import server.Services;
 
 /**
- * Helper class for providing sample content for user interfaces created by
- * Android template wizards.
- * <p>
- * TODO: Replace all uses of this class before publishing your app.
+ * Kevin 03/04/2017
  */
 public class ConceptListContent {
 

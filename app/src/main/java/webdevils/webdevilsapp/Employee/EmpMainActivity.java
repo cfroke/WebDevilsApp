@@ -1,5 +1,6 @@
 package webdevils.webdevilsapp.Employee;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,17 +12,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 import common.Concept;
 import common.User;
+import server.Services;
 import webdevils.webdevilsapp.R;
 
 public class EmpMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener ,
-        EmpConceptReviewFragment.OnListFragmentInteractionListener ,
-        MemberNewsUpdaterFragment.OnFragmentInteractionListener {
+        EmpConceptListFragment.OnListFragmentInteractionListener ,
+        MemberNewsUpdaterFragment.OnFragmentInteractionListener ,
+        EmpConceptReviewFragment.onEmpConceptReviewFragmentInteraction {
 
     public static User currentUser;
+    Services services = new Services();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +35,7 @@ public class EmpMainActivity extends AppCompatActivity
         currentUser = (User) getIntent().getSerializableExtra("userObject");
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_emp_main);
+        setContentView(R.layout.emp_activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -42,10 +48,11 @@ public class EmpMainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content_emp_main
-                        , new EmpConceptReviewFragment()).commit();
+                        , new EmpConceptListFragment()).commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -54,7 +61,15 @@ public class EmpMainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            FragmentManager fragmentManager = getFragmentManager();
+            Fragment fragment = fragmentManager.findFragmentById(R.id.content_emp_main);
+            if (fragment instanceof EmpConceptReviewFragment) {
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_emp_main
+                                , new EmpConceptListFragment()).commit();
+            } else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -90,7 +105,7 @@ public class EmpMainActivity extends AppCompatActivity
         if (id == R.id.nav_unreviewed_concepts) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_emp_main
-                            , new EmpConceptReviewFragment()).commit();
+                            , new EmpConceptListFragment()).commit();
         } else if (id == R.id.nav_update_member_news) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_emp_main
@@ -110,13 +125,55 @@ public class EmpMainActivity extends AppCompatActivity
         return true;
     }
 
+
+
     @Override
-    public void onConceptListFragmentInteraction(Concept item) {
-        //TODO interact with ConceptListContent
+    public void onConceptListFragmentInteraction(Concept concept) {
+        EmpConceptReviewFragment.setConceptUnderReview(concept);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_emp_main
+                        , new EmpConceptReviewFragment()).commit();
     }
 
     @Override
     public void onMemberNewsUpdaterFragmentInteraction(Uri uri) {
         //TODO interact with Member news Updater Fragment
+    }
+
+
+    //Review Concept Fragment Methods
+    @Override
+    public void onEmpConceptReviewFragmentInteraction(Uri uri) {
+        //General Interaction with Review Concept Fragment
+    }
+
+    public void onApproved(View view) {
+        EditText feedback = (EditText) findViewById(R.id.feedback_text);
+
+        Concept conceptUnderReview = EmpConceptReviewFragment.conceptUnderReview;
+        conceptUnderReview.setStatusToApproved();
+        conceptUnderReview.setFeedback(feedback.getText().toString());
+        services.saveConcept(conceptUnderReview);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_emp_main
+                        , new EmpConceptListFragment()).commit();
+    }
+
+    public void onRejected(View view){
+        EditText feedback = (EditText) findViewById(R.id.feedback_text);
+
+        Concept conceptUnderReview = EmpConceptReviewFragment.conceptUnderReview;
+        conceptUnderReview.setStatusToRejected();
+        conceptUnderReview.setFeedback(feedback.getText().toString());
+        services.saveConcept(conceptUnderReview);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_emp_main
+                        , new EmpConceptListFragment()).commit();
     }
 }
