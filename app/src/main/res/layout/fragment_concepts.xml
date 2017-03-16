@@ -45,7 +45,7 @@
         android:layout_below="@+id/my_concepts_header"
         android:divider="#848482"
         android:dividerHeight="12sp"
-        android:listSelector="@drawable/list_selector"
+        android:listSelector="@drawable/gradient_bg"
         android:textSize="20sp" />
 
 </RelativeLayout>

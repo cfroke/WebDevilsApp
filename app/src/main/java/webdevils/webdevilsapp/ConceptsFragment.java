@@ -51,20 +51,21 @@ public class ConceptsFragment extends Fragment {
         List<Map<String,String>> titleList = new ArrayList<>();
         for( Concept concept : userConceptList ) {
             Map<String, String> conceptData = new HashMap<>(2);
-            conceptData.put("title", concept.getTitle());
+            conceptData.put("title", concept.getTitle().toUpperCase());
+            conceptData.put("description", concept.getDescription());
             conceptData.put("status", concept.getStatus());
             titleList.add(conceptData);
         }
 
         SimpleAdapter adapter = new SimpleAdapter(getActivity(),titleList,
-                android.R.layout.simple_list_item_2, new String[] {"title", "status"},
-                new int[] {android.R.id.text1, android.R.id.text2}) {
+                R.layout.concept_layout_new, new String[] {"title","description", "status"},
+                new int[] {R.id.text01, R.id.text02, R.id.text03}) {
             //this override of getView changes the status color text
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
 
                 View view = super.getView(position, convertView, parent);
-                TextView status = (TextView) view.findViewById(android.R.id.text2);
+                TextView status = (TextView) view.findViewById(R.id.text03);
 
                 if (status.getText().toString() == "Approved") {
                     status.setTextColor(Color.rgb(0,100,0));
@@ -78,17 +79,6 @@ public class ConceptsFragment extends Fragment {
         listView1.setAdapter(adapter);
 
         /////////////////////End Load of Titles to MyConcepts/////////////////////////////////////
-        /////////////////////Begin Load description of selected Concept///////////////////////////
-
-        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3)
-            {
-                Log.v("TAG", "CLICKED row number: " + arg2);
-
-            }
-        });
-        ////////////////////End Load of description///////////////////////////////////////////////
 
         Button submitNewConcept = (Button) getView().findViewById(R.id.Submit_new_Concept);
 
