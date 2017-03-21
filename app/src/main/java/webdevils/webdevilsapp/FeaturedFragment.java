@@ -38,24 +38,24 @@ public class FeaturedFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        /////////////////Begin Load of Featured(approved) Titles to Featured Concepts////////////////
+        /////////////////Begin Load of Featured(approved) Titles to Featured Concepts///////////
         ListView listView1 = (ListView) getView().findViewById(R.id.list);
 
-        LinkedList<Concept> conceptList = services.getApprovedConcepts();
+        LinkedList<Concept> conceptList = Services.getApprovedConcepts();
         List<Map<String,String>> titleList = new ArrayList<>();
         for( Concept concept : conceptList ) {
             Map<String, String> conceptData = new HashMap<>(2);
-            conceptData.put("title", concept.getTitle());
+            conceptData.put("title", concept.getTitle().toUpperCase());
             // add submitter, vote count, and comment count(to-do)
             conceptData.put("extra", "Submitted by: " +
-                    concept.getUserThatCreatedThisConcept().getUserName() +
-                    "\nVotes: " + concept.getUpvoteStatus());
+                    concept.getUserThatCreatedThisConcept().getUserName());
+            conceptData.put("votes", ""+concept.getUpvoteStatus());
             titleList.add(conceptData);
         }
 
         SimpleAdapter adapter = new SimpleAdapter(getActivity(),titleList,
-                android.R.layout.simple_list_item_2, new String[] {"title", "extra"},
-                new int[] {android.R.id.text1, android.R.id.text2}) {
+                R.layout.featured_layout_new, new String[] {"title", "extra", "votes"},
+                new int[] {R.id.text01, R.id.text02, R.id.myImageViewText}) {
         };
         listView1.setAdapter(adapter);
 
