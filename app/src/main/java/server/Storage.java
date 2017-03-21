@@ -98,6 +98,15 @@ public class Storage implements Serializable {
 		return result;
 	}
 
+    public Concept getConceptByTitle(String title){
+        for(Concept concept : conceptList){
+            if(concept.getTitle().toUpperCase().equals(title)){
+                return concept;
+            }
+        }
+        return null;
+    }
+
     public static LinkedList<Concept> getUnreviewedConcepts() {
         LinkedList<Concept> result = new LinkedList<Concept>();
         for(Concept concept : conceptList){

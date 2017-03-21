@@ -45,6 +45,11 @@ public class Services implements IServices, Serializable {
 		return storage.getConceptsByUserName(user.getUserName());
 	}
 
+    public Concept getConceptByTitle(String title){
+        System.out.println("Sent concept to client");
+        return storage.getConceptByTitle(title);
+    }
+
     public static LinkedList<Concept> getUnreviewedConcepts(){
         System.out.println("Sent unreviewed concept list to client");
         return storage.getUnreviewedConcepts();

@@ -19,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import common.User;
 
@@ -48,6 +49,17 @@ public class MainActivity extends AppCompatActivity
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //Gets selected concept from Featured Concepts
+        //Intent intent = getIntent();
+        //String title = intent.getStringExtra("title");
+
+        // Passes title of selected concept to Voting page
+        //Bundle bundle=new Bundle();
+        //bundle.putString("title", title);
+        //set ConceptVoteFragment Arguments
+        //ConceptVoteFragment fragObj = new ConceptVoteFragment();
+        //fragObj.setArguments(bundle);
+
     }
 
     public User getUser() {
@@ -55,6 +67,18 @@ public class MainActivity extends AppCompatActivity
         final String name = p.getStringExtra("userName");
         final User user = (User) getIntent().getSerializableExtra("userObject");
         return user;
+    }
+
+    // opens concept from concept list using Title to grab information
+    public void openConcept(String fTitle) {
+        ConceptVoteFragment fragObj = new ConceptVoteFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("title", fTitle);
+        //set ConceptVoteFragment Arguments
+        fragObj.setArguments(bundle);
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, fragObj).commit();
     }
 
     @Override
