@@ -24,6 +24,7 @@ public class Concept implements Serializable {
 	private String	REJECTED_STATUS = "Rejected";
 	private String	EMPLOYEE_VIEWED_STATUS = "Employee Viewed";
 	private String	EMPLOYEE_REVIEWED_STATUS = "Employee Reviewed";
+	private boolean sticky;
 
 	/**
 	 *  Instantiate a new concept
@@ -34,6 +35,7 @@ public class Concept implements Serializable {
 		this.description = description;
 		this.type = type;
 		this.Status = SUBMITTED_STATUS;
+		this.sticky = false;
 	}
 
 	public boolean isSubmitted(){
@@ -139,4 +141,16 @@ public class Concept implements Serializable {
     public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
+
+	public boolean isSticky() {
+		return sticky;
+	}
+
+	public void makeSticky() {
+		this.sticky = true;
+	}
+
+	public void makeSlippery(){
+		this.sticky = false;
+	}
 }
