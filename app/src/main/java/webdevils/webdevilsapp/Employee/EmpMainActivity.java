@@ -24,7 +24,8 @@ public class EmpMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener ,
         EmpConceptListFragment.OnListFragmentInteractionListener ,
         MemberNewsUpdaterFragment.OnFragmentInteractionListener ,
-        EmpConceptReviewFragment.onEmpConceptReviewFragmentInteraction {
+        EmpConceptReviewFragment.onEmpConceptReviewFragmentInteraction ,
+        EmpManageConceptsFragment.OnFragmentInteractionListener {
 
     public static User currentUser;
     Services services = new Services();
@@ -113,7 +114,9 @@ public class EmpMainActivity extends AppCompatActivity
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_tools) {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_emp_main
+                            , new EmpManageConceptsFragment()).commit();
         } else if (id == R.id.nav_connect_with_member) {
 
         } else if (id == R.id.nav_email_member) {
@@ -175,5 +178,10 @@ public class EmpMainActivity extends AppCompatActivity
         fragmentManager.beginTransaction()
                 .replace(R.id.content_emp_main
                         , new EmpConceptListFragment()).commit();
+    }
+
+    @Override
+    public void onManageConceptsFragmentInteraction(Uri uri) {
+
     }
 }
