@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,8 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.ToggleButton;
 
 import common.Concept;
 import common.User;
@@ -23,6 +27,7 @@ public class SubmitConceptFragment extends Fragment {
     private String conceptTitle = "";
     private String conceptDesc = "";
     private String conceptType = "";
+    private String collaboratorName = "";
     Concept concept;
 
     @Override
@@ -42,6 +47,22 @@ public class SubmitConceptFragment extends Fragment {
         //final User user = (User) getIntent().getSerializableExtra("userObject");
         final Services services = new Services();
 
+        final CheckBox toggle = (CheckBox) getView().findViewById(R.id.collabCheckBox);
+        final EditText collaborator = (EditText) getView().findViewById(R.id.collaboratorText);
+        collaborator.setFocusable(false); // initially set collaborator text box to disabled
+        collaborator.setBackgroundColor(Color.LTGRAY);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) { // enables collab text field
+                    collaborator.setFocusableInTouchMode(true);
+                    collaborator.setBackgroundColor(Color.WHITE);
+                } else { // clears collab text and disables entry
+                    collaborator.setText("");
+                    collaborator.setBackgroundColor(Color.LTGRAY);
+                    collaborator.setFocusable(false);
+                }
+            }
+        });
 
         //Create concept
         Button submit = (Button) getView().findViewById(R.id.buttonSubmit);
@@ -63,10 +84,51 @@ public class SubmitConceptFragment extends Fragment {
                                     //dismiss the dialog
                                 }
                             });
+                } else if (title.getText().toString().equals("")) {
+                    dlgAlert.setMessage("Please enter a title.");
+                    dlgAlert.setTitle("Invalid Selection");
+                    dlgAlert.setPositiveButton("OK", null);
+                    dlgAlert.setCancelable(true);
+                    dlgAlert.create().show();
+                    dlgAlert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //dismiss the dialog
+                                }
+                            });
+                } else if (description.getText().toString().equals("")) {
+                    dlgAlert.setMessage("Please enter a description.");
+                    dlgAlert.setTitle("Invalid Selection");
+                    dlgAlert.setPositiveButton("OK", null);
+                    dlgAlert.setCancelable(true);
+                    dlgAlert.create().show();
+                    dlgAlert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //dismiss the dialog
+                                }
+                            });
+                } else if (toggle.isChecked() && collaborator.getText().toString().equals("")) {
+                    dlgAlert.setMessage("Please enter a collaborator.");
+                    dlgAlert.setTitle("Invalid Selection");
+                    dlgAlert.setPositiveButton("OK", null);
+                    dlgAlert.setCancelable(true);
+                    dlgAlert.create().show();
+                    dlgAlert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //dismiss the dialog
+                                }
+                            });
                 } else {
                     conceptTitle = title.getText().toString();
                     conceptDesc = description.getText().toString();
                     conceptType = type.getSelectedItem().toString();
+                    if (toggle.isChecked() ) {
+                        collaboratorName = collaborator.getText().toString();
+                    } else {
+                        collaboratorName = "";
+                    }
                     //Gets user stored in MainActivity
                     final User user = ((MainActivity)getActivity()).getUser();
                     //Submits concept to Storage
