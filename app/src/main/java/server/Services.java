@@ -93,7 +93,18 @@ public class Services implements IServices, Serializable {
 			return null;
 		}
 	}
-	
+	public void makeConceptSticky(Concept concept){
+		concept.makeSticky();
+		storage.saveConcept(concept);
+		System.out.print("***** Concept stickied on server *****");
+	}
+
+	public void makeConceptSlippery(Concept concept){
+		concept.makeSlippery();
+		storage.saveConcept(concept);
+		System.out.print("***** Concept no longer stickied on server *****");
+	}
+
 	public void saveConcept(Concept concept){
 		storage.saveConcept(concept);
 		System.out.print("***** Concept Saved on Server *****");
