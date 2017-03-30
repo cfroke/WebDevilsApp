@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/list_selector" >
@@ -19,13 +21,17 @@
         android:maxHeight="125dp"
         android:textAlignment="center"
         android:textStyle="normal|bold"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/Submit_new_Concept"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
         android:background="@drawable/gradient_bg"
         android:padding="0dp"
         android:paddingBottom="0dp"
@@ -34,18 +40,27 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <ListView
         android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/Submit_new_Concept"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/my_concepts_header"
         android:divider="#848482"
         android:dividerHeight="12sp"
         android:listSelector="@drawable/gradient_bg"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/my_concepts_header" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
