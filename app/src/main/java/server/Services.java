@@ -59,9 +59,14 @@ public class Services implements IServices, Serializable {
 		System.out.println("Sent approved concept list to client");
 		return storage.getApprovedConcepts();
 	}
+
+	public static LinkedList<Concept> getAllConcepts(){
+		System.out.println("Sent approved concept list to client");
+		return storage.getAllConcepts();
+	}
 	
-	public Concept createConcept(User user, String title, String description, String type){
-		Concept result = new Concept(user, title, description, type);
+	public Concept createConcept(User user, String title, String description, String type, String collaborator){
+		Concept result = new Concept(user, title, description, type, collaborator);
 		storage.addConcept(result);
 		System.out.println("***** Concept created *****");
 		return result;

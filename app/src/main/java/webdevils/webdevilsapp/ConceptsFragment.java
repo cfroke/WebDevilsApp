@@ -52,14 +52,28 @@ public class ConceptsFragment extends Fragment {
         final ListView listView1 = (ListView) getView().findViewById(R.id.list);
 
         LinkedList<Concept> userConceptList = services.getConceptsByUser(currentUser);
+        LinkedList<Concept> allConceptList = services.getAllConcepts();
         List<Map<String,String>> titleList = new ArrayList<>();
-        for( Concept concept : userConceptList ) {
+        // checks for and adds concepts user has submitted
+        for( Concept concept : userConceptList) {
             Map<String, String> conceptData = new HashMap<>(2);
             conceptData.put("title", concept.getTitle().toUpperCase());
             conceptData.put("description", concept.getDescription());
             conceptData.put("status", concept.getStatus());
             titleList.add(conceptData);
         }
+        // checks for and adds concepts user is collaborator on
+        for( Concept concept : allConceptList) {
+            if (concept.getCollaborator().equals(currentUser.getUserName())) {
+                Map<String, String> conceptData = new HashMap<>(2);
+                conceptData.put("title", concept.getTitle().toUpperCase());
+                conceptData.put("description", concept.getDescription());
+                conceptData.put("status", concept.getStatus());
+                titleList.add(conceptData);
+            }
+        }
+
+
 
         SimpleAdapter adapter = new SimpleAdapter(getActivity(),titleList,
                 R.layout.concept_layout_new, new String[] {"title","description", "status"},
