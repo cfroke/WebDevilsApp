@@ -132,7 +132,7 @@ public class SubmitConceptFragment extends Fragment {
                     //Gets user stored in MainActivity
                     final User user = ((MainActivity)getActivity()).getUser();
                     //Submits concept to Storage
-                    concept = services.createConcept(user, conceptTitle, conceptDesc, conceptType);
+                    concept = services.createConcept(user, conceptTitle, conceptDesc, conceptType, collaboratorName);
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction()
                             .replace(R.id.content_frame, new ConceptsFragment()).commit();

@@ -15,6 +15,7 @@ public class Concept implements Serializable {
 	private String	description;
 	private String  title;
 	private String  type;
+	private String	collaborator;
 	private int		upvoteStatus;
 	private User    userThatCreatedThisConcept;
     private String  feedback = "";
@@ -29,11 +30,12 @@ public class Concept implements Serializable {
 	/**
 	 *  Instantiate a new concept
 	 */
-	public Concept(User user, String title, String description, String type) {
+	public Concept(User user, String title, String description, String type, String collaborator) {
 		this.userThatCreatedThisConcept = user;
 		this.title = title;
 		this.description = description;
 		this.type = type;
+		this.collaborator = collaborator;
 		this.Status = SUBMITTED_STATUS;
 		this.sticky = false;
 	}
@@ -88,6 +90,10 @@ public class Concept implements Serializable {
 
     public String getType() {
 		return type;
+	}
+
+	public String getCollaborator() {
+		return collaborator;
 	}
 
 	public void updateUpvoteStatus(boolean trueForUpFalseForDown){

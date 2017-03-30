@@ -126,6 +126,14 @@ public class Storage implements Serializable {
 		}
 		return result;
 	}
+
+    public static LinkedList<Concept> getAllConcepts() {
+        LinkedList<Concept> result = new LinkedList<Concept>();
+        for(Concept concept : conceptList){
+            result.add(concept);
+        }
+        return result;
+    }
 	
 	public static boolean saveLists(){
 
