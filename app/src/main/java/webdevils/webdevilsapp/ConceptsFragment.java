@@ -4,6 +4,10 @@ package webdevils.webdevilsapp;
  * Created by caseyfroke on 1/29/17.
  */
 
+// This Fragment shows the My Concepts (all statuses)
+// on the My Concepts page. From here the member can
+// select a concept to view, edit , or delete its contents.
+
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.graphics.Color;
@@ -29,7 +33,7 @@ import common.Concept;
 import common.User;
 import server.Services;
 
-import static webdevils.webdevilsapp.R.id.parent;
+
 
 public class ConceptsFragment extends Fragment {
     User currentUser = LoginActivity.currentUser;
@@ -45,7 +49,7 @@ public class ConceptsFragment extends Fragment {
         super.onStart();
 
         /////////////////////Begin Load of Titles to MyConcepts///////////////////////////////////
-        ListView listView1 = (ListView) getView().findViewById(R.id.list);
+        final ListView listView1 = (ListView) getView().findViewById(R.id.list);
 
         LinkedList<Concept> userConceptList = services.getConceptsByUser(currentUser);
         List<Map<String,String>> titleList = new ArrayList<>();
@@ -79,6 +83,16 @@ public class ConceptsFragment extends Fragment {
         listView1.setAdapter(adapter);
 
         /////////////////////End Load of Titles to MyConcepts/////////////////////////////////////
+
+        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
+                //Get title name to display expanded concept
+                TextView selectedConcept = (TextView) v.findViewById(R.id.text01);
+                String selectedTitle = selectedConcept.getText().toString();
+                ((MainActivity)getActivity()).openMyConcept(selectedTitle);
+            }
+        });
 
         Button submitNewConcept = (Button) getView().findViewById(R.id.Submit_new_Concept);
 

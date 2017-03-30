@@ -81,6 +81,18 @@ public class MainActivity extends AppCompatActivity
                 .replace(R.id.content_frame, fragObj).commit();
     }
 
+    // opens concept from my concept list using Title to grab information
+    public void openMyConcept(String fTitle) {
+        ViewEditFragment fragObj = new ViewEditFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("title", fTitle);
+        //set ConceptVoteFragment Arguments
+        fragObj.setArguments(bundle);
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, fragObj).commit();
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
