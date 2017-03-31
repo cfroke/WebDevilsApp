@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textAppearance="?android:attr/textAppearanceListItem"/>
+        android:textAppearance="?android:attr/textAppearanceListItem"
+        android:drawablePadding="2dp" />
 
     <TextView
         android:id="@+id/text02"
@@ -33,5 +34,13 @@
         android:layout_below="@+id/text02"
         android:layout_alignStart="@+id/text02"
         android:textAppearance="?android:attr/textAppearanceListItem"/>
+
+    <TextView
+        android:id="@+id/text04"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text03"
+        android:layout_alignStart="@+id/text03"
+        android:visibility="invisible"/>
 
 </TwoLineListItem>
