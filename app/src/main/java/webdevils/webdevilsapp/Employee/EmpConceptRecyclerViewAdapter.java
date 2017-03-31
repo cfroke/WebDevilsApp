@@ -42,7 +42,6 @@ public class EmpConceptRecyclerViewAdapter extends RecyclerView.Adapter<EmpConce
         conceptUnderReview = holder.mItem;
 //        holder.mCreatedByView.setText("Concpet Created By: " + mValues.get(position).getUserThatCreatedThisConcept().getUserName());
         holder.mTitleView.setText("Title: " + mValues.get(position).getTitle());
-        holder.mUpvoteNumber.setText("Upvote Number: "+ mValues.get(position).getUpvoteStatus());
         holder.mEmpReviewedStatus.setText("Status: " + mValues.get(position).getStatus());
         holder.mConceptType.setText("Concept Type: " + mValues.get(position).getType());
         holder.mConceptDescription.setText("Description: " + mValues.get(position).getDescription());
@@ -83,7 +82,6 @@ public class EmpConceptRecyclerViewAdapter extends RecyclerView.Adapter<EmpConce
         public final View mView;
 //        public final TextView mCreatedByView;
         public final TextView mTitleView;
-        public final TextView mUpvoteNumber;
         public final TextView mEmpReviewedStatus;
         public final TextView mConceptType;
         public final TextView mConceptDescription;
@@ -96,7 +94,6 @@ public class EmpConceptRecyclerViewAdapter extends RecyclerView.Adapter<EmpConce
             mView = view;
 //            mCreatedByView = (TextView) view.findViewById(R.id.concept_created_by);
             mTitleView = (TextView) view.findViewById(R.id.concept_title);
-            mUpvoteNumber = (TextView) view.findViewById(R.id.concept_upvote_number);
             mEmpReviewedStatus = (TextView) view.findViewById(R.id.concept_employee_reviewed_status);
             mConceptType = (TextView) view.findViewById(R.id.concept_type);
             mConceptDescription = (TextView) view.findViewById(R.id.concept_description);

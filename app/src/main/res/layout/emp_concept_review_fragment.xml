@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/EmpApprove"
             android:textColor="#eeeeee"
-            android:background="@android:color/holo_green_light"
+            android:background="#325237"
             android:onClick="onApproved" />
 
         <Button
@@ -46,7 +46,7 @@
             android:id="@+id/EmpReject"
             android:textColor="#eeeeee"
             android:elevation="0dp"
-            android:background="@android:color/holo_red_light"
+            android:background="#960C11"
             android:onClick="onRejected" />
 
     </LinearLayout>
