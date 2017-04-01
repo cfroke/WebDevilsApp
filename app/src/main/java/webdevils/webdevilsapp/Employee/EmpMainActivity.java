@@ -55,11 +55,6 @@ public class EmpMainActivity extends AppCompatActivity
         mFragmentTransaction.replace(R.id.content_emp_main,
                 new EmpConceptListFragment()).commit();
 
-//        FragmentManager fragmentManager = getFragmentManager();
-//        fragmentManager.beginTransaction()
-//                .replace(R.id.content_emp_main
-//                        , new EmpConceptListFragment()).commit();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -117,15 +112,11 @@ public class EmpMainActivity extends AppCompatActivity
             mFragmentTransaction = mFragmentManager.beginTransaction();
             mFragmentTransaction.replace(R.id.content_emp_main,
                     new EmpConceptReviewFragment()).commit();
-
-
-//            fragmentManager.beginTransaction()
-//                    .replace(R.id.content_emp_main
-//                            , new EmpConceptListFragment()).commit();
         } else if (id == R.id.nav_update_member_news) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_emp_main
-                            , new MemberNewsUpdaterFragment()).commit();
+            mFragmentManager = getSupportFragmentManager();
+            mFragmentTransaction = mFragmentManager.beginTransaction();
+            mFragmentTransaction.replace(R.id.content_emp_main,
+                    new MemberNewsUpdaterFragment()).commit();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_tools) {

@@ -10,5 +10,5 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context="webdevils.webdevilsapp.Employee.EmpConceptListFragment"
-    tools:listitem="@layout/emp_fragment_item"
+    tools:listitem="@layout/emp_card_list_item"
     android:scrollbars="vertical" />
