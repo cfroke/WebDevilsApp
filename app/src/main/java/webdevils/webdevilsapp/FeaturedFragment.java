@@ -48,9 +48,16 @@ public class FeaturedFragment extends Fragment {
         for (Concept concept : conceptList) {
             Map<String, String> conceptData = new HashMap<>(2);
             conceptData.put("title", concept.getTitle().toUpperCase());
-            // add submitter, vote count, and comment count(to-do)
-            conceptData.put("extra", "Submitted by: " +
-                    concept.getUserThatCreatedThisConcept().getUserName());
+            // add submitter and collaborator (if present)
+            if (concept.getCollaborator().equals("")) {
+                conceptData.put("extra", "Submitted by: " +
+                        concept.getUserThatCreatedThisConcept().getUserName());
+            } else {
+                conceptData.put("extra", "Submitted by: " +
+                        concept.getUserThatCreatedThisConcept().getUserName() +
+                        " & " + concept.getCollaborator());
+            }
+            // add vote count, and comment count(to-do)
             conceptData.put("votes", "" + concept.getUpvoteStatus());
             titleList.add(conceptData);
         }

@@ -15,6 +15,7 @@ public class Concept implements Serializable {
 	private String	description;
 	private String  title;
 	private String  type;
+	private String	collaborator;
 	private int		upvoteStatus;
 	private User    userThatCreatedThisConcept;
     private String  feedback = "";
@@ -24,16 +25,19 @@ public class Concept implements Serializable {
 	private String	REJECTED_STATUS = "Rejected";
 	private String	EMPLOYEE_VIEWED_STATUS = "Employee Viewed";
 	private String	EMPLOYEE_REVIEWED_STATUS = "Employee Reviewed";
+	private boolean sticky;
 
 	/**
 	 *  Instantiate a new concept
 	 */
-	public Concept(User user, String title, String description, String type) {
+	public Concept(User user, String title, String description, String type, String collaborator) {
 		this.userThatCreatedThisConcept = user;
 		this.title = title;
 		this.description = description;
 		this.type = type;
+		this.collaborator = collaborator;
 		this.Status = SUBMITTED_STATUS;
+		this.sticky = false;
 	}
 
 	public boolean isSubmitted(){
@@ -88,6 +92,10 @@ public class Concept implements Serializable {
 		return type;
 	}
 
+	public String getCollaborator() {
+		return collaborator;
+	}
+
 	public void updateUpvoteStatus(boolean trueForUpFalseForDown){
 		if(trueForUpFalseForDown){
 			setUpvoteStatus(getUpvoteStatus() + 1);
@@ -139,4 +147,16 @@ public class Concept implements Serializable {
     public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
+
+	public boolean isSticky() {
+		return sticky;
+	}
+
+	public void makeSticky() {
+		this.sticky = true;
+	}
+
+	public void makeSlippery(){
+		this.sticky = false;
+	}
 }
