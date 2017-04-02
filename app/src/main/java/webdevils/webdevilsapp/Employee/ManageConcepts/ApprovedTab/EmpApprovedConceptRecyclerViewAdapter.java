@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.LinkedList;
@@ -14,7 +15,8 @@ import webdevils.webdevilsapp.R;
 /**
  * Created by Kevin 04/01/2017
  */
-public class EmpApprovedConceptRecyclerViewAdapter extends RecyclerView.Adapter<EmpApprovedConceptRecyclerViewAdapter.ViewHolder> {
+public class EmpApprovedConceptRecyclerViewAdapter extends
+        RecyclerView.Adapter<EmpApprovedConceptRecyclerViewAdapter.ViewHolder> {
 
     private final LinkedList<Concept> mValues;
     private final EmpApprovedConceptListFragment.OnApprovedListFragmentInteractionListener mListener;
@@ -22,7 +24,8 @@ public class EmpApprovedConceptRecyclerViewAdapter extends RecyclerView.Adapter<
     View view;
 
     public EmpApprovedConceptRecyclerViewAdapter(LinkedList<Concept> items,
-                                                 EmpApprovedConceptListFragment.OnApprovedListFragmentInteractionListener listener) {
+                                                 EmpApprovedConceptListFragment.
+                                                         OnApprovedListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -37,14 +40,19 @@ public class EmpApprovedConceptRecyclerViewAdapter extends RecyclerView.Adapter<
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        if(holder.mItem.isApproved()){
-            //change R.layout.emp_list_approved_item_card here ???
-        }
+
         conceptUnderReview = holder.mItem;
-        holder.mCreatedByView.setText("Concpet Created By: " + mValues.get(position).getUserThatCreatedThisConcept().getUserName());
+        holder.mCreatedByView.setText("Concpet Created By: " + mValues.get(position).
+                getUserThatCreatedThisConcept().getUserName());
         holder.mTitleView.setText(" Title: " + mValues.get(position).getTitle());
         holder.mEmpReviewedStatus.setText("Status: " + mValues.get(position).getStatus());
         holder.mConceptType.setText("Concept Type: " + mValues.get(position).getType());
+
+        if(mValues.get(position).isSticky()){
+            holder.mImageView.setImageResource(R.mipmap.note_pinned);
+        }else{
+            holder.mImageView.setImageResource(R.mipmap.blank_note_pinned);
+        }
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +93,7 @@ public class EmpApprovedConceptRecyclerViewAdapter extends RecyclerView.Adapter<
         public final TextView mTitleView;
         public final TextView mEmpReviewedStatus;
         public final TextView mConceptType;
+        public final ImageView mImageView;
         public Concept mItem;
 
         public ViewHolder(View view) {
@@ -95,6 +104,7 @@ public class EmpApprovedConceptRecyclerViewAdapter extends RecyclerView.Adapter<
             mTitleView = (TextView) view.findViewById(R.id.concept_title);
             mEmpReviewedStatus = (TextView) view.findViewById(R.id.concept_employee_reviewed_status);
             mConceptType = (TextView) view.findViewById(R.id.concept_type);
+            mImageView = (ImageView) view.findViewById(R.id.sticky);
 
         }
 

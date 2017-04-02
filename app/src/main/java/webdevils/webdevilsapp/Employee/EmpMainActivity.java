@@ -3,6 +3,7 @@ package webdevils.webdevilsapp.Employee;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -142,10 +143,6 @@ public class EmpMainActivity extends AppCompatActivity
         return true;
     }
 
-
-
-
-
     @Override
     public void onMemberNewsUpdaterFragmentInteraction(Uri uri) {
         //TODO interact with Member news Updater Fragment
@@ -207,6 +204,11 @@ public class EmpMainActivity extends AppCompatActivity
 
     @Override
     public void onApprovedConceptListFragmentInteraction(Concept concept) {
-
+        if(concept.isSticky()){
+            services.makeConceptSlippery(concept);
+        }else{
+            services.makeConceptSticky(concept);
+        }
     }
+
 }

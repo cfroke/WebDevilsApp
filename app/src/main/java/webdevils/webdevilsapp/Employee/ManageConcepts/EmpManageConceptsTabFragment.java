@@ -3,9 +3,9 @@ package webdevils.webdevilsapp.Employee.ManageConcepts;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -23,48 +23,26 @@ import webdevils.webdevilsapp.R;
 public class EmpManageConceptsTabFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    public static TabLayout tabLayout;
+    public static ViewPager viewPager;
+    public static int int_items = 3 ;
 
     public EmpManageConceptsTabFragment() {
-        // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.emp_manage_concepts_tabs_fragment, container, false);
-//    }
-
-    public static TabLayout tabLayout;
-    public static ViewPager viewPager;
-    public static int int_items = 3 ;
-
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        /**
-         *Inflate tab_layout and setup Views.
-         */
+
         View view =  inflater.inflate(R.layout.emp_manage_concepts_tabs_fragment,null);
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 
-        /**
-         *Set an Apater for the View Pager
-         */
         viewPager.setAdapter(new MyAdapter(getFragmentManager()));
-
-        /**
-         * Now , this is a workaround ,
-         * The setupWithViewPager dose't works without the runnable .
-         * Maybe a Support Library Bug .
-         */
 
         tabLayout.post(new Runnable() {
             @Override
@@ -74,7 +52,6 @@ public class EmpManageConceptsTabFragment extends Fragment {
         });
 
         return view;
-
     }
 
     class MyAdapter extends FragmentPagerAdapter{
