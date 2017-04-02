@@ -1,4 +1,4 @@
-package webdevils.webdevilsapp.Employee;
+package webdevils.webdevilsapp.Employee.ManageConcepts.SubmittedTab;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
@@ -18,24 +18,24 @@ import webdevils.webdevilsapp.R;
 /**
  * A fragment representing a list of Items.
  * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * Activities containing this fragment MUST implement the {@link OnSubmittedListFragmentInteractionListener}
  * interface.
  */
-public class EmpConceptListFragment extends Fragment {
+public class EmpSubmittedConceptListFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
+    private OnSubmittedListFragmentInteractionListener mListener;
     public static Concept conceptUnderReview;
 
     /**
      * Mandatory
      */
-    public EmpConceptListFragment() {
+    public EmpSubmittedConceptListFragment() {
     }
 
-    public static EmpConceptListFragment newInstance(int columnCount) {
-        EmpConceptListFragment fragment = new EmpConceptListFragment();
+    public static EmpSubmittedConceptListFragment newInstance(int columnCount) {
+        EmpSubmittedConceptListFragment fragment = new EmpSubmittedConceptListFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -65,21 +65,20 @@ public class EmpConceptListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new EmpConceptRecyclerViewAdapter(
+            recyclerView.setAdapter(new EmpSubmittedConceptRecyclerViewAdapter(
                     ConceptListContent.SUBMITTED_ITEMS, mListener));
         }
         return view;
     }
 
-
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        if (activity instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) activity;
+        if (activity instanceof OnSubmittedListFragmentInteractionListener) {
+            mListener = (OnSubmittedListFragmentInteractionListener) activity;
         } else {
             throw new RuntimeException(activity.toString()
-                    + " must implement OnApprovedListFragmentInteractionListener");
+                    + " must implement OnRejectedListFragmentInteractionListener");
         }
     }
 
@@ -99,7 +98,7 @@ public class EmpConceptListFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnListFragmentInteractionListener {
-        void onConceptListFragmentInteraction(Concept concept);
+    public interface OnSubmittedListFragmentInteractionListener {
+        void onSubmittedConceptListFragmentInteraction(Concept concept);
     }
 }

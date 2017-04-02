@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import common.Concept;
+import webdevils.webdevilsapp.Employee.ManageConcepts.SubmittedTab.EmpSubmittedConceptRecyclerViewAdapter;
 import webdevils.webdevilsapp.R;
 
 /**
@@ -20,7 +21,7 @@ import webdevils.webdevilsapp.R;
  */
 public class EmpConceptReviewFragment extends Fragment {
 
-    public static Concept conceptUnderReview = EmpConceptRecyclerViewAdapter.conceptUnderReview;
+    public static Concept conceptUnderReview = EmpSubmittedConceptRecyclerViewAdapter.conceptUnderReview;
 
     private onEmpConceptReviewFragmentInteraction mListener;
 
