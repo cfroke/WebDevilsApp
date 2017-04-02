@@ -1,6 +1,5 @@
 package webdevils.webdevilsapp.Employee;
 
-import android.app.FragmentManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -18,15 +17,17 @@ import android.widget.EditText;
 import common.Concept;
 import common.User;
 import server.Services;
-import webdevils.webdevilsapp.Employee.ManageConcepts.EmpManageConceptsFragment;
+import webdevils.webdevilsapp.Employee.ManageConcepts.ApprovedTab.EmpApprovedConceptListFragment;
+import webdevils.webdevilsapp.Employee.ManageConcepts.EmpManageConceptsTabFragment;
 import webdevils.webdevilsapp.R;
 
 public class EmpMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener ,
-        EmpConceptListFragment.OnListFragmentInteractionListener ,
         MemberNewsUpdaterFragment.OnFragmentInteractionListener ,
         EmpConceptReviewFragment.onEmpConceptReviewFragmentInteraction ,
-        EmpManageConceptsFragment.OnFragmentInteractionListener {
+        EmpManageConceptsTabFragment.OnFragmentInteractionListener ,
+        EmpConceptListFragment.OnListFragmentInteractionListener ,
+        EmpApprovedConceptListFragment.OnApprovedListFragmentInteractionListener {
 
     public static User currentUser;
     Services services = new Services();
@@ -105,25 +106,28 @@ public class EmpMainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        FragmentManager fragmentManager = getFragmentManager();
 
         if (id == R.id.nav_unreviewed_concepts) {
+
             mFragmentManager = getSupportFragmentManager();
             mFragmentTransaction = mFragmentManager.beginTransaction();
             mFragmentTransaction.replace(R.id.content_emp_main,
-                    new EmpConceptReviewFragment()).commit();
+                    new EmpConceptListFragment()).commit();
+
         } else if (id == R.id.nav_update_member_news) {
+
             mFragmentManager = getSupportFragmentManager();
             mFragmentTransaction = mFragmentManager.beginTransaction();
             mFragmentTransaction.replace(R.id.content_emp_main,
                     new MemberNewsUpdaterFragment()).commit();
-        } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.manage_concepts) {
+
             mFragmentManager = getSupportFragmentManager();
             mFragmentTransaction = mFragmentManager.beginTransaction();
             mFragmentTransaction.replace(R.id.content_emp_main,
-                    new EmpManageConceptsFragment()).commit();
+                    new EmpManageConceptsTabFragment()).commit();
+
         } else if (id == R.id.nav_connect_with_member) {
 
         } else if (id == R.id.nav_email_member) {
@@ -192,4 +196,8 @@ public class EmpMainActivity extends AppCompatActivity
 
     }
 
+    @Override
+    public void onApprovedConceptListFragmentInteraction(Concept concept) {
+
+    }
 }

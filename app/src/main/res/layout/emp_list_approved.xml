@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/approved_list_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_selector"
+    tools:context="webdevils.webdevilsapp.Employee.ManageConcepts.ApprovedTab.ApprovedTab"
+    tools:listitem="@layout/emp_list_approved_item_card" />

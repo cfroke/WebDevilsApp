@@ -1,4 +1,4 @@
-package webdevils.webdevilsapp.Employee;
+package webdevils.webdevilsapp.Employee.ManageConcepts.ApprovedTab;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,15 +14,15 @@ import webdevils.webdevilsapp.R;
 /**
  * Created by Kevin 04/01/2017
  */
-public class EmpConceptRecyclerViewAdapter extends RecyclerView.Adapter<EmpConceptRecyclerViewAdapter.ViewHolder> {
+public class EmpApprovedConceptRecyclerViewAdapter extends RecyclerView.Adapter<EmpApprovedConceptRecyclerViewAdapter.ViewHolder> {
 
     private final LinkedList<Concept> mValues;
-    private final EmpConceptListFragment.OnListFragmentInteractionListener mListener;
+    private final EmpApprovedConceptListFragment.OnApprovedListFragmentInteractionListener mListener;
     public static Concept conceptUnderReview;
     View view;
 
-    public EmpConceptRecyclerViewAdapter(LinkedList<Concept> items,
-                                         EmpConceptListFragment.OnListFragmentInteractionListener listener) {
+    public EmpApprovedConceptRecyclerViewAdapter(LinkedList<Concept> items,
+                                                 EmpApprovedConceptListFragment.OnApprovedListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -30,7 +30,7 @@ public class EmpConceptRecyclerViewAdapter extends RecyclerView.Adapter<EmpConce
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.emp_list_submitted_item_card, parent, false);
+                .inflate(R.layout.emp_list_approved_item_card, parent, false);
         return new ViewHolder(view);
     }
 
@@ -52,7 +52,7 @@ public class EmpConceptRecyclerViewAdapter extends RecyclerView.Adapter<EmpConce
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onConceptListFragmentInteraction(holder.mItem);
+                    mListener.onApprovedConceptListFragmentInteraction(holder.mItem);
                 }
             }
         });

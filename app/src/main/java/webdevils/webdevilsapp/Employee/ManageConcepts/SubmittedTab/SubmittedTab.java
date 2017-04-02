@@ -1,4 +1,4 @@
-package webdevils.webdevilsapp.Employee.ManageConcepts;
+package webdevils.webdevilsapp.Employee.ManageConcepts.SubmittedTab;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,11 +12,11 @@ import webdevils.webdevilsapp.R;
 /**
  * Created by Kevin on 3/28/2017.
  */
-public class ApprovedTab extends Fragment {
+public class SubmittedTab extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.emp_approved_tab,null);
+        return inflater.inflate(R.layout.emp_submitted_tab,null);
     }
 }

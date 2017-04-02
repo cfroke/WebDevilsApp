@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_unreviewed_concepts"
-            android:icon="@android:drawable/btn_dialog"
+            android:icon="@drawable/ic_menu_slideshow"
             android:title="Review Concepts" />
+        <item
+            android:id="@+id/manage_concepts"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Manage Concepts" />
         <item
             android:id="@+id/nav_update_member_news"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Update Member News" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
     </group>
 
     <item android:title="Communicate">
@@ -32,5 +29,6 @@
                 android:title="Email Member" />
         </menu>
     </item>
+
 
 </menu>

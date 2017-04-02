@@ -64,6 +64,11 @@ public class TestData {
         services.upVoteConcept(janeConcept2);
         services.upVoteConcept(janeConcept2);
 
+        for(int i = 1 ; i < 3 ; i++){
+            services.createConcept(jane, "Jane's Title " + i , "Jane's Description " + i
+                    , product, "");
+        }
+
         //Employee Data
         User empUser = services.createEmployeeUser("employee","pass123");
         User carl = services.createEmployeeUser("carl","carl");

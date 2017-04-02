@@ -12,16 +12,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import webdevils.webdevilsapp.Employee.ManageConcepts.ApprovedTab.EmpApprovedConceptListFragment;
+import webdevils.webdevilsapp.Employee.ManageConcepts.RejectedTab.RejectedTab;
+import webdevils.webdevilsapp.Employee.ManageConcepts.SubmittedTab.SubmittedTab;
 import webdevils.webdevilsapp.R;
 
 /**
  * Created by Kevin on 3/28/2017.
  */
-public class EmpManageConceptsFragment extends Fragment {
+public class EmpManageConceptsTabFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public EmpManageConceptsFragment() {
+    public EmpManageConceptsTabFragment() {
         // Required empty public constructor
     }
 
@@ -89,7 +92,7 @@ public class EmpManageConceptsFragment extends Fragment {
         {
             switch (position){
                 case 0 :
-                    return new ApprovedTab();
+                    return new EmpApprovedConceptListFragment();
                 case 1 :
                     return new RejectedTab();
                 case 2 :
@@ -123,13 +126,6 @@ public class EmpManageConceptsFragment extends Fragment {
             return null;
         }
     }
-
-
-
-
-
-
-
 
 
     // TODO: Rename method, update argument and hook method into UI event
