@@ -1,9 +1,10 @@
 package webdevils.webdevilsapp.Employee;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,26 +19,20 @@ import android.widget.EditText;
 import common.Concept;
 import common.User;
 import server.Services;
-import webdevils.webdevilsapp.Employee.ManageConcepts.ApprovedTab.EmpApprovedConceptListFragment;
-import webdevils.webdevilsapp.Employee.ManageConcepts.EmpManageConceptsTabFragment;
-import webdevils.webdevilsapp.Employee.ManageConcepts.RejectedTab.EmpRejectedConceptListFragment;
-import webdevils.webdevilsapp.Employee.ManageConcepts.SubmittedTab.EmpSubmittedConceptListFragment;
 import webdevils.webdevilsapp.R;
+
+import static webdevils.webdevilsapp.R.menu.main;
 
 public class EmpMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener ,
         MemberNewsUpdaterFragment.OnFragmentInteractionListener ,
         EmpConceptReviewFragment.onEmpConceptReviewFragmentInteraction ,
-        EmpManageConceptsTabFragment.OnFragmentInteractionListener ,
         EmpSubmittedConceptListFragment.OnSubmittedListFragmentInteractionListener,
-        EmpApprovedConceptListFragment.OnApprovedListFragmentInteractionListener ,
-        EmpRejectedConceptListFragment.OnRejectedListFragmentInteractionListener {
+        EmpApprovedConceptListFragment.OnApprovedListFragmentInteractionListener {
 
     public static User currentUser;
     Services services = new Services();
 
-    android.support.v4.app.FragmentManager mFragmentManager;
-    FragmentTransaction mFragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +50,10 @@ public class EmpMainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        mFragmentManager = getSupportFragmentManager();
-        mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.content_emp_main,
-                new EmpSubmittedConceptListFragment()).commit();
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_emp_main,
+                        new EmpSubmittedConceptListFragment()).commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -71,12 +66,12 @@ public class EmpMainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            mFragmentManager = getSupportFragmentManager();
-            android.support.v4.app.Fragment fragment = mFragmentManager.findFragmentById(R.id.content_emp_main);
+            FragmentManager fragmentManager = getFragmentManager();
+            Fragment fragment = fragmentManager.findFragmentById(R.id.content_emp_main);
             if (fragment instanceof EmpConceptReviewFragment) {
-                mFragmentTransaction = mFragmentManager.beginTransaction();
-                mFragmentTransaction.replace(R.id.content_emp_main,
-                        new EmpSubmittedConceptListFragment()).commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_emp_main,
+                                new EmpSubmittedConceptListFragment()).commit();
             } else {
                 super.onBackPressed();
             }
@@ -112,25 +107,22 @@ public class EmpMainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_unreviewed_concepts) {
-
-            mFragmentManager = getSupportFragmentManager();
-            mFragmentTransaction = mFragmentManager.beginTransaction();
-            mFragmentTransaction.replace(R.id.content_emp_main,
-                    new EmpSubmittedConceptListFragment()).commit();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_emp_main,
+                            new EmpSubmittedConceptListFragment()).commit();
 
         } else if (id == R.id.nav_update_member_news) {
-
-            mFragmentManager = getSupportFragmentManager();
-            mFragmentTransaction = mFragmentManager.beginTransaction();
-            mFragmentTransaction.replace(R.id.content_emp_main,
-                    new MemberNewsUpdaterFragment()).commit();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_emp_main,
+                            new MemberNewsUpdaterFragment()).commit();
 
         } else if (id == R.id.manage_concepts) {
-
-            mFragmentManager = getSupportFragmentManager();
-            mFragmentTransaction = mFragmentManager.beginTransaction();
-            mFragmentTransaction.replace(R.id.content_emp_main,
-                    new EmpManageConceptsTabFragment()).commit();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_emp_main,
+                            new EmpApprovedConceptListFragment()).commit();
 
         } else if (id == R.id.nav_connect_with_member) {
 
@@ -162,10 +154,10 @@ public class EmpMainActivity extends AppCompatActivity
         conceptUnderReview.setFeedback(feedback.getText().toString());
         services.saveConcept(conceptUnderReview);
 
-        mFragmentManager = getSupportFragmentManager();
-        mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.content_emp_main,
-                new EmpSubmittedConceptListFragment()).commit();
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_emp_main,
+                        new EmpSubmittedConceptListFragment()).commit();
     }
 
     public void onRejected(View view){
@@ -176,29 +168,20 @@ public class EmpMainActivity extends AppCompatActivity
         conceptUnderReview.setFeedback(feedback.getText().toString());
         services.saveConcept(conceptUnderReview);
 
-        mFragmentManager = getSupportFragmentManager();
-        mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.content_emp_main,
-                new EmpSubmittedConceptListFragment()).commit();;
-    }
-
-    @Override
-    public void onManageConceptsFragmentInteraction(Uri uri) {
-
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_emp_main,
+                        new EmpSubmittedConceptListFragment()).commit();
     }
 
     @Override
     public void onSubmittedConceptListFragmentInteraction(Concept concept) {
         EmpConceptReviewFragment.setConceptUnderReview(concept);
 
-        mFragmentManager = getSupportFragmentManager();
-        mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.content_emp_main,
-                new EmpConceptReviewFragment()).commit();
-    }
-
-    @Override
-    public void onRejectedConceptListFragmentInteraction(Concept concept) {
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_emp_main,
+                        new EmpConceptReviewFragment()).commit();
 
     }
 
@@ -209,6 +192,9 @@ public class EmpMainActivity extends AppCompatActivity
         }else{
             services.makeConceptSticky(concept);
         }
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_emp_main,
+                        new EmpApprovedConceptListFragment()).commit();
     }
-
 }

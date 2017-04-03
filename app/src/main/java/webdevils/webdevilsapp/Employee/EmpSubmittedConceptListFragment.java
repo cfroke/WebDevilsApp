@@ -1,7 +1,7 @@
-package webdevils.webdevilsapp.Employee.ManageConcepts.SubmittedTab;
+package webdevils.webdevilsapp.Employee;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -72,12 +72,12 @@ public class EmpSubmittedConceptListFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (activity instanceof OnSubmittedListFragmentInteractionListener) {
-            mListener = (OnSubmittedListFragmentInteractionListener) activity;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnSubmittedListFragmentInteractionListener) {
+            mListener = (OnSubmittedListFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(activity.toString()
+            throw new RuntimeException(context.toString()
                     + " must implement OnRejectedListFragmentInteractionListener");
         }
     }
