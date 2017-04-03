@@ -15,36 +15,62 @@ public class ConceptListContent {
     /**
      * A map of Concepts, by Title
      */
-    public static final Map<String, Concept> ITEMS_MAP = new HashMap<String, Concept>();
-    public static final LinkedList<Concept> ITEMS = new LinkedList<Concept>();
+    public static final Map<String, Concept> SUBMITTED_ITEMS_MAP = new HashMap<String, Concept>();
+    public static final LinkedList<Concept> SUBMITTED_ITEMS = new LinkedList<Concept>();
+
+    public static final Map<String, Concept> APPROVED_ITEMS_MAP = new HashMap<String, Concept>();
+    public static final LinkedList<Concept> APPROVED_ITEMS = new LinkedList<Concept>();
+
+    public static final Map<String, Concept> REJECTED_ITEMS_MAP = new HashMap<String, Concept>();
+    public static final LinkedList<Concept> REJECTED_ITEMS = new LinkedList<Concept>();
+
     private static final int MAX_NUMBER_OF_CONCEPTS = 25;
+
     static Services services = new Services();
-    static LinkedList<Concept> unReviewedConcepts = services.getUnreviewedConcepts();
+    static LinkedList<Concept> allConcepts = services.getAllConcepts();
 
     static {
-        // Add some sample items.
+        //load submitted
         int count = 0;
-        for(Concept concept : unReviewedConcepts){
+        for(Concept concept : allConcepts){
             if(count < MAX_NUMBER_OF_CONCEPTS){
-                addItem(concept);
+                if(concept.isSubmitted()){
+                    SUBMITTED_ITEMS.add(concept);
+                    SUBMITTED_ITEMS_MAP.put(concept.getTitle(), concept);
+                }
             }else{
                 break;
             }
             count++;
         }
-        for (int i = 1; i <= MAX_NUMBER_OF_CONCEPTS; i++) {
 
-            //grab items from server
+        //load approved
+        count = 0;
+        for(Concept concept : allConcepts){
+            if(count < MAX_NUMBER_OF_CONCEPTS){
+                if(concept.isApproved()){
+                    APPROVED_ITEMS.add(concept);
+                    APPROVED_ITEMS_MAP.put(concept.getTitle(), concept);
+                }
+            }else{
+                break;
+            }
+            count++;
+        }
 
-//            addItem(concept);
+        //load rejected
+        count = 0;
+        for(Concept concept : allConcepts){
+            if(count < MAX_NUMBER_OF_CONCEPTS){
+                if(concept.isRejected()){
+                    REJECTED_ITEMS.add(concept);
+                    REJECTED_ITEMS_MAP.put(concept.getTitle(), concept);
+                }
+            }else{
+                break;
+            }
+            count++;
         }
     }
-
-    private static void addItem(Concept concept) {
-        ITEMS.add(concept);
-        ITEMS_MAP.put(concept.getTitle(), concept);
-    }
-
-
 
 }

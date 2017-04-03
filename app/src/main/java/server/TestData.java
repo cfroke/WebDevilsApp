@@ -39,6 +39,7 @@ public class TestData {
         Concept bobConcept2 = services.createConcept(bob,"Later hours","It would be great if the bank was open later on " +
                 "saturdays.",service, "jane");
         bobConcept2.setStatusToApproved();
+        services.makeConceptSticky(bobConcept2);
         services.saveConcept(bobConcept2);
         services.upVoteConcept(bobConcept2);
 
@@ -63,6 +64,11 @@ public class TestData {
         services.upVoteConcept(janeConcept2);
         services.upVoteConcept(janeConcept2);
         services.upVoteConcept(janeConcept2);
+
+        for(int i = 1 ; i < 3 ; i++){
+            services.createConcept(jane, "Jane's Test Title " + i , "Jane's Test Description " + i
+                    , product, "");
+        }
 
         //Employee Data
         User empUser = services.createEmployeeUser("employee","pass123");

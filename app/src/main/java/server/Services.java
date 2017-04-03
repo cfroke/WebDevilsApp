@@ -60,6 +60,11 @@ public class Services implements IServices, Serializable {
 		return storage.getApprovedConcepts();
 	}
 
+	public static LinkedList<Concept> getRejectedConcepts(){
+		System.out.println("Sent rejected concept list to client");
+		return storage.getRejectedConcepts();
+	}
+
 	public static LinkedList<Concept> getAllConcepts(){
 		System.out.println("Sent approved concept list to client");
 		return storage.getAllConcepts();

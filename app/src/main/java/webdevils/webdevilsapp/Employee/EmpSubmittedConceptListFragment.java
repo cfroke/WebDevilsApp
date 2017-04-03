@@ -1,5 +1,6 @@
 package webdevils.webdevilsapp.Employee;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -17,28 +18,24 @@ import webdevils.webdevilsapp.R;
 /**
  * A fragment representing a list of Items.
  * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * Activities containing this fragment MUST implement the {@link OnSubmittedListFragmentInteractionListener}
  * interface.
  */
-public class EmpConceptListFragment extends Fragment {
+public class EmpSubmittedConceptListFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
+    private OnSubmittedListFragmentInteractionListener mListener;
     public static Concept conceptUnderReview;
 
     /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
+     * Mandatory
      */
-    public EmpConceptListFragment() {
+    public EmpSubmittedConceptListFragment() {
     }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static EmpConceptListFragment newInstance(int columnCount) {
-        EmpConceptListFragment fragment = new EmpConceptListFragment();
+    public static EmpSubmittedConceptListFragment newInstance(int columnCount) {
+        EmpSubmittedConceptListFragment fragment = new EmpSubmittedConceptListFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -57,7 +54,7 @@ public class EmpConceptListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.emp_fragment_concept_list, container, false);
+        View view = inflater.inflate(R.layout.emp_list_submitted, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -68,20 +65,20 @@ public class EmpConceptListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new EmpConceptRecyclerViewAdapter(ConceptListContent.ITEMS, mListener));
+            recyclerView.setAdapter(new EmpSubmittedConceptRecyclerViewAdapter(
+                    ConceptListContent.SUBMITTED_ITEMS, mListener));
         }
         return view;
     }
 
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof OnSubmittedListFragmentInteractionListener) {
+            mListener = (OnSubmittedListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+                    + " must implement OnRejectedListFragmentInteractionListener");
         }
     }
 
@@ -101,8 +98,7 @@ public class EmpConceptListFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onConceptListFragmentInteraction(Concept concept);
+    public interface OnSubmittedListFragmentInteractionListener {
+        void onSubmittedConceptListFragmentInteraction(Concept concept);
     }
 }

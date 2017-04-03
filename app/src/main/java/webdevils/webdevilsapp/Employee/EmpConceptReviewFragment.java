@@ -1,9 +1,9 @@
 package webdevils.webdevilsapp.Employee;
 
-import android.app.Fragment;
-import android.content.Context;
+import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +20,7 @@ import webdevils.webdevilsapp.R;
  */
 public class EmpConceptReviewFragment extends Fragment {
 
-    public static Concept conceptUnderReview = EmpConceptRecyclerViewAdapter.conceptUnderReview;
+    public static Concept conceptUnderReview = EmpSubmittedConceptRecyclerViewAdapter.conceptUnderReview;
 
     private onEmpConceptReviewFragmentInteraction mListener;
 
@@ -53,12 +53,12 @@ public class EmpConceptReviewFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof onEmpConceptReviewFragmentInteraction) {
-            mListener = (onEmpConceptReviewFragmentInteraction) context;
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof onEmpConceptReviewFragmentInteraction) {
+            mListener = (onEmpConceptReviewFragmentInteraction) activity;
         } else {
-            throw new RuntimeException(context.toString()
+            throw new RuntimeException(activity.toString()
                     + " must implement onEmpConceptReviewFragmentInteraction");
         }
     }

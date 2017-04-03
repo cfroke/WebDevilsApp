@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,14 +21,18 @@ import common.User;
 import server.Services;
 import webdevils.webdevilsapp.R;
 
+import static webdevils.webdevilsapp.R.menu.main;
+
 public class EmpMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener ,
-        EmpConceptListFragment.OnListFragmentInteractionListener ,
         MemberNewsUpdaterFragment.OnFragmentInteractionListener ,
-        EmpConceptReviewFragment.onEmpConceptReviewFragmentInteraction {
+        EmpConceptReviewFragment.onEmpConceptReviewFragmentInteraction ,
+        EmpSubmittedConceptListFragment.OnSubmittedListFragmentInteractionListener,
+        EmpApprovedConceptListFragment.OnApprovedListFragmentInteractionListener {
 
     public static User currentUser;
     Services services = new Services();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +52,8 @@ public class EmpMainActivity extends AppCompatActivity
 
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.content_emp_main
-                        , new EmpConceptListFragment()).commit();
+                .replace(R.id.content_emp_main,
+                        new EmpSubmittedConceptListFragment()).commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -65,8 +70,8 @@ public class EmpMainActivity extends AppCompatActivity
             Fragment fragment = fragmentManager.findFragmentById(R.id.content_emp_main);
             if (fragment instanceof EmpConceptReviewFragment) {
                 fragmentManager.beginTransaction()
-                        .replace(R.id.content_emp_main
-                                , new EmpConceptListFragment()).commit();
+                        .replace(R.id.content_emp_main,
+                                new EmpSubmittedConceptListFragment()).commit();
             } else {
                 super.onBackPressed();
             }
@@ -100,19 +105,24 @@ public class EmpMainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        FragmentManager fragmentManager = getFragmentManager();
 
         if (id == R.id.nav_unreviewed_concepts) {
+            FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_emp_main
-                            , new EmpConceptListFragment()).commit();
-        } else if (id == R.id.nav_update_member_news) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_emp_main
-                            , new MemberNewsUpdaterFragment()).commit();
-        } else if (id == R.id.nav_slideshow) {
+                    .replace(R.id.content_emp_main,
+                            new EmpSubmittedConceptListFragment()).commit();
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_update_member_news) {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_emp_main,
+                            new MemberNewsUpdaterFragment()).commit();
+
+        } else if (id == R.id.manage_concepts) {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_emp_main,
+                            new EmpApprovedConceptListFragment()).commit();
 
         } else if (id == R.id.nav_connect_with_member) {
 
@@ -125,25 +135,12 @@ public class EmpMainActivity extends AppCompatActivity
         return true;
     }
 
-
-
-    @Override
-    public void onConceptListFragmentInteraction(Concept concept) {
-        EmpConceptReviewFragment.setConceptUnderReview(concept);
-
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.content_emp_main
-                        , new EmpConceptReviewFragment()).commit();
-    }
-
     @Override
     public void onMemberNewsUpdaterFragmentInteraction(Uri uri) {
         //TODO interact with Member news Updater Fragment
     }
 
 
-    //Review Concept Fragment Methods
     @Override
     public void onEmpConceptReviewFragmentInteraction(Uri uri) {
         //General Interaction with Review Concept Fragment
@@ -159,8 +156,8 @@ public class EmpMainActivity extends AppCompatActivity
 
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.content_emp_main
-                        , new EmpConceptListFragment()).commit();
+                .replace(R.id.content_emp_main,
+                        new EmpSubmittedConceptListFragment()).commit();
     }
 
     public void onRejected(View view){
@@ -173,7 +170,31 @@ public class EmpMainActivity extends AppCompatActivity
 
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.content_emp_main
-                        , new EmpConceptListFragment()).commit();
+                .replace(R.id.content_emp_main,
+                        new EmpSubmittedConceptListFragment()).commit();
+    }
+
+    @Override
+    public void onSubmittedConceptListFragmentInteraction(Concept concept) {
+        EmpConceptReviewFragment.setConceptUnderReview(concept);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_emp_main,
+                        new EmpConceptReviewFragment()).commit();
+
+    }
+
+    @Override
+    public void onApprovedConceptListFragmentInteraction(Concept concept) {
+        if(concept.isSticky()){
+            services.makeConceptSlippery(concept);
+        }else{
+            services.makeConceptSticky(concept);
+        }
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_emp_main,
+                        new EmpApprovedConceptListFragment()).commit();
     }
 }
