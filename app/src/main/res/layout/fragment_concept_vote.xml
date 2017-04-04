@@ -5,77 +5,118 @@
     android:id="@+id/activity_concept_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#0d2f4c"
-    tools:context="webdevils.webdevilsapp.ConceptVoteFragment">
+    tools:context="webdevils.webdevilsapp.ConceptVoteFragment"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="25dp">
 
     <TextView
         android:id="@+id/txtBody"
-        android:layout_width="wrap_content"
-        android:layout_height="400dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/txtTitle"
-        android:layout_marginTop="16dp"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/spinnerVote"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
         android:background="@android:color/white"
         android:text="Body"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        tools:layout_conversion_absoluteHeight="400dp"
+        tools:layout_conversion_absoluteWidth="379dp"
+        tools:layout_conversion_absoluteX="16dp"
+        tools:layout_conversion_absoluteY="104dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="76dp"
+        android:layout_below="@+id/txtTitle" />
 
     <TextView
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/txtVoteScore"
-        android:layout_marginTop="14dp"
         android:text="Title"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textColor="?attr/colorButtonNormal"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        tools:layout_conversion_absoluteHeight="28dp"
+        tools:layout_conversion_absoluteWidth="379dp"
+        tools:layout_conversion_absoluteX="16dp"
+        tools:layout_conversion_absoluteY="60dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="60dp"
+        android:layout_below="@+id/closeButton"
+        android:layout_marginTop="21dp"
+        android:layout_alignEnd="@+id/txtBody"
+        android:layout_alignStart="@+id/txtBody" />
 
     <TextView
         android:id="@+id/txtVoteScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/closeButton"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="27dp"
         android:text="Score: "
         android:textColor="?attr/colorButtonNormal"
-        android:textSize="16sp" />
-
-    <Button
-        android:text="UpVote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:id="@+id/btnUpVote"
-        android:layout_marginBottom="15dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/closeButton"
-        android:layout_marginStart="62dp" />
-
-    <Button
-        android:text="DownVote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:id="@+id/btnDownVote"
-        android:layout_marginStart="38dp"
-        android:layout_alignBaseline="@+id/btnUpVote"
-        android:layout_alignBottom="@+id/btnUpVote"
-        android:layout_toEndOf="@+id/btnUpVote" />
+        android:textSize="16sp"
+        tools:layout_conversion_absoluteHeight="18dp"
+        tools:layout_conversion_absoluteWidth="49dp"
+        tools:layout_conversion_absoluteX="318dp"
+        tools:layout_conversion_absoluteY="27dp"
+        tools:layout_editor_absoluteX="318dp"
+        tools:layout_editor_absoluteY="27dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/commentText" />
 
     <ImageButton
         android:id="@+id/closeButton"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/txtTitle"
+        android:layout_alignTop="@+id/txtVoteScore"
         android:background="@android:color/transparent"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+        tools:layout_conversion_absoluteHeight="30dp"
+        tools:layout_conversion_absoluteWidth="30dp"
+        tools:layout_conversion_absoluteX="16dp"
+        tools:layout_conversion_absoluteY="16dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Spinner
+        android:id="@+id/spinnerVote"
+        style="@android:style/Widget.Holo.Spinner"
+        android:layout_width="288dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="25dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:popupBackground="@android:drawable/spinner_dropdown_background"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="515dp"
+        android:layout_above="@+id/commentText"
+        android:layout_centerHorizontal="true" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/commentText"
+        android:layout_width="287dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/submitComment"
+        android:background="#FFFFFF"
+        android:hint="Enter comment"
+        tools:layout_conversion_absoluteHeight="21dp"
+        tools:layout_conversion_absoluteWidth="291dp"
+        tools:layout_conversion_absoluteX="16dp"
+        tools:layout_conversion_absoluteY="621dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="593dp"
+        android:layout_alignStart="@+id/txtBody"
+        android:layout_alignBottom="@+id/submitComment" />
+
+    <Button
+        android:id="@+id/submitComment"
+        android:layout_width="88dp"
+        android:layout_height="54dp"
+        android:layout_alignEnd="@+id/txtBody"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:text="Submit"
+        android:textColor="#000000"
+        android:textSize="12sp" />
+
 </RelativeLayout>
