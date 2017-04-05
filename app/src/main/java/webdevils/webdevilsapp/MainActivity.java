@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity
         fragObj.setArguments(bundle);
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
+                .addToBackStack(null)
                 .replace(R.id.content_frame, fragObj).commit();
     }
 
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity
         fragObj.setArguments(bundle);
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
+                .addToBackStack(null)
                 .replace(R.id.content_frame, fragObj).commit();
     }
 
@@ -99,7 +101,12 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            FragmentManager fm = getFragmentManager();
+            if (fm.getBackStackEntryCount() > 0) {
+                fm.popBackStackImmediate();
+            } else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -130,18 +137,22 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_landing) {
             fragmentManager.beginTransaction()
+                    .addToBackStack(null)
                     .replace(R.id.content_frame
                     , new LandingFragment()).commit();
         } else if (id == R.id.nav_my_concepts) {
             fragmentManager.beginTransaction()
+                    .addToBackStack(null)
                     .replace(R.id.content_frame
                     , new ConceptsFragment()).commit();
         } else if (id == R.id.nav_featured) {
             fragmentManager.beginTransaction()
+                    .addToBackStack(null)
                     .replace(R.id.content_frame
                             , new FeaturedFragment()).commit();
         } else if (id == R.id.nav_submit_concept) {
             fragmentManager.beginTransaction()
+                    .addToBackStack(null)
                     .replace(R.id.content_frame
                     , new SubmitConceptFragment()).commit();
         }
