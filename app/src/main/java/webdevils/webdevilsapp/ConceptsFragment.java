@@ -123,6 +123,7 @@ public class ConceptsFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
+                        .addToBackStack(null)
                         .replace(R.id.content_frame, new SubmitConceptFragment()).commit();
             }
         });

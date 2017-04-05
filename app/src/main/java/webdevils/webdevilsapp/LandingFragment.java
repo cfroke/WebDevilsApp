@@ -34,6 +34,7 @@ public class LandingFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
+                        .addToBackStack(null)
                         .replace(R.id.content_frame, new ConceptsFragment()).commit();
             }
         });
@@ -42,6 +43,7 @@ public class LandingFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
+                        .addToBackStack(null)
                         .replace(R.id.content_frame, new FeaturedFragment()).commit();
             }
         });
@@ -50,6 +52,7 @@ public class LandingFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
+                        .addToBackStack(null)
                         .replace(R.id.content_frame, new FeedbackFragment()).commit();
             }
         });
