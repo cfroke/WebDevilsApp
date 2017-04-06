@@ -19,6 +19,8 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,11 +45,20 @@ public class FeaturedFragment extends Fragment {
         final ListView listView1 = (ListView) getView().findViewById(R.id.list);
 
         LinkedList<Concept> conceptList = services.getApprovedConcepts();
-        LinkedList<Concept> stickiedList = services.getApprovedConcepts();
+        //LinkedList<Concept> stickiedList = services.getApprovedConcepts();
         List<Map<String, String>> titleList = new ArrayList<>();
 
+        // sort concepts by vote count descending
+        Collections.sort(conceptList, new Comparator<Concept>(){
+            public int compare(Concept c1, Concept c2){
+                if(c1.getUpvoteStatus() == c2.getUpvoteStatus())
+                    return 0;
+                return c1.getUpvoteStatus() > c2.getUpvoteStatus() ? -1 : 1;
+            }
+        });
+
         // gets stickied concepts first and loads them
-        for (Concept concept : stickiedList) {
+        for (Concept concept : conceptList) {
             Map<String, String> conceptData = new HashMap<>(2);
             if (concept.isSticky()) {
                 conceptData.put("title", concept.getTitle().toUpperCase());
@@ -101,7 +112,7 @@ public class FeaturedFragment extends Fragment {
                 TextView sticky = (TextView) view.findViewById(R.id.text04); // hidden asset
                 if (sticky.getText().toString() == "true") {
                     TextView textView = (TextView) view.findViewById(R.id.text01);
-                    Drawable myImage = getResources().getDrawable(R.mipmap.note_pinned);
+                    Drawable myImage = getResources().getDrawable(R.mipmap.feature_pin);
                     myImage.setBounds(0,0,textView.getLineHeight(),textView.getLineHeight());
                     textView.setCompoundDrawables(myImage, null, null, null);
                 }
@@ -135,4 +146,5 @@ public class FeaturedFragment extends Fragment {
         });
 
     }
+
 }
