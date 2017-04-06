@@ -135,6 +135,7 @@ public class SubmitConceptFragment extends Fragment {
                     concept = services.createConcept(user, conceptTitle, conceptDesc, conceptType, collaboratorName);
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction()
+                            .addToBackStack(null)
                             .replace(R.id.content_frame, new ConceptsFragment()).commit();
                 }
 
