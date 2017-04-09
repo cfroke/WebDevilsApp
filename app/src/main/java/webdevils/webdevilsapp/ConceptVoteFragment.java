@@ -6,8 +6,10 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -23,18 +25,31 @@ public class ConceptVoteFragment extends Fragment {
         String title = this.getArguments().getString("title");
         View myInflatedView = inflater.inflate(R.layout.fragment_concept_vote, container,false);
         thisConcept = services.getConceptByTitle(title);
+
         TextView cTitle = (TextView) myInflatedView.findViewById(R.id.txtTitle);
         TextView cDescription = (TextView) myInflatedView.findViewById(R.id.txtBody);
         cScore = (TextView) myInflatedView.findViewById(R.id.txtVoteScore);
         cTitle.setText(thisConcept.getTitle());
         cDescription.setText(thisConcept.getDescription());
         cScore.setText("Score: " + String.valueOf(thisConcept.getUpvoteStatus()));
+
         return myInflatedView;
     }
 
     @Override
     public void onStart() {
         super.onStart();
+
+        Spinner dropdown = (Spinner) getView().findViewById(R.id.spinnerVote);
+        String[] items = new String[]{"Rate This Concept!",
+                "★",
+                "★★",
+                "★★★",
+                "★★★★",
+                "★★★★★"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
 
         cScore.setText("Score: " + String.valueOf(thisConcept.getUpvoteStatus()));
 
