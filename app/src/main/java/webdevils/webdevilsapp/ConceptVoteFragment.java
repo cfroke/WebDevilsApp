@@ -38,27 +38,31 @@ public class ConceptVoteFragment extends Fragment {
 
         cScore.setText("Score: " + String.valueOf(thisConcept.getUpvoteStatus()));
 
-        Button btnDownVote = (Button) getView().findViewById(R.id.btnDownVote);
-        btnDownVote.setOnClickListener(new View.OnClickListener() {
+        Button submitComment = (Button) getView().findViewById(R.id.submitComment);
+        submitComment.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                services.downVoteConcept(thisConcept);
-                cScore.setText("Score: " + String.valueOf(thisConcept.getUpvoteStatus()));
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.content_frame, new CommentSubmission()).commit();
+
             }
         });
 
-        Button btnUpVote = (Button) getView().findViewById(R.id.btnUpVote);
+        /*Button btnUpVote = (Button) getView().findViewById(R.id.btnUpVote);
         btnUpVote.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 services.upVoteConcept(thisConcept);
                 cScore.setText("Score: " + String.valueOf(thisConcept.getUpvoteStatus()));
             }
-        });
+        });*/
 
         ImageButton btnClose = (ImageButton) getView().findViewById(R.id.closeButton);
         btnClose.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
+                        .addToBackStack(null)
                         .replace(R.id.content_frame, new FeaturedFragment()).commit();
             }
         });

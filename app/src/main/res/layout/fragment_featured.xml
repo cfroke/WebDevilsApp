@@ -46,6 +46,7 @@
         android:divider="#848482"
         android:dividerHeight="12sp"
         android:listSelector="@drawable/list_selector"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        />
 
 </RelativeLayout>

@@ -35,6 +35,22 @@ public class TestData {
         Concept bobConcept = services.createConcept(bob, "New Investment Product", "I think it would be awesome to have " +
                 "this awesome investment product available to trade.", product, "");
         services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
+        services.upVoteConcept(bobConcept);
 
         Concept bobConcept2 = services.createConcept(bob,"Later hours","It would be great if the bank was open later on " +
                 "saturdays.",service, "jane");
@@ -42,6 +58,7 @@ public class TestData {
         services.makeConceptSticky(bobConcept2);
         services.saveConcept(bobConcept2);
         services.upVoteConcept(bobConcept2);
+
 
         Concept bobConcept3 = services.createConcept(bob,"Make Money on Suggestions","It would be great we got paid for our suggestions.",service, "");
         bobConcept3.setStatusToRejected();
