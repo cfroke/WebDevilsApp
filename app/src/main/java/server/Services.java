@@ -3,6 +3,8 @@
  */
 package server;
 
+import android.content.Context;
+
 import java.io.Serializable;
 import java.util.LinkedList;
 
@@ -118,6 +120,14 @@ public class Services implements IServices, Serializable {
 	public void saveConcept(Concept concept){
 		storage.saveConcept(concept);
 		System.out.print("***** Concept Saved on Server *****");
+	}
+
+	public void giveConceptStars(Concept concept, int numberOfStars){
+		for(int i = 0 ; i < numberOfStars ; i++){
+			upVoteConcept(concept);
+		}
+		storage.saveConcept(concept);
+		System.out.println( numberOfStars + " added to concept and saved on server ... ");
 	}
 	
 	public void upVoteConcept(Concept concept){

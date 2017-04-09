@@ -3,6 +3,7 @@ package webdevils.webdevilsapp;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ public class ConceptVoteFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        Spinner dropdown = (Spinner) getView().findViewById(R.id.spinnerVote);
+        final Spinner stars = (Spinner) getView().findViewById(R.id.spinnerVote);
         String[] items = new String[]{"Rate This Concept!",
                 "★",
                 "★★",
@@ -49,13 +50,45 @@ public class ConceptVoteFragment extends Fragment {
                 "★★★★★"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setAdapter(adapter);
+        stars.setAdapter(adapter);
 
         cScore.setText("Score: " + String.valueOf(thisConcept.getUpvoteStatus()));
 
         Button submitComment = (Button) getView().findViewById(R.id.submitComment);
         submitComment.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                if (stars.getSelectedItem().toString().equals("Rate This Concept!")) {
+
+                    //No rating
+
+                } else if(stars.getSelectedItem().toString().equals("★")){
+
+                    services.giveConceptStars( thisConcept , 1 );
+
+                } else if(stars.getSelectedItem().toString().equals("★★")){
+
+                    services.giveConceptStars( thisConcept , 2 );
+
+                } else if(stars.getSelectedItem().toString().equals("★★★")){
+
+                    services.giveConceptStars( thisConcept , 3 );
+
+                } else if(stars.getSelectedItem().toString().equals("★★★★")){
+
+                    services.giveConceptStars( thisConcept , 4 );
+
+                } else if(stars.getSelectedItem().toString().equals("★★★★★")){
+
+                    services.giveConceptStars( thisConcept , 5 );
+
+                } else {
+                    System.out.print("What the! ... huh?");
+                }
+
+                //// Add stuff for comment submission stuff here ////
+
+                //Comment submission fragment currently has blank view 4/9/2017
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                         .addToBackStack(null)
@@ -63,14 +96,6 @@ public class ConceptVoteFragment extends Fragment {
 
             }
         });
-
-        /*Button btnUpVote = (Button) getView().findViewById(R.id.btnUpVote);
-        btnUpVote.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                services.upVoteConcept(thisConcept);
-                cScore.setText("Score: " + String.valueOf(thisConcept.getUpvoteStatus()));
-            }
-        });*/
 
         ImageButton btnClose = (ImageButton) getView().findViewById(R.id.closeButton);
         btnClose.setOnClickListener(new View.OnClickListener() {

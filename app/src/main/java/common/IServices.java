@@ -20,6 +20,8 @@ public interface IServices { //extends Remote{
 
 	void saveConcept(Concept concept);
 
+	void giveConceptStars(Concept concept, int numberOfStars);
+
 	void upVoteConcept(Concept concept);
 
 	void downVoteConcept(Concept concept);
