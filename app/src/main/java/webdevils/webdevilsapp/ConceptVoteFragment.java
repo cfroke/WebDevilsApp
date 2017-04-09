@@ -42,7 +42,7 @@ public class ConceptVoteFragment extends Fragment {
         super.onStart();
 
         final Spinner stars = (Spinner) getView().findViewById(R.id.spinnerVote);
-        String[] items = new String[]{"Rate This Concept!",
+        String[] items = new String[]{"Give Concept Stars!",
                 "★",
                 "★★",
                 "★★★",
@@ -58,9 +58,9 @@ public class ConceptVoteFragment extends Fragment {
         submitComment.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if (stars.getSelectedItem().toString().equals("Rate This Concept!")) {
+                if (stars.getSelectedItem().toString().equals("Give Concept Stars!")) {
 
-                    //No rating
+                    //No Stars =(
 
                 } else if(stars.getSelectedItem().toString().equals("★")){
 
