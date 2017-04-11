@@ -43,10 +43,10 @@
         tools:layout_conversion_absoluteY="60dp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="60dp"
-        android:layout_below="@+id/closeButton"
-        android:layout_marginTop="21dp"
-        android:layout_alignEnd="@+id/txtBody"
-        android:layout_alignStart="@+id/txtBody" />
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/txtBody"
+        android:layout_marginTop="7dp"
+        android:layout_toStartOf="@+id/txtVoteScore" />
 
     <TextView
         android:id="@+id/txtVoteScore"
@@ -61,62 +61,63 @@
         tools:layout_conversion_absoluteY="27dp"
         tools:layout_editor_absoluteX="318dp"
         tools:layout_editor_absoluteY="27dp"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/commentText" />
-
-    <ImageButton
-        android:id="@+id/closeButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignStart="@+id/txtTitle"
-        android:layout_alignTop="@+id/txtVoteScore"
-        android:background="@android:color/transparent"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
-        tools:layout_conversion_absoluteHeight="30dp"
-        tools:layout_conversion_absoluteWidth="30dp"
-        tools:layout_conversion_absoluteX="16dp"
-        tools:layout_conversion_absoluteY="16dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_alignBaseline="@+id/txtTitle"
+        android:layout_alignBottom="@+id/txtTitle"
+        android:layout_toEndOf="@+id/spinnerVote"
+        android:layout_marginStart="7dp" />
 
     <Spinner
         android:id="@+id/spinnerVote"
         style="@android:style/Widget.Holo.Spinner"
         android:layout_width="288dp"
         android:layout_height="36dp"
-        android:layout_marginBottom="25dp"
+        android:layout_above="@+id/commentText"
+        android:layout_alignStart="@+id/txtBody"
+        android:layout_marginBottom="11dp"
         android:background="@android:drawable/btn_dropdown"
         android:popupBackground="@android:drawable/spinner_dropdown_background"
         tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="515dp"
-        android:layout_above="@+id/commentText"
-        android:layout_centerHorizontal="true" />
+        tools:layout_editor_absoluteY="515dp" />
+
+    <Button
+        android:id="@+id/btnUpVote"
+        style="@android:style/Widget.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_alignBottom="@+id/spinnerVote"
+        android:layout_below="@+id/txtBody"
+        android:layout_toEndOf="@+id/spinnerVote"
+        android:text="Vote"
+        android:textColor="#000000"
+        android:textSize="14sp" />
 
     <MultiAutoCompleteTextView
         android:id="@+id/commentText"
         android:layout_width="287dp"
         android:layout_height="50dp"
-        android:layout_alignTop="@+id/submitComment"
+        android:layout_marginBottom="10dp"
         android:background="#FFFFFF"
         android:hint="Enter comment"
+        android:imeOptions="actionDone"
         tools:layout_conversion_absoluteHeight="21dp"
         tools:layout_conversion_absoluteWidth="291dp"
         tools:layout_conversion_absoluteX="16dp"
         tools:layout_conversion_absoluteY="621dp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="593dp"
-        android:layout_alignStart="@+id/txtBody"
-        android:layout_alignBottom="@+id/submitComment" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/spinnerVote"
+        android:layout_toStartOf="@+id/commentSubmit" />
 
     <Button
-        android:id="@+id/submitComment"
-        android:layout_width="88dp"
-        android:layout_height="54dp"
+        android:id="@+id/commentSubmit"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/commentText"
         android:layout_alignEnd="@+id/txtBody"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:text="Submit"
-        android:textColor="#000000"
-        android:textSize="12sp" />
+        android:layout_alignTop="@+id/commentText"
+        android:background="@drawable/ic_menu_send"
+        android:backgroundTint="#FFFFFF" />
+
 
 </RelativeLayout>

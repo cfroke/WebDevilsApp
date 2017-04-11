@@ -54,8 +54,8 @@ public class ConceptVoteFragment extends Fragment {
 
         cScore.setText("Score: " + String.valueOf(thisConcept.getUpvoteStatus()));
 
-        Button submitComment = (Button) getView().findViewById(R.id.submitComment);
-        submitComment.setOnClickListener(new View.OnClickListener() {
+        Button btnUpVote = (Button) getView().findViewById(R.id.btnUpVote);
+        btnUpVote.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 if (stars.getSelectedItem().toString().equals("Give Concept Stars!")) {
@@ -86,19 +86,16 @@ public class ConceptVoteFragment extends Fragment {
                     System.out.print("What the! ... huh?");
                 }
 
-                //// Add stuff for comment submission stuff here ////
-
-                //Comment submission fragment currently has blank view 4/9/2017
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                         .addToBackStack(null)
-                        .replace(R.id.content_frame, new CommentSubmission()).commit();
+                        .replace(R.id.content_frame, new FeaturedFragment()).commit();
 
             }
         });
 
-        ImageButton btnClose = (ImageButton) getView().findViewById(R.id.closeButton);
-        btnClose.setOnClickListener(new View.OnClickListener() {
+        Button commentSubmit = (Button) getView().findViewById(R.id.commentSubmit);
+        commentSubmit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
