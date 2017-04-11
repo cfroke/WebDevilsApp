@@ -86,9 +86,6 @@ public class ConceptVoteFragment extends Fragment {
                     System.out.print("What the! ... huh?");
                 }
 
-                //// Add stuff for comment submission stuff here ////
-
-                //Comment submission fragment currently has blank view 4/9/2017
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                         .addToBackStack(null)
@@ -103,7 +100,7 @@ public class ConceptVoteFragment extends Fragment {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                         .addToBackStack(null)
-                        .replace(R.id.content_frame, new CommentSubmission()).commit();
+                        .replace(R.id.content_frame, new FeaturedFragment()).commit();
             }
         });
     }
