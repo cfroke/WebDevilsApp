@@ -7,11 +7,13 @@ import android.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
+
+import java.util.LinkedList;
 
 import common.Concept;
-import common.User;
 import server.Services;
 
 /**
@@ -19,6 +21,7 @@ import server.Services;
  */
 public class CommentSubmission extends Fragment {
     Concept concept;
+    Services services = new Services();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -29,7 +32,22 @@ public class CommentSubmission extends Fragment {
     public void onStart() {
         super.onStart();
         // Show list of comments
+        /////////////////////Begin Load of Comments to comment page///////////////////////////////////
+        ListView listView1 = (ListView) getView().findViewById(R.id.commentList);
 
+        /*LinkedList<Concept> allComments = concept.getComments(concept);
+        LinkedList<String> commentList = new LinkedList<String>();
+        for( Concept concept : allComments ) {
+            commentList.add(concept.getComments());
+        }*/
+
+        String[] listComments = new String[] { "bob: I like the idea you have, nice thinking!!",
+                "jane: I really like the direction you went!!", "casey: Glad you chose that idea, hope they use it!!" };
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, listComments);
+        listView1.setAdapter(adapter);
+        /////////////////////End Load of Comments to comment page/////////////////////////////////////
 
         ImageButton btnClose = (ImageButton) getView().findViewById(R.id.closeButton);
         btnClose.setOnClickListener(new View.OnClickListener() {

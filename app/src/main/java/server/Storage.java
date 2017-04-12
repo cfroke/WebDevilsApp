@@ -28,6 +28,7 @@ public class Storage implements Serializable {
 	
 	private static LinkedList<Concept>	conceptList	= new LinkedList<Concept>();
 	private static LinkedList<User>		userList	= new LinkedList<User>();
+	private static LinkedList<Concept>  userComments = new LinkedList<Concept>();
 
 	private Storage() {
 	}
@@ -37,7 +38,7 @@ public class Storage implements Serializable {
 		restoreLists();
 		return singleton;
 	}
-	
+
 	public boolean addUser(User USER){
 		for(User user : userList){
 			if(user.getUserName().equals(USER.getUserName())){
@@ -135,6 +136,14 @@ public class Storage implements Serializable {
         }
         return result;
     }
+
+	public static LinkedList<Concept> getComments() {
+		LinkedList<Concept> result = new LinkedList<Concept>();
+		for(Concept concept : userComments){
+			result.add(concept);
+		}
+		return result;
+	}
 	
 	public static boolean saveLists(){
 

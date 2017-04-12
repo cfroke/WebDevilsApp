@@ -1,32 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#0d2f4c"
-    tools:context="webdevils.webdevilsapp.CommentSubmission">
+    android:background="@drawable/list_selector"
+    tools:layout_editor_absoluteY="25dp"
+    tools:layout_editor_absoluteX="0dp">
 
     <ImageButton
         android:id="@+id/closeButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@color/colorPrimaryDark"
+        android:tint="#FFFFFF"
+        android:visibility="visible"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="378dp"
+        android:layout_height="33dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:background="@android:color/transparent"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+        android:layout_toEndOf="@+id/closeButton"
+        android:background="@color/colorPrimaryDark"
+        android:paddingTop="5dp"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="-1dp" />
 
     <ListView
         android:id="@+id/commentList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/closeButton"
-        android:layout_marginTop="19dp" />
+        android:layout_width="411dp"
+        android:layout_height="659dp"
+        android:divider="#848482"
+        android:dividerHeight="12sp"
+        android:headerDividersEnabled="true"
+        android:listSelector="@drawable/gradient_bg"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="32dp"
+        android:layout_below="@+id/closeButton" />
 
 
 </RelativeLayout>

@@ -71,9 +71,14 @@ public class Services implements IServices, Serializable {
 		System.out.println("Sent approved concept list to client");
 		return Storage.getAllConcepts();
 	}
+
+	public static LinkedList<Concept> getComments(){
+		System.out.println("Sent comments to the client");
+		return Storage.getComments();
+	}
 	
-	public Concept createConcept(User user, String title, String description, String type, String collaborator){
-		Concept result = new Concept(user, title, description, type, collaborator);
+	public Concept createConcept(User user, String title, String description, String type, String collaborator, String comments){
+		Concept result = new Concept(user, title, description, type, collaborator, comments);
 		storage.addConcept(result);
 		System.out.println("***** Concept created *****");
 		return result;
@@ -105,6 +110,20 @@ public class Services implements IServices, Serializable {
 			return null;
 		}
 	}
+
+	/*public Concept makeComment(Concept concept) {
+        Concept listed = new Concept(comments);
+        storage.getAllComments(listed);
+        System.out.println("////////Comments list created////////////");
+        return listed;
+    }*/
+
+	/*public Concept makeComment(Concept concept){
+        storage.saveConcept(concept);
+        System.out.println("///////// Comments have been loaded //////////");
+        return null;
+    }*/
+
 	public void makeConceptSticky(Concept concept){
 		concept.makeSticky();
 		storage.saveConcept(concept);
@@ -168,5 +187,8 @@ public class Services implements IServices, Serializable {
 		LinkedList<User> users = storage.getAllUsers();
 		return users;
 	}
-	
+
+    public Concept makeComment(String s) {
+        return null;
+    }
 }

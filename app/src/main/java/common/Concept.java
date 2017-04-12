@@ -26,11 +26,12 @@ public class Concept implements Serializable {
 	private String	EMPLOYEE_VIEWED_STATUS = "Employee Viewed";
 	private String	EMPLOYEE_REVIEWED_STATUS = "Employee Reviewed";
 	private boolean sticky;
+    private String comments;
 
 	/**
 	 *  Instantiate a new concept
 	 */
-	public Concept(User user, String title, String description, String type, String collaborator) {
+	public Concept(User user, String title, String description, String type, String collaborator, String comments) {
 		this.userThatCreatedThisConcept = user;
 		this.title = title;
 		this.description = description;
@@ -38,6 +39,7 @@ public class Concept implements Serializable {
 		this.collaborator = collaborator;
 		this.Status = SUBMITTED_STATUS;
 		this.sticky = false;
+        this.comments = comments;
 	}
 
 	public boolean isSubmitted(){
@@ -87,6 +89,10 @@ public class Concept implements Serializable {
     public String getTitle() {
 		return title;
 	}
+
+	public String getComments() {
+        return comments;
+    }
 
     public String getType() {
 		return type;

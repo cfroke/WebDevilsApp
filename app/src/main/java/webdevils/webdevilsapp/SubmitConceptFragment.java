@@ -28,6 +28,7 @@ public class SubmitConceptFragment extends Fragment {
     private String conceptDesc = "";
     private String conceptType = "";
     private String collaboratorName = "";
+    private String commented = "";
     Concept concept;
 
     @Override
@@ -132,7 +133,7 @@ public class SubmitConceptFragment extends Fragment {
                     //Gets user stored in MainActivity
                     final User user = ((MainActivity)getActivity()).getUser();
                     //Submits concept to Storage
-                    concept = services.createConcept(user, conceptTitle, conceptDesc, conceptType, collaboratorName);
+                    concept = services.createConcept(user, conceptTitle, conceptDesc, conceptType, collaboratorName, commented);
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction()
                             .addToBackStack(null)
