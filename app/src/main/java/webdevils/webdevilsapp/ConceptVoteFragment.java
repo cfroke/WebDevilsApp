@@ -100,7 +100,7 @@ public class ConceptVoteFragment extends Fragment {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                         .addToBackStack(null)
-                        .replace(R.id.content_frame, new FeaturedFragment()).commit();
+                        .replace(R.id.content_frame, new CommentSubmission()).commit();
             }
         });
     }

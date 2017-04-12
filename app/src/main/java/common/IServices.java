@@ -12,7 +12,7 @@ public interface IServices { //extends Remote{
 
 	Concept getConceptByTitle(String title);
 
-	Concept createConcept(User user, String title, String description, String type, String collaborator);// throws RemoteException;
+	Concept createConcept(User user, String title, String description, String type, String collaborator, String comments);// throws RemoteException;
 
 	User createMemberUser(String name, String password);// throws RemoteException;
 
