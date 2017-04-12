@@ -34,20 +34,6 @@ public class ViewEditFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-       /* Button btnDelete = (Button) getView().findViewById(R.id.btnDelete);
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                services.deleteConcept(thisConcept);
-            }
-        });
-
-        Button btnEdit = (Button) getView().findViewById(R.id.btnEdit);
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                services.editConcept(thisConcept);
-            }
-        });  */
-
         ImageButton btnClose = (ImageButton) getView().findViewById(R.id.closeButton);
         btnClose.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

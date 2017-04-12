@@ -54,22 +54,22 @@ public class Services implements IServices, Serializable {
 
     public static LinkedList<Concept> getUnreviewedConcepts(){
         System.out.println("Sent unreviewed concept list to client");
-        return storage.getUnreviewedConcepts();
+        return Storage.getUnreviewedConcepts();
     }
 
     public static LinkedList<Concept> getApprovedConcepts(){
 		System.out.println("Sent approved concept list to client");
-		return storage.getApprovedConcepts();
+		return Storage.getApprovedConcepts();
 	}
 
 	public static LinkedList<Concept> getRejectedConcepts(){
 		System.out.println("Sent rejected concept list to client");
-		return storage.getRejectedConcepts();
+		return Storage.getRejectedConcepts();
 	}
 
 	public static LinkedList<Concept> getAllConcepts(){
 		System.out.println("Sent approved concept list to client");
-		return storage.getAllConcepts();
+		return Storage.getAllConcepts();
 	}
 	
 	public Concept createConcept(User user, String title, String description, String type, String collaborator){
@@ -135,13 +135,13 @@ public class Services implements IServices, Serializable {
 		storage.saveConcept(concept);
 		System.out.println("Concept Up-Voted and saved on server ... ");
 	}
-	
+
 	public void downVoteConcept(Concept concept){
 		concept.updateUpvoteStatus(false);
 		storage.saveConcept(concept);
 		System.out.println("Concept Down-Voted and saved on server ... ");
 	}
-	
+
 	public void provideConceptFeedback(Concept concept, String feedback){
 		concept.setFeedback(feedback);
         storage.saveConcept(concept);
