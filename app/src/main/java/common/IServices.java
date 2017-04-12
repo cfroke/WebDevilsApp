@@ -30,6 +30,4 @@ public interface IServices { //extends Remote{
 
 	String viewConceptStatus(Concept concept);
 
-	boolean startCollaboration(User A, User B, String type);
-
 }
