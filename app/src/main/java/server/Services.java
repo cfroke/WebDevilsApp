@@ -153,11 +153,20 @@ public class Services implements IServices, Serializable {
 		System.out.println("Service in development ... Sorry =P");
 		return null;
 	}
-	
-	public boolean startCollaboration(User A, User B, String type){
-		//TODO user to user interaction in the form of text, video, or voice chat
-		System.out.println("Service in development ... Sorry =P");
-		return false;
+
+	// used to calculate the score for a user, by adding all votes on their concepts
+	public static int getUserScore(User user){
+		int score = 0;
+		LinkedList<Concept> concepts = storage.getConceptsByUserName(user.getUserName());
+		for (Concept concept : concepts) {
+			score =+ concept.getUpvoteStatus();
+		}
+		return score;
+	}
+
+	public static LinkedList<User> getAllUsers() {
+		LinkedList<User> users = storage.getAllUsers();
+		return users;
 	}
 	
 }

@@ -70,15 +70,6 @@ public class Storage implements Serializable {
 		return true;
 	}
 	
-	public boolean updateUser(User USER){
-		for(User user : userList){
-			if(user.getUserName().equals(USER.getUserName())){
-				user = USER;
-			}
-		}
-		return saveLists();
-	}
-	
 	public boolean saveConcept(Concept CONCEPT){
 		for(Concept concept : conceptList){
 			if( concept.getDescription().equals(CONCEPT.getDescription()) ){
@@ -181,6 +172,10 @@ public class Storage implements Serializable {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public LinkedList<User> getAllUsers(){
+		return userList;
 	}
 
 }
