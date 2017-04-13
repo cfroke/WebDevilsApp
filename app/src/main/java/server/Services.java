@@ -42,7 +42,7 @@ public class Services implements IServices, Serializable {
 		return null;
 	}
 	
-	public LinkedList<Concept> getConceptsByUser(User user){
+	public static LinkedList<Concept> getConceptsByUser(User user){
 		System.out.println("Sent concept list to client");
 		return storage.getConceptsByUserName(user.getUserName());
 	}
@@ -176,10 +176,18 @@ public class Services implements IServices, Serializable {
 	// used to calculate the score for a user, by adding all votes on their concepts
 	public static int getUserScore(User user){
 		int score = 0;
-		LinkedList<Concept> concepts = storage.getConceptsByUserName(user.getUserName());
+		LinkedList<Concept> concepts = getConceptsByUser(user);
 		for (Concept concept : concepts) {
-			score =+ concept.getUpvoteStatus();
+			score = score + concept.getUpvoteStatus();
 		}
+		// gets scores for collaborated concepts and adds them to overall score
+		LinkedList<Concept> allConcepts = getApprovedConcepts();
+		for (Concept collab : allConcepts) {
+			if (collab.getCollaborator().equals(user.getUserName())){
+				score = score + collab.getUpvoteStatus();
+			}
+		}
+
 		return score;
 	}
 
