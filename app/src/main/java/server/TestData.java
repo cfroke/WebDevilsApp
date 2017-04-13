@@ -37,7 +37,6 @@ public class TestData {
         //Bob test data
         Concept bobConcept = services.createConcept(bob, "New Investment Product", "I think it would be awesome to have " +
                 "this awesome investment product available to trade.", product, "", "");
-        services.giveConceptStars(bobConcept, 10);
 
         Concept bobConcept2 = services.createConcept(bob,"Later hours","It would be great if the bank was open later on " +
                 "saturdays.",service, "jane", "");
@@ -55,7 +54,6 @@ public class TestData {
         //Jane test data
         Concept janeConcept = services.createConcept(jane,"Mortgage Rates","I would love to get a mortgage through you, but " +
                 "xyz competitor is offering lower rates",improvement, "bob", "");
-        services.giveConceptStars(janeConcept, 3);
 
         Concept janeConcept2 = services.createConcept(jane,"Insurance Product","I think it would be fantastic to have this " +
                 "insurance product available for purchase.",product, "", "");

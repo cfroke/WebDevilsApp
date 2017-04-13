@@ -8,8 +8,6 @@ public interface IServices { //extends Remote{
 
 	User validateUser(String userName, String password);
 
-	LinkedList<Concept> getConceptsByUser(User user);
-
 	Concept getConceptByTitle(String title);
 
 	Concept createConcept(User user, String title, String description, String type, String collaborator, String comments);// throws RemoteException;
