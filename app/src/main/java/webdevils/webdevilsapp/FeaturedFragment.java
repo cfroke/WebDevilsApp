@@ -30,7 +30,6 @@ import common.Concept;
 import server.Services;
 
 public class FeaturedFragment extends Fragment {
-    Services services = new Services();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,7 +43,7 @@ public class FeaturedFragment extends Fragment {
         /////////////////Begin Load of Featured(approved) Titles to Featured Concepts///////////
         final ListView listView1 = (ListView) getView().findViewById(R.id.list);
 
-        LinkedList<Concept> conceptList = services.getApprovedConcepts();
+        LinkedList<Concept> conceptList = Services.getApprovedConcepts();
         //LinkedList<Concept> stickiedList = services.getApprovedConcepts();
         List<Map<String, String>> titleList = new ArrayList<>();
 

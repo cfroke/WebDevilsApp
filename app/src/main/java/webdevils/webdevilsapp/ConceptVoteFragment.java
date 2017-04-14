@@ -3,13 +3,11 @@ package webdevils.webdevilsapp;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -20,7 +18,7 @@ import server.Services;
 public class ConceptVoteFragment extends Fragment {
     private Concept thisConcept;
     private TextView cScore;
-    Services services = new Services();
+    private final Services services = new Services();
     
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         String title = this.getArguments().getString("title");
@@ -103,12 +101,6 @@ public class ConceptVoteFragment extends Fragment {
                         .replace(R.id.content_frame, new CommentSubmission()).commit();
             }
         });
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
     }
 
 }

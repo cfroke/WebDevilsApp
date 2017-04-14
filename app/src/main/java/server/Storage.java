@@ -26,9 +26,9 @@ public class Storage implements Serializable {
 
 	private static Storage singleton = new Storage();
 	
-	private static LinkedList<Concept>	conceptList	= new LinkedList<Concept>();
-	private static LinkedList<User>		userList	= new LinkedList<User>();
-	private static LinkedList<Concept>  userComments = new LinkedList<Concept>();
+	private static final LinkedList<Concept>	conceptList	= new LinkedList<Concept>();
+	private static final LinkedList<User>		userList	= new LinkedList<User>();
+	private static final LinkedList<Concept>  userComments = new LinkedList<Concept>();
 
 	private Storage() {
 	}
@@ -145,7 +145,7 @@ public class Storage implements Serializable {
 		return result;
 	}
 	
-	public static boolean saveLists(){
+	private static boolean saveLists(){
 
 		String fileName= "Storage.obj";
 	    FileOutputStream fos = null;
@@ -164,7 +164,7 @@ public class Storage implements Serializable {
 		}
 	}
 	
-	public static Storage restoreLists(){
+	private static Storage restoreLists(){
 
 		String fileName= "Storage.obj";
 		FileInputStream fin;

@@ -3,8 +3,6 @@
  */
 package server;
 
-import android.content.Context;
-
 import java.io.Serializable;
 import java.util.LinkedList;
 
@@ -21,7 +19,7 @@ public class Services implements IServices, Serializable {
 
 	private static final long serialVersionUID = -7875091839442836772L;
 	
-	static Storage storage;
+	private static Storage storage;
 	
 	public Services(){
 		storage = Storage.getInstance();

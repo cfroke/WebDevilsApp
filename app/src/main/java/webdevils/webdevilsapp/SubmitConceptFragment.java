@@ -3,11 +3,9 @@ package webdevils.webdevilsapp;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +15,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.ToggleButton;
 
 import common.Concept;
 import common.User;
@@ -28,8 +25,8 @@ public class SubmitConceptFragment extends Fragment {
     private String conceptDesc = "";
     private String conceptType = "";
     private String collaboratorName = "";
-    private String commented = "";
-    Concept concept;
+    private final String commented = "";
+    private Concept concept;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

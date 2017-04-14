@@ -23,7 +23,7 @@ import server.Services;
 
 
 public class LandingFragment extends Fragment {
-    User currentUser = LoginActivity.currentUser;
+    private final User currentUser = LoginActivity.currentUser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,35 +49,35 @@ public class LandingFragment extends Fragment {
         if (users.size() >= 1) {
             final TextView row1name = (TextView) getView().findViewById(R.id.TextViewTable101);
             final TextView row1score = (TextView) getView().findViewById(R.id.TextViewTable102);
-            row1name.setText("1. " + users.get(0).getUserName().toString());
+            row1name.setText("1. " + users.get(0).getUserName());
             row1score.setText(String.valueOf(Services.getUserScore(users.get(0))));
         }
 
         if (users.size() >= 2) {
             final TextView row2name = (TextView) getView().findViewById(R.id.TextViewTable201);
             final TextView row2score = (TextView) getView().findViewById(R.id.TextViewTable202);
-            row2name.setText("2. " + users.get(1).getUserName().toString());
+            row2name.setText("2. " + users.get(1).getUserName());
             row2score.setText(String.valueOf(Services.getUserScore(users.get(1))));
         }
 
         if (users.size() >= 3) {
             final TextView row3name = (TextView) getView().findViewById(R.id.TextViewTable301);
             final TextView row3score = (TextView) getView().findViewById(R.id.TextViewTable302);
-            row3name.setText("3. " + users.get(2).getUserName().toString());
+            row3name.setText("3. " + users.get(2).getUserName());
             row3score.setText(String.valueOf(Services.getUserScore(users.get(2))));
         }
 
         if (users.size() >= 4) {
             final TextView row4name = (TextView) getView().findViewById(R.id.TextViewTable401);
             final TextView row4score = (TextView) getView().findViewById(R.id.TextViewTable402);
-            row4name.setText("4. " + users.get(3).getUserName().toString());
+            row4name.setText("4. " + users.get(3).getUserName());
             row4score.setText(String.valueOf(Services.getUserScore(users.get(3))));
         }
 
         if (users.size() >= 5) {
             final TextView row5name = (TextView) getView().findViewById(R.id.TextViewTable501);
             final TextView row5score = (TextView) getView().findViewById(R.id.TextViewTable502);
-            row5name.setText("5. " + users.get(4).getUserName().toString());
+            row5name.setText("5. " + users.get(4).getUserName());
             row5score.setText(String.valueOf(Services.getUserScore(users.get(4))));
         }
 
