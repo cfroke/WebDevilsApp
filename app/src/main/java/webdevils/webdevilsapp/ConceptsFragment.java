@@ -35,8 +35,7 @@ import server.Services;
 
 
 public class ConceptsFragment extends Fragment {
-    User currentUser = LoginActivity.currentUser;
-    Services services = new Services();
+    private final User currentUser = LoginActivity.currentUser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,8 +49,8 @@ public class ConceptsFragment extends Fragment {
         /////////////////////Begin Load of Titles to MyConcepts///////////////////////////////////
         final ListView listView1 = (ListView) getView().findViewById(R.id.list);
 
-        LinkedList<Concept> userConceptList = services.getConceptsByUser(currentUser);
-        LinkedList<Concept> allConceptList = services.getAllConcepts();
+        LinkedList<Concept> userConceptList = Services.getConceptsByUser(currentUser);
+        LinkedList<Concept> allConceptList = Services.getAllConcepts();
         List<Map<String,String>> titleList = new ArrayList<>();
         // checks for and adds concepts user has submitted
         for( Concept concept : userConceptList) {

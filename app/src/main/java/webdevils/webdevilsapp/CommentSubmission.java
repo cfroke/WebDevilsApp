@@ -11,8 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
-import java.util.LinkedList;
-
 import common.Concept;
 import server.Services;
 

@@ -12,21 +12,21 @@ import java.io.Serializable;
 public class Concept implements Serializable {
 
 	private static final long serialVersionUID = -8873025068773379469L;
-	private String	description;
-	private String  title;
-	private String  type;
-	private String	collaborator;
+	private final String	description;
+	private final String  title;
+	private final String  type;
+	private final String	collaborator;
 	private int		upvoteStatus;
-	private User    userThatCreatedThisConcept;
+	private final User    userThatCreatedThisConcept;
     private String  feedback = "";
 	private String	Status;
-	private String	SUBMITTED_STATUS = "Submitted";
-	private String	APPROVED_STATUS = "Approved";
-	private String	REJECTED_STATUS = "Rejected";
-	private String	EMPLOYEE_VIEWED_STATUS = "Employee Viewed";
-	private String	EMPLOYEE_REVIEWED_STATUS = "Employee Reviewed";
+	private final String	SUBMITTED_STATUS = "Submitted";
+	private final String	APPROVED_STATUS = "Approved";
+	private final String	REJECTED_STATUS = "Rejected";
+	private final String	EMPLOYEE_VIEWED_STATUS = "Employee Viewed";
+	private final String	EMPLOYEE_REVIEWED_STATUS = "Employee Reviewed";
 	private boolean sticky;
-    private String comments;
+    private final String comments;
 
 	/**
 	 *  Instantiate a new concept

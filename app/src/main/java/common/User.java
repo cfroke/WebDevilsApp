@@ -12,12 +12,12 @@ import java.io.Serializable;
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1866235317697481634L;
-	private String name;
+	private final String name;
 	private String password;
-	private String MEMBER = "member";
-	private String EMPLOYEE ="employee";
-	private String DEVELOPER = "developer";
-	private String UNDEFINED = "undefined";
+	private final String MEMBER = "member";
+	private final String EMPLOYEE ="employee";
+	private final String DEVELOPER = "developer";
+	private final String UNDEFINED = "undefined";
 	private String userType;
 	
 	/**
@@ -34,11 +34,7 @@ public class User implements Serializable {
 	}
 	
 	public boolean tryPassword(String passwordAttempt){
-		if(password.equals(passwordAttempt)){
-			return true;
-		}else{
-			return false;
-		}
+        return password.equals(passwordAttempt);
 	}
 
 	public void setPassword(String password){
@@ -61,7 +57,7 @@ public class User implements Serializable {
 		return userType;
 	}
 
-	public void setUserType(String userType) {
+	private void setUserType(String userType) {
 		this.userType = userType;
 	}
 

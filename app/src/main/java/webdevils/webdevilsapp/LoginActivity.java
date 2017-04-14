@@ -24,12 +24,11 @@ import webdevils.webdevilsapp.Employee.EmpMainActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Services services = new Services();
+    private final Services services = new Services();
     //Initialize Test Data
     //Do Not Instantiate Anywhere Else
     TestData data = TestData.getInstance();
     public static User currentUser;
-    private String serverIP = "localhost";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,14 +87,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //checks username and password submission against list of known users and credentials
-    public boolean validateUser(String u, String p) {
+    private boolean validateUser(String u, String p) {
         currentUser = services.validateUser( u , p );
         if(currentUser != null){
-            if( currentUser.getUserName().equals(u) && currentUser.tryPassword(p)) {
-                return true;
-            }else{
-                return false;
-            }
+            return currentUser.getUserName().equals(u) && currentUser.tryPassword(p);
         }else{
             return false;
         }
@@ -103,13 +98,14 @@ public class LoginActivity extends AppCompatActivity {
 
     //Example server call
     //connect to server to get test user ...
-    class Conn extends AsyncTask<Void, Void, LoginActivity> {
+    private class Conn extends AsyncTask<Void, Void, LoginActivity> {
 
         @Override
         protected LoginActivity doInBackground(Void... params) {
             Looper.prepare();
             try {
                 CallHandler callHandler = new CallHandler();
+                String serverIP = "localhost";
                 Client client = new Client(serverIP, 8080, callHandler);
                 IServices Services = (IServices) client.getGlobal(IServices.class);
 
