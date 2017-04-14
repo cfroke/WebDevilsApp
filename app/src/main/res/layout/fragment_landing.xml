@@ -95,12 +95,11 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TableLayout
-        android:layout_width="0dp"
-        android:layout_height="145dp"
+        android:layout_width="377dp"
+        android:layout_height="230dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="29dp"
-        android:background="#ffffff"
+        android:layout_marginTop="4dp"
         android:shrinkColumns="*"
         android:stretchColumns="*"
         tools:layout_constraintTop_creator="1"
@@ -109,7 +108,30 @@
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/tableLayout2">
+        android:id="@+id/tableLayout2"
+        app:layout_constraintHorizontal_bias="0.484">
+
+        <TableRow
+            android:id="@+id/rowHeader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Top 5 Users"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Score"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+
+        </TableRow>
 
         <TableRow
             android:id="@+id/row1"
@@ -243,34 +265,52 @@
                 android:textColor="#000000" />
 
         </TableRow>
+
+        <TableRow
+            android:id="@+id/rowUserHeader"
+            android:layout_width="395dp"
+            android:layout_height="0dp"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dip"
+                android:text="Your Score"
+                android:textColor="#ffffff" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/rowUser"
+            android:layout_width="395dp"
+            android:layout_height="0dp"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <TextView
+                android:id="@+id/TextViewTable601"
+                android:layout_weight="1"
+                android:background="#dcdcdc"
+                android:gravity="left"
+                android:padding="5dip"
+                android:text="Name"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/TextViewTable602"
+                android:layout_weight="1"
+                android:background="#d3d3d3"
+                android:gravity="center"
+                android:padding="5dip"
+                android:text="Score"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+        </TableRow>
     </TableLayout>
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="161dp"
-        android:layout_height="23dp"
-        android:layout_marginLeft="16dp"
-        android:text="Top 5 Users"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
-        android:layout_marginStart="16dp" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="54dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="6dp"
-        android:text="Score"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintRight_creator="1"
-        android:layout_marginEnd="78dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="78dp" />
 
 </android.support.constraint.ConstraintLayout>
 
