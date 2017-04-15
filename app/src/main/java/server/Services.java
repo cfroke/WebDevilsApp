@@ -148,13 +148,13 @@ public class Services implements IServices, Serializable {
 	}
 	
 	public void upVoteConcept(Concept concept){
-		concept.updateUpvoteStatus(true);
+		concept.plusOneStarCount(true);
 		storage.saveConcept(concept);
 		System.out.println("Concept Up-Voted and saved on server ... ");
 	}
 
 	public void downVoteConcept(Concept concept){
-		concept.updateUpvoteStatus(false);
+		concept.plusOneStarCount(false);
 		storage.saveConcept(concept);
 		System.out.println("Concept Down-Voted and saved on server ... ");
 	}
@@ -176,13 +176,13 @@ public class Services implements IServices, Serializable {
 		int score = 0;
 		LinkedList<Concept> concepts = getConceptsByUser(user);
 		for (Concept concept : concepts) {
-			score = score + concept.getUpvoteStatus();
+			score = score + concept.getStarCount();
 		}
 		// gets scores for collaborated concepts and adds them to overall score
 		LinkedList<Concept> allConcepts = getApprovedConcepts();
 		for (Concept collab : allConcepts) {
 			if (collab.getCollaborator().equals(user.getUserName())){
-				score = score + collab.getUpvoteStatus();
+				score = score + collab.getStarCount();
 			}
 		}
 
