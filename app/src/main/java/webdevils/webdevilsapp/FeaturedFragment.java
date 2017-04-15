@@ -50,9 +50,9 @@ public class FeaturedFragment extends Fragment {
         // sort concepts by vote count descending
         Collections.sort(conceptList, new Comparator<Concept>(){
             public int compare(Concept c1, Concept c2){
-                if(c1.getUpvoteStatus() == c2.getUpvoteStatus())
+                if(c1.getStarCount() == c2.getStarCount())
                     return 0;
-                return c1.getUpvoteStatus() > c2.getUpvoteStatus() ? -1 : 1;
+                return c1.getStarCount() > c2.getStarCount() ? -1 : 1;
             }
         });
 
@@ -70,7 +70,7 @@ public class FeaturedFragment extends Fragment {
                             concept.getUserThatCreatedThisConcept().getUserName() +
                             " & " + concept.getCollaborator());
                 }
-                conceptData.put("votes", "" + concept.getUpvoteStatus());
+                conceptData.put("votes", "" + concept.getStarCount());
                 conceptData.put("sticky", "true"); // hidden asset
                 titleList.add(conceptData);
             }
@@ -92,7 +92,7 @@ public class FeaturedFragment extends Fragment {
                 }
                 // add vote count, and comment count(to-do)
                 conceptData.put("sticky", "false"); // hidden asset
-                conceptData.put("votes", "" + concept.getUpvoteStatus());
+                conceptData.put("votes", "" + concept.getStarCount());
 
                 titleList.add(conceptData);
             }
