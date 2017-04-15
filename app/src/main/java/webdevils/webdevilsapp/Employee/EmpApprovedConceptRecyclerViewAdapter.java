@@ -78,8 +78,7 @@ public class EmpApprovedConceptRecyclerViewAdapter extends
         view.animate()
                 .alpha(1.0f)
                 .translationY(2)
-                .setDuration(600)
-                .setStartDelay(pos * 100);
+                .setDuration(600);
     }
 
     @Override

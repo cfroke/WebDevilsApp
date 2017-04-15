@@ -11,6 +11,10 @@ public class TestData {
 
     private final Services services = new Services();
     private static final TestData singleton = new TestData();
+    private final String product = "Product";
+    private final String service = "Service";
+    private final String improvement = "Improvement";
+
 
     private TestData() {
         initializeTestData();
@@ -39,11 +43,9 @@ public class TestData {
         //Concept Data
 
         //Bob test data
-        String product = "Product";
         Concept bobConcept = services.createConcept(bob, "New Investment Product", "I think it would be awesome to have " +
                 "this awesome investment product available to trade.", product, "", "");
 
-        String service = "Service";
         Concept bobConcept2 = services.createConcept(bob,"Later hours","It would be great if the bank was open later on " +
                 "saturdays.", service, "jane", "");
         bobConcept2.setStatusToApproved();
@@ -59,7 +61,6 @@ public class TestData {
         services.saveConcept(bobConcept3);
 
         //Jane test data
-        String improvement = "Improvement";
         Concept janeConcept = services.createConcept(jane,"Mortgage Rates","I would love to get a mortgage through you, but " +
                 "xyz competitor is offering lower rates", improvement, "bob", "");
 
@@ -97,8 +98,6 @@ public class TestData {
         Concept bobComment2 = services.makeComment("I like what you have going there!!");
         Concept janeComment2 = services.makeComment("I like that you are thinking of these things!!");
         Concept caseyComment2 = services.makeComment("I was thinking the same thing!!");
-
-
 
     }
 

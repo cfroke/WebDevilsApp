@@ -37,9 +37,7 @@ public class EmpSubmittedConceptRecyclerViewAdapter extends RecyclerView.Adapter
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        if(holder.mItem.isApproved()){
-            //change R.layout.emp_list_approved_item_card here ???
-        }
+
         conceptUnderReview = holder.mItem;
         holder.mCreatedByView.setText("Concpet Created By: " + mValues.get(position).getUserThatCreatedThisConcept().getUserName());
         holder.mTitleView.setText(" Title: " + mValues.get(position).getTitle());
@@ -70,8 +68,7 @@ public class EmpSubmittedConceptRecyclerViewAdapter extends RecyclerView.Adapter
         view.animate()
                 .alpha(1.0f)
                 .translationY(2)
-                .setDuration(600)
-                .setStartDelay(pos * 100);
+                .setDuration(600);
     }
 
     @Override
