@@ -18,7 +18,8 @@ import webdevils.webdevilsapp.AppContext;
 
 /**
  * This storage class is used to store all data for the app in local storage in the form of two
- * lists of Concept objects and User objects
+ * lists of Concept objects and User objects. This whole class is saved as a single object in local
+ * storage.
  */
 public class Storage implements Serializable {
 	
@@ -45,6 +46,12 @@ public class Storage implements Serializable {
 		return singleton;
 	}
 
+	/**
+	 * Saves a new User on the server. This method should only used on the Services class.
+	 * Returns true if the user was added to storage
+ 	 * @param USER {@link common.User}
+	 * @return boolean
+	 */
 	public boolean addUser(User USER){
 		for(User user : userList){
 			if(user.getUserName().equals(USER.getUserName())){
@@ -55,7 +62,13 @@ public class Storage implements Serializable {
 		saveLists();
 		return true;
 	}
-	
+
+	/**
+	 * Returns a specific User from storage based on user name. This method should only be used
+	 * by the Services class
+	 * @param userName String
+	 * @return {@link common.User}
+	 */
 	public User getUser(String userName){
 		User result = null;
 		for(User user : userList){
@@ -65,7 +78,13 @@ public class Storage implements Serializable {
 		}
 		return result;
 	}
-	
+
+	/**
+	 * Saves a new Concept on the server. This method should only used on the Services class.
+	 * Returns true if the concept was added to storage
+	 * @param CONCEPT {@link common.Concept}
+	 * @return boolean
+	 */
 	public boolean addConcept(Concept CONCEPT){
 		for(Concept concept : conceptList){
 			if(concept.equals(CONCEPT)){
@@ -76,7 +95,13 @@ public class Storage implements Serializable {
 		saveLists();
 		return true;
 	}
-	
+
+	/**
+	 * Updates a concept in storage. This method should only be used by the Services class
+	 * Returns true if the concept was updated in storage
+	 * @param CONCEPT {@link common.Concept}
+	 * @return boolean
+	 */
 	public boolean saveConcept(Concept CONCEPT){
 		for(Concept concept : conceptList){
 			if( concept.getDescription().equals(CONCEPT.getDescription()) ){
@@ -85,7 +110,12 @@ public class Storage implements Serializable {
 		}
 		return saveLists();
 	}
-	
+
+	/**
+	 * Returns a list of concepts associated with a given the user to the Services class.
+	 * @param userName String
+	 * @return LinkedList<Concept>
+	 */
 	public LinkedList<Concept> getConceptsByUserName(String userName){
 		LinkedList<Concept> result = new LinkedList<Concept>();
 		for(Concept concept : conceptList){
@@ -96,6 +126,11 @@ public class Storage implements Serializable {
 		return result;
 	}
 
+	/**
+	 * Returns a given concept based on the title and sends it to the services class.
+	 * @param title String
+	 * @return {@link common.Concept}
+	 */
     public Concept getConceptByTitle(String title){
         for(Concept concept : conceptList){
             if(concept.getTitle().toUpperCase().equals(title)){
@@ -105,7 +140,11 @@ public class Storage implements Serializable {
         return null;
     }
 
-    public static LinkedList<Concept> getUnreviewedConcepts() {
+	/**
+	 * Sends a list of Un-reviewed Concepts to the Services class
+	 * @return LinkedList<Concept>
+	 */
+	public LinkedList<Concept> getUnreviewedConcepts() {
         LinkedList<Concept> result = new LinkedList<Concept>();
         for(Concept concept : conceptList){
             if(concept.isSubmitted() || concept.isEmployeeViewed()){
@@ -115,7 +154,11 @@ public class Storage implements Serializable {
         return result;
     }
 
-	public static LinkedList<Concept> getApprovedConcepts() {
+	/**
+	 * Sends a list of approved Concepts to the Services class
+	 * @return LinkedList<Concept>
+	 */
+	public LinkedList<Concept> getApprovedConcepts() {
 		LinkedList<Concept> result = new LinkedList<Concept>();
 		for(Concept concept : conceptList){
 			if(concept.isApproved()){
@@ -125,7 +168,11 @@ public class Storage implements Serializable {
 		return result;
 	}
 
-	public static LinkedList<Concept> getRejectedConcepts() {
+	/**
+	 * Sends a list of rejected Concepts to the Services class
+	 * @return LinkedList<Concept>
+	 */
+	public LinkedList<Concept> getRejectedConcepts() {
 		LinkedList<Concept> result = new LinkedList<Concept>();
 		for(Concept concept : conceptList){
 			if(concept.isRejected()){
@@ -135,14 +182,32 @@ public class Storage implements Serializable {
 		return result;
 	}
 
-    public static LinkedList<Concept> getAllConcepts() {
+	/**
+	 * Sends a list of all Concepts to the Services class
+	 * @return LinkedList<Concept>
+	 */
+    public LinkedList<Concept> getAllConcepts() {
         LinkedList<Concept> result = new LinkedList<Concept>();
         for(Concept concept : conceptList){
             result.add(concept);
         }
         return result;
     }
-	
+
+	/**
+	 * Sends an instance of the saved user list to the Services class
+	 * @return LinkedList<Concept>
+	 */
+	public LinkedList<User> getAllUsers(){
+		return userList;
+	}
+
+	/**
+	 * This method saves all data for the app as a "Storage.obj" file in the local storage of the
+	 * device that this app is currently on. This method should be re-written if remote storage is
+	 * desired. Returns true if save was successful.
+	 * @return boolean
+	 */
 	private static boolean saveLists(){
 
 		String fileName= "Storage.obj";
@@ -161,7 +226,12 @@ public class Storage implements Serializable {
 			return false;
 		}
 	}
-	
+
+	/**
+	 * This method restores all data that exists on the device that is using this app. This method
+	 * should be re-written if remote storage is desired. Returns true if restore was successful.
+	 * @return boolean
+	 */
 	private static Storage restoreLists(){
 
 		String fileName= "Storage.obj";
@@ -180,9 +250,4 @@ public class Storage implements Serializable {
 			return null;
 		}
 	}
-
-	public LinkedList<User> getAllUsers(){
-		return userList;
-	}
-
 }

@@ -1,3 +1,6 @@
+/**
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
+ */
 package server;
 
 import common.Concept;
