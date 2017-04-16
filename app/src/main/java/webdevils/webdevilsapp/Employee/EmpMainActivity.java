@@ -32,8 +32,8 @@ public class EmpMainActivity extends AppCompatActivity
         EmpSubmittedConceptListFragment.OnSubmittedListFragmentInteractionListener,
         EmpApprovedConceptListFragment.OnApprovedListFragmentInteractionListener {
 
-    public static User currentUser;
-    Services services = new Services();
+    public static User  currentUser;
+    Services            services = new Services();
 
     /**
      * Created initial view when this activity is first created

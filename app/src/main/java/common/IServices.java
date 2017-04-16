@@ -1,5 +1,14 @@
+/**
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
+ */
 package common;
 
+/**
+ * This interface would be used by the client if the server was not embedded in the app. Through out
+ * the app the Services class is used. If the server where to be converted to be used remotely,
+ * then IServices should be used instead of using the Services class directly, and the server
+ * package should be removed from the app.
+ */
 public interface IServices {
 
 	User validateUser(String userName, String password);

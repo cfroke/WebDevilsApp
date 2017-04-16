@@ -22,11 +22,11 @@ import webdevils.webdevilsapp.R;
 public class EmpSubmittedConceptRecyclerViewAdapter extends
         RecyclerView.Adapter<EmpSubmittedConceptRecyclerViewAdapter.ViewHolder> {
 
-    private final LinkedList<Concept> mValues;
+    private final LinkedList<Concept>   mValues;
     private final EmpSubmittedConceptListFragment
             .OnSubmittedListFragmentInteractionListener mListener;
-    public static Concept conceptUnderReview;
-    private View view;
+    public static Concept               conceptUnderReview;
+    private View                        view;
 
     /**
      * Constructor for this adapter used to link data and register a listener

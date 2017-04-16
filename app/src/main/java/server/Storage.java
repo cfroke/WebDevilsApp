@@ -23,10 +23,8 @@ import webdevils.webdevilsapp.AppContext;
  */
 public class Storage implements Serializable {
 	
-	private static final long serialVersionUID = -7857868388343559683L;
-
-	private static Storage singleton = new Storage();
-	
+	private static final long 			serialVersionUID = -7857868388343559683L;
+	private static Storage 				singleton = new Storage();
 	private static LinkedList<Concept>	conceptList	= new LinkedList<Concept>();
 	private static LinkedList<User>		userList	= new LinkedList<User>();
 

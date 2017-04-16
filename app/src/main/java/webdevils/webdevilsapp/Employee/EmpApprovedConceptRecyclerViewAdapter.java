@@ -23,10 +23,10 @@ import webdevils.webdevilsapp.R;
 public class EmpApprovedConceptRecyclerViewAdapter extends
         RecyclerView.Adapter<EmpApprovedConceptRecyclerViewAdapter.ViewHolder> {
 
-    private final LinkedList<Concept> mValues;
+    private final LinkedList<Concept>                   mValues;
     private final EmpApprovedConceptListFragment
-            .OnApprovedListFragmentInteractionListener mListener;
-    private View view;
+            .OnApprovedListFragmentInteractionListener  mListener;
+    private View                                        view;
 
     /**
      * Constructor for this adapter used to link data and register a listener

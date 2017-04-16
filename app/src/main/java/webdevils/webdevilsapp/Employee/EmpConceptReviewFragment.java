@@ -21,9 +21,10 @@ import webdevils.webdevilsapp.R;
  */
 public class EmpConceptReviewFragment extends Fragment {
 
-    public static Concept conceptUnderReview = EmpSubmittedConceptRecyclerViewAdapter.conceptUnderReview;
+    public static Concept conceptUnderReview =
+            EmpSubmittedConceptRecyclerViewAdapter.conceptUnderReview;
 
-    private onEmpConceptReviewFragmentInteraction mListener;
+    private onEmpConceptReviewFragmentInteraction   mListener;
 
     /**
      * Mandatory constructor
