@@ -3,8 +3,6 @@
  */
 package common;
 
-import android.view.LayoutInflater;
-
 import java.io.Serializable;
 import java.util.LinkedList;
 
