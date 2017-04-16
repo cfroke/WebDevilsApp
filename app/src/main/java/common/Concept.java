@@ -3,7 +3,10 @@
  */
 package common;
 
+import android.view.LayoutInflater;
+
 import java.io.Serializable;
+import java.util.LinkedList;
 
 /**
  * The Concept class is meant to hold information about a given concept. A concept should have one
@@ -16,7 +19,7 @@ public class Concept implements Serializable {
 	private final String		title;
 	private final String		type;
 	private final String		collaborator;
-	private int startCount;
+	private int					starCount;
 	private final User			userThatCreatedThisConcept;
     private String  			feedback = "";
 	private String				Status;
@@ -26,12 +29,12 @@ public class Concept implements Serializable {
 	private final String		EMPLOYEE_VIEWED_STATUS = "Employee Viewed";
 	private final String		EMPLOYEE_REVIEWED_STATUS = "Employee Reviewed";
 	private boolean				sticky;
-    private final String 		comments;
+	private LinkedList<String> 	comments = new LinkedList<>();
 
 	/**
 	 *  Instantiate a new concept
 	 */
-	public Concept(User user, String title, String description, String type, String collaborator, String comments) {
+	public Concept(User user, String title, String description, String type, String collaborator) {
 		this.userThatCreatedThisConcept = user;
 		this.title = title;
 		this.description = description;
@@ -39,7 +42,6 @@ public class Concept implements Serializable {
 		this.collaborator = collaborator;
 		this.Status = SUBMITTED_STATUS;
 		this.sticky = false;
-        this.comments = comments;
 	}
 
 	/**
@@ -118,11 +120,19 @@ public class Concept implements Serializable {
 		return title;
 	}
 
-	/**
-	 * Gets comments made by other users about this concept
-	 * @return String
-	 */
-	public String getComments() {
+    /**
+     * Adds a comment to the list of comments that have been made about this concept
+     * @param comment String
+     */
+	public void addComment(String comment) {
+		this.comments.add(comment);
+	}
+
+    /**
+     * Returns a list of comments that have been made about this concept
+     * @return LinkedList<String>
+     */
+	public LinkedList<String> getComments(){
         return comments;
     }
 
@@ -156,7 +166,7 @@ public class Concept implements Serializable {
 
 	/**
 	 * Returns the User object that created this concept object
-	 * @return common.User
+	 * @return {@link common.User}
 	 */
 	public User getUserThatCreatedThisConcept(){
 		return userThatCreatedThisConcept;
@@ -210,7 +220,7 @@ public class Concept implements Serializable {
 	 * @return int
 	 */
 	public int getStarCount() {
-		return startCount;
+		return starCount;
 	}
 
 	/**
@@ -218,7 +228,7 @@ public class Concept implements Serializable {
 	 * @param startCount int
 	 */
 	private void setStarCount(int startCount) {
-		this.startCount = startCount;
+		this.starCount = startCount;
 	}
 
 	/**

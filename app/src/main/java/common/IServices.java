@@ -1,30 +1,23 @@
 package common;
 
-//import java.rmi.Remote;
-//import java.rmi.RemoteException;
-
-public interface IServices { //extends Remote{
+public interface IServices {
 
 	User validateUser(String userName, String password);
 
 	Concept getConceptByTitle(String title);
 
-	Concept createConcept(User user, String title, String description, String type, String collaborator, String comments);// throws RemoteException;
+	Concept createConcept(User user, String title, String description, String type, String collaborator);
 
-	User createMemberUser(String name, String password);// throws RemoteException;
+	User createMemberUser(String name, String password);
 
 	User createEmployeeUser(String name, String password);
+
+	void makeComment(Concept concept, String comment);
 
 	void saveConcept(Concept concept);
 
 	void giveConceptStars(Concept concept, int numberOfStars);
 
 	void upVoteConcept(Concept concept);
-
-	void downVoteConcept(Concept concept);
-
-	void provideConceptFeedback(Concept concept, String feedback);
-
-	String viewConceptStatus(Concept concept);
 
 }

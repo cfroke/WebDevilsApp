@@ -26,9 +26,8 @@ public class Storage implements Serializable {
 
 	private static Storage singleton = new Storage();
 	
-	private static final LinkedList<Concept>	conceptList	= new LinkedList<Concept>();
-	private static final LinkedList<User>		userList	= new LinkedList<User>();
-	private static final LinkedList<Concept>  userComments = new LinkedList<Concept>();
+	private static LinkedList<Concept>	conceptList	= new LinkedList<Concept>();
+	private static LinkedList<User>		userList	= new LinkedList<User>();
 
 	private Storage() {
 	}
@@ -136,14 +135,6 @@ public class Storage implements Serializable {
         }
         return result;
     }
-
-	public static LinkedList<Concept> getComments() {
-		LinkedList<Concept> result = new LinkedList<Concept>();
-		for(Concept concept : userComments){
-			result.add(concept);
-		}
-		return result;
-	}
 	
 	private static boolean saveLists(){
 

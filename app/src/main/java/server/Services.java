@@ -52,31 +52,26 @@ public class Services implements IServices, Serializable {
 
     public static LinkedList<Concept> getUnreviewedConcepts(){
         System.out.println("Sent unreviewed concept list to client");
-        return Storage.getUnreviewedConcepts();
+        return storage.getUnreviewedConcepts();
     }
 
     public static LinkedList<Concept> getApprovedConcepts(){
 		System.out.println("Sent approved concept list to client");
-		return Storage.getApprovedConcepts();
+		return storage.getApprovedConcepts();
 	}
 
 	public static LinkedList<Concept> getRejectedConcepts(){
 		System.out.println("Sent rejected concept list to client");
-		return Storage.getRejectedConcepts();
+		return storage.getRejectedConcepts();
 	}
 
 	public static LinkedList<Concept> getAllConcepts(){
 		System.out.println("Sent approved concept list to client");
-		return Storage.getAllConcepts();
-	}
-
-	public static LinkedList<Concept> getComments(){
-		System.out.println("Sent comments to the client");
-		return Storage.getComments();
+		return storage.getAllConcepts();
 	}
 	
-	public Concept createConcept(User user, String title, String description, String type, String collaborator, String comments){
-		Concept result = new Concept(user, title, description, type, collaborator, comments);
+	public Concept createConcept(User user, String title, String description, String type, String collaborator){
+		Concept result = new Concept(user, title, description, type, collaborator);
 		storage.addConcept(result);
 		System.out.println("***** Concept created *****");
 		return result;
@@ -100,43 +95,43 @@ public class Services implements IServices, Serializable {
 		User result = new User(name , password);
 		result.setUserTypeToEmployee();
 		if(storage.addUser(result)){
-			System.out.println("Employee User '" + result.getUserName() + "' created and stored on server ...");
+			System.out.println("Employee User '" + result.getUserName() +
+					"' created and stored on server ...");
 			return result;
 		}else{
-			System.out.println("!!! Employee User '" + result.getUserName() + "' already exists on server !!!");
+			System.out.println("!!! Employee User '" + result.getUserName() +
+					"' already exists on server !!!");
 			System.out.println("Try different username");
 			return null;
 		}
 	}
 
-	/*public Concept makeComment(Concept concept) {
-        Concept listed = new Concept(comments);
-        storage.getAllComments(listed);
-        System.out.println("////////Comments list created////////////");
-        return listed;
-    }*/
+	public void makeComment(Concept concept, String comment){
+		concept.addComment(comment);
+		storage.saveConcept(concept);
+		System.out.println("***** Comment left and saved on the server for " +
+				concept.getTitle() + " *****");
+	}
 
-	/*public Concept makeComment(Concept concept){
-        storage.saveConcept(concept);
-        System.out.println("///////// Comments have been loaded //////////");
-        return null;
-    }*/
+	public LinkedList<String> getComments(Concept concept){
+		return concept.getComments();
+	}
 
 	public void makeConceptSticky(Concept concept){
 		concept.makeSticky();
 		storage.saveConcept(concept);
-		System.out.print("***** Concept stickied on server *****");
+		System.out.println("***** Concept stickied on server *****");
 	}
 
 	public void makeConceptSlippery(Concept concept){
 		concept.makeSlippery();
 		storage.saveConcept(concept);
-		System.out.print("***** Concept no longer stickied on server *****");
+		System.out.println("***** Concept no longer stickied on server *****");
 	}
 
 	public void saveConcept(Concept concept){
 		storage.saveConcept(concept);
-		System.out.print("***** Concept Saved on Server *****");
+		System.out.println("***** Concept Saved on Server *****");
 	}
 
 	public void giveConceptStars(Concept concept, int numberOfStars){
@@ -163,12 +158,6 @@ public class Services implements IServices, Serializable {
 		concept.setFeedback(feedback);
         storage.saveConcept(concept);
 		System.out.println("Feedback saved for given concept");
-	}
-	
-	public String viewConceptStatus(Concept concept){
-		//TODO
-		System.out.println("Service in development ... Sorry =P");
-		return null;
 	}
 
 	// used to calculate the score for a user, by adding all votes on their concepts
