@@ -17,8 +17,8 @@ import common.User;
 import webdevils.webdevilsapp.AppContext;
 
 /**
- * @author Kevin Bryant
- *
+ * This storage class is used to store all data for the app in local storage in the form of two
+ * lists of Concept objects and User objects
  */
 public class Storage implements Serializable {
 	
@@ -29,11 +29,18 @@ public class Storage implements Serializable {
 	private static LinkedList<Concept>	conceptList	= new LinkedList<Concept>();
 	private static LinkedList<User>		userList	= new LinkedList<User>();
 
+	/**
+	 * Constructor -- Must be private
+	 */
 	private Storage() {
 	}
-	
+
+	/**
+	 * singleton pattern used to insure that data only exits in one place during runtime.
+	 * (constructor must be private)
+	 */
 	public static Storage getInstance(){
-        //data persistence
+        //restores data from local storage
 		restoreLists();
 		return singleton;
 	}

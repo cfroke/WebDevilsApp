@@ -4,21 +4,28 @@ import common.Concept;
 import common.User;
 
 /**
- * Created by Kevin on 2/19/2017.
+ * This class is used to initialize test data each time the app is started. The exact same data
+ * set will be available each time the app is started
  */
 public class TestData {
 
-    private final Services services = new Services();
-    private static final TestData singleton = new TestData();
-    private final String product = "Product";
-    private final String service = "Service";
-    private final String improvement = "Improvement";
+    private final Services          services = new Services();
+    private static final TestData   singleton = new TestData();
+    private static final String     product = "Product";
+    private static final String     service = "Service";
+    private static final String     improvement = "Improvement";
 
-
+    /**
+     * Constructor -- loads test data (must be private)
+     */
     private TestData() {
         initializeTestData();
     }
 
+    /**
+     * singleton pattern used to insure that test data is only generated once.
+     * (constructor must be private)
+     */
     public static TestData getInstance() {
         return singleton;
     }
