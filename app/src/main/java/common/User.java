@@ -14,12 +14,12 @@ public class User implements Serializable {
 	
 	private static final long 	serialVersionUID = 1866235317697481634L;
 	private final String 		name;
-	private String 				password;
+	private String			password;
 	private final String 		MEMBER = "member";
 	private final String 		EMPLOYEE ="employee";
 	private final String 		DEVELOPER = "developer";
 	private final String 		UNDEFINED = "undefined";
-	private String 				userType;
+	private String			userType;
 	
 	/**
 	 *  Instantiate a new user
@@ -97,35 +97,35 @@ public class User implements Serializable {
 	 * @return boolean
 	 */
 	public boolean isMember(){
-        boolean result = false;
-        if(userType.equals(MEMBER)){
-            result = true;
-        }
-        return result;
-    }
+		boolean result = false;
+        	if(userType.equals(MEMBER)){
+            		result = true;
+        	}
+        	return result;
+	}
 
 	/**
 	 * Checks to see if the current state of this user is set to EMPLOYEE
 	 * @return boolean
 	 */
-    public boolean isEmployee(){
-        boolean result = false;
-        if(userType.equals(EMPLOYEE)){
-            result = true;
-        }
-        return result;
-    }
+	public boolean isEmployee(){
+		boolean result = false;
+		if(userType.equals(EMPLOYEE)){
+			result = true;
+		}
+		return result;
+	}
 
 	/**
 	 * Checks to see if the current state of this user is set to DEVELOPER
 	 * @return boolean
 	 */
-    public boolean isDeveloper(){
-        boolean result = false;
-        if(userType.equals(DEVELOPER)){
-            result = true;
-        }
-        return result;
+	public boolean isDeveloper(){
+		boolean result = false;
+		if(userType.equals(DEVELOPER)){
+			result = true;
+		}
+		return result;
     }
 
 	/**

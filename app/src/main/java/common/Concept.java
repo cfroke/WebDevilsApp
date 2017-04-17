@@ -17,16 +17,16 @@ public class Concept implements Serializable {
 	private final String		title;
 	private final String		type;
 	private final String		collaborator;
-	private int					starCount;
-	private final User			userThatCreatedThisConcept;
-    private String  			feedback = "";
-	private String				Status;
+	private int			starCount;
+	private final User		userThatCreatedThisConcept;
+    	private String  		feedback = "";
+	private String			Status;
 	private final String		SUBMITTED_STATUS = "Submitted";
 	private final String		APPROVED_STATUS = "Approved";
 	private final String		REJECTED_STATUS = "Rejected";
 	private final String		EMPLOYEE_VIEWED_STATUS = "Employee Viewed";
 	private final String		EMPLOYEE_REVIEWED_STATUS = "Employee Reviewed";
-	private boolean				sticky;
+	private boolean			sticky;
 	private LinkedList<String> 	comments = new LinkedList<>();
 
 	/**
@@ -114,25 +114,25 @@ public class Concept implements Serializable {
 	 * Gets the title of a concept as stated by the user
 	 * @return String
 	 */
-    public String getTitle() {
+    	public String getTitle() {
 		return title;
 	}
 
-    /**
-     * Adds a comment to the list of comments that have been made about this concept
-     * @param comment String
-     */
+	/**
+	* Adds a comment to the list of comments that have been made about this concept
+	* @param comment String
+	*/
 	public void addComment(String comment) {
 		this.comments.add(comment);
 	}
 
-    /**
-     * Returns a list of comments that have been made about this concept
-     * @return LinkedList<String>
-     */
+	/**
+	* Returns a list of comments that have been made about this concept
+	* @return LinkedList<String>
+	*/
 	public LinkedList<String> getComments(){
-        return comments;
-    }
+		return comments;
+	}
 
 	/**
 	 * Returns the concept type. A concept can be a Product, Service, or Improvement type.
@@ -233,17 +233,17 @@ public class Concept implements Serializable {
 	 * Gets the feedback as entered by an employee user after it has been reviewed
 	 * @return String
 	 */
-    public String getFeedback() {
-        return feedback;
-    }
+	public String getFeedback() {
+        	return feedback;
+	}
 
 	/**
 	 * Sets feedback as entered by an employee user
 	 * @param feedback String
 	 */
 	public void setFeedback(String feedback) {
-        this.feedback = feedback;
-    }
+        	this.feedback = feedback;
+    	}
 
 	/**
 	 * Checks to see if a concept is Sticky or not

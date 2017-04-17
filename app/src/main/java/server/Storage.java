@@ -23,10 +23,10 @@ import webdevils.webdevilsapp.AppContext;
  */
 public class Storage implements Serializable {
 	
-	private static final long 			serialVersionUID = -7857868388343559683L;
-	private static Storage 				singleton = new Storage();
-	private static LinkedList<Concept>	conceptList	= new LinkedList<Concept>();
-	private static LinkedList<User>		userList	= new LinkedList<User>();
+	private static final long		serialVersionUID = -7857868388343559683L;
+	private static Storage			singleton = new Storage();
+	private static LinkedList<Concept>	conceptList = new LinkedList<Concept>();
+	private static LinkedList<User>		userList = new LinkedList<User>();
 
 	/**
 	 * Constructor -- Must be private
@@ -39,7 +39,7 @@ public class Storage implements Serializable {
 	 * (constructor must be private)
 	 */
 	public static Storage getInstance(){
-        //restores data from local storage
+		//restores data from local storage
 		restoreLists();
 		return singleton;
 	}
@@ -129,28 +129,28 @@ public class Storage implements Serializable {
 	 * @param title String
 	 * @return {@link common.Concept}
 	 */
-    public Concept getConceptByTitle(String title){
-        for(Concept concept : conceptList){
-            if(concept.getTitle().toUpperCase().equals(title)){
-                return concept;
-            }
-        }
-        return null;
-    }
+	public Concept getConceptByTitle(String title){
+		for(Concept concept : conceptList){
+			if(concept.getTitle().toUpperCase().equals(title)){
+				return concept;
+			}
+        	}
+        	return null;
+	}
 
 	/**
 	 * Sends a list of Un-reviewed Concepts to the Services class
 	 * @return LinkedList<Concept>
 	 */
 	public LinkedList<Concept> getUnreviewedConcepts() {
-        LinkedList<Concept> result = new LinkedList<Concept>();
-        for(Concept concept : conceptList){
-            if(concept.isSubmitted() || concept.isEmployeeViewed()){
-                result.add(concept);
-            }
-        }
-        return result;
-    }
+		LinkedList<Concept> result = new LinkedList<Concept>();
+		for(Concept concept : conceptList){
+			if(concept.isSubmitted() || concept.isEmployeeViewed()){
+				result.add(concept);
+			}
+		}
+		return result;
+	}
 
 	/**
 	 * Sends a list of approved Concepts to the Services class
@@ -184,13 +184,13 @@ public class Storage implements Serializable {
 	 * Sends a list of all Concepts to the Services class
 	 * @return LinkedList<Concept>
 	 */
-    public LinkedList<Concept> getAllConcepts() {
-        LinkedList<Concept> result = new LinkedList<Concept>();
-        for(Concept concept : conceptList){
-            result.add(concept);
-        }
-        return result;
-    }
+	public LinkedList<Concept> getAllConcepts() {
+	LinkedList<Concept> result = new LinkedList<Concept>();
+		for(Concept concept : conceptList){
+			result.add(concept);
+		}
+		return result;
+	}
 
 	/**
 	 * Sends an instance of the saved user list to the Services class
@@ -209,16 +209,16 @@ public class Storage implements Serializable {
 	private static boolean saveLists(){
 
 		String fileName= "Storage.obj";
-	    FileOutputStream fos = null;
-	    ObjectOutputStream oos = null;
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
 		File filePath = new File(AppContext.getAppContext().getFilesDir() , fileName);
 
-	    try {
-	    	fos = new FileOutputStream(filePath.getAbsoluteFile() + fileName);
-	    	oos = new ObjectOutputStream(fos);
-	    	oos.writeObject(singleton);
-	    	oos.close();
-	    	return true;
+		try {
+			fos = new FileOutputStream(filePath.getAbsoluteFile() + fileName);
+	    		oos = new ObjectOutputStream(fos);
+	    		oos.writeObject(singleton);
+	    		oos.close();
+	    		return true;
 		} catch (IOException e) {
 			e.printStackTrace();
 			return false;
