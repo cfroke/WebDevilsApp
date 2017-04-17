@@ -1,7 +1,9 @@
+/**
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
+ */
 package webdevils.webdevilsapp.Employee;
 
-import android.app.Activity;
-import android.net.Uri;
+import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,57 +14,76 @@ import common.Concept;
 import webdevils.webdevilsapp.R;
 
 /**
- *  Kevin 03/12/2017
+ * This fragment is used to review a given concept and update the concept as needed.
  *
- * Activities that contain this fragment must implement the
- * {@link onEmpConceptReviewFragmentInteraction} interface
- * to handle interaction events.
+ * Activities containing this fragment MUST implement the
+ * {@link onEmpConceptReviewFragmentInteraction} interface.
  */
 public class EmpConceptReviewFragment extends Fragment {
 
-    public static Concept conceptUnderReview = EmpSubmittedConceptRecyclerViewAdapter.conceptUnderReview;
+    public static Concept conceptUnderReview =
+            EmpSubmittedConceptRecyclerViewAdapter.conceptUnderReview;
 
-    private onEmpConceptReviewFragmentInteraction mListener;
+    private onEmpConceptReviewFragmentInteraction   mListener;
 
+    /**
+     * Mandatory constructor
+     */
     public EmpConceptReviewFragment() {
         // Required empty public constructor
     }
 
+    /**
+     * Sets the current concept that is under review
+     * @param concept Concept
+     */
     public static void setConceptUnderReview(Concept concept){
         conceptUnderReview = concept;
 
     }
 
+    /**
+     * Creates this fragment when told to do so by the system
+     * @param savedInstanceState Bundle
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
+    /**
+     * Creates the view for this fragment that is used in the main activity (view controller)
+     * @param inflater LayoutInflater
+     * @param container ViewGroup
+     * @param savedInstanceState Bundle
+     * @return View
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.emp_concept_review_fragment, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onEmpConceptReviewFragmentInteraction(uri);
-        }
-    }
-
+    /**
+     * When this fragment is attached to the main activity, this method checks to make sure that
+     * the listener for this fragment has been registered with the main activity
+     * @param context Context
+     */
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (activity instanceof onEmpConceptReviewFragmentInteraction) {
-            mListener = (onEmpConceptReviewFragmentInteraction) activity;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof onEmpConceptReviewFragmentInteraction) {
+            mListener = (onEmpConceptReviewFragmentInteraction) context;
         } else {
-            throw new RuntimeException(activity.toString()
+            throw new RuntimeException(context.toString()
                     + " must implement onEmpConceptReviewFragmentInteraction");
         }
     }
 
+    /**
+     * Removes the listener for this fragment from the main activity so it doesn't interfere
+     * with other fragments in the main activity
+     */
     @Override
     public void onDetach() {
         super.onDetach();
@@ -80,6 +101,6 @@ public class EmpConceptReviewFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface onEmpConceptReviewFragmentInteraction {
-        void onEmpConceptReviewFragmentInteraction(Uri uri);
+        void onEmpConceptReviewFragmentInteraction();
     }
 }

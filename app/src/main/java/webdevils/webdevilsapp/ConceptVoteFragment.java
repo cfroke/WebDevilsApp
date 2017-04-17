@@ -30,7 +30,7 @@ public class ConceptVoteFragment extends Fragment {
         cScore = (TextView) myInflatedView.findViewById(R.id.txtVoteScore);
         cTitle.setText(thisConcept.getTitle());
         cDescription.setText(thisConcept.getDescription());
-        cScore.setText("Score: " + String.valueOf(thisConcept.getUpvoteStatus()));
+        cScore.setText("Score: " + String.valueOf(thisConcept.getStarCount()));
 
         return myInflatedView;
     }
@@ -50,7 +50,7 @@ public class ConceptVoteFragment extends Fragment {
                 android.R.layout.simple_spinner_dropdown_item, items);
         stars.setAdapter(adapter);
 
-        cScore.setText("Score: " + String.valueOf(thisConcept.getUpvoteStatus()));
+        cScore.setText("Score: " + String.valueOf(thisConcept.getStarCount()));
 
         Button btnUpVote = (Button) getView().findViewById(R.id.btnUpVote);
         btnUpVote.setOnClickListener(new View.OnClickListener() {

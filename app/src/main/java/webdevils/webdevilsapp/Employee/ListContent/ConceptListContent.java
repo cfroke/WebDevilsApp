@@ -1,3 +1,6 @@
+/**
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
+ */
 package webdevils.webdevilsapp.Employee.ListContent;
 
 import java.util.HashMap;
@@ -8,12 +11,13 @@ import common.Concept;
 import server.Services;
 
 /**
- * Kevin 03/04/2017
+ * This is a content list manager for this Employee views. Depending on the purpose of the view,
+ * different sets of concepts are need for display
  */
 public class ConceptListContent {
 
     /**
-     * A map of Concepts, by Title
+     * Maps of Concepts, by Title
      */
     public static final Map<String, Concept> SUBMITTED_ITEMS_MAP = new HashMap<String, Concept>();
     public static final LinkedList<Concept> SUBMITTED_ITEMS = new LinkedList<Concept>();
@@ -24,13 +28,22 @@ public class ConceptListContent {
     public static final Map<String, Concept> REJECTED_ITEMS_MAP = new HashMap<String, Concept>();
     public static final LinkedList<Concept> REJECTED_ITEMS = new LinkedList<Concept>();
 
+    /**
+     * This is for limiting the number of items in a view so the system won't get bogged down with
+     * too many items in a given list. Another form of content management will be needed if large
+     * data sets are used.
+     */
     private static final int MAX_NUMBER_OF_CONCEPTS = 25;
 
+    /**
+     * Retrieves all concepts from the server via the services class
+     */
     static Services services = new Services();
     static LinkedList<Concept> allConcepts = services.getAllConcepts();
 
     static {
-        //load submitted
+
+        //loads submitted concepts
         int count = 0;
         for(Concept concept : allConcepts){
             if(count < MAX_NUMBER_OF_CONCEPTS){
@@ -44,7 +57,7 @@ public class ConceptListContent {
             count++;
         }
 
-        //load approved
+        //loads approved concepts
         count = 0;
         for(Concept concept : allConcepts){
             if(count < MAX_NUMBER_OF_CONCEPTS){
@@ -58,7 +71,7 @@ public class ConceptListContent {
             count++;
         }
 
-        //load rejected
+        //loads rejected concepts
         count = 0;
         for(Concept concept : allConcepts){
             if(count < MAX_NUMBER_OF_CONCEPTS){
@@ -72,5 +85,4 @@ public class ConceptListContent {
             count++;
         }
     }
-
 }
