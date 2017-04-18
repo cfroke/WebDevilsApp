@@ -1,3 +1,6 @@
+/**
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
+ */
 package webdevils.webdevilsapp;
 
 import android.app.Fragment;
@@ -11,9 +14,6 @@ import android.widget.TextView;
 import common.Concept;
 import server.Services;
 
-/**
- * Created by caseyfroke on 1/29/17. Update 3/29/17
- */
 
 public class ViewEditFragment extends Fragment {
     private Concept thisConcept;

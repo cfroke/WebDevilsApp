@@ -1,3 +1,6 @@
+/**
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
+ */
 package webdevils.webdevilsapp;
 
 import android.app.Fragment;
@@ -20,6 +23,13 @@ import common.Concept;
 import common.User;
 import server.Services;
 
+/**
+ * This fragment allows a user to submit a new concept to the
+ * server. Users must provide a Title, Type, and Description
+ * for a new concept. Optionally they may use the toggle button
+ * to add a collaborator (of their choosing),  providing another
+ * members user name to make them a co-author of the concept.
+ */
 public class SubmitConceptFragment extends Fragment {
     private String conceptTitle = "";
     private String conceptDesc = "";

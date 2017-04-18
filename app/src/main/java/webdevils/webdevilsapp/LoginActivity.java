@@ -1,3 +1,6 @@
+/**
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
+ */
 package webdevils.webdevilsapp;
 
 import android.content.DialogInterface;
@@ -21,7 +24,11 @@ import server.Services;
 import server.TestData;
 import webdevils.webdevilsapp.Employee.EmpMainActivity;
 
-
+/**
+ * The login activity is the first page seen when accessing
+ * the application. User must be present in the server in order
+ * to login. Users are created under server.TestData
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private final Services services = new Services();
@@ -32,14 +39,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        //starts server via the command line (should be run first)
-        //NOTE: Android Studio emulator cannot connect to remote server!
-        //Example:
-        //C:/ ... /WebDevilsApp/server/dist>java -jar WebDevilsServer.jar
-
-        //connect to server ...
-        //new Conn().execute();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -86,7 +85,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    //checks username and password submission against list of known users and credentials
+    /**
+     * Checks username and password submission against list of known users and credentials
+     * @param u String
+     * @param p String
+     * @return boolean
+     */
     private boolean validateUser(String u, String p) {
         currentUser = services.validateUser( u , p );
         if(currentUser != null){
@@ -96,8 +100,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    //Example server call
-    //connect to server to get test user ...
+    /**
+     * Example server call
+     * connect to server to get test user ...
+     */
     private class Conn extends AsyncTask<Void, Void, LoginActivity> {
 
         @Override

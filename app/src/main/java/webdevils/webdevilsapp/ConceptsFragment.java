@@ -1,12 +1,7 @@
-package webdevils.webdevilsapp;
-
 /**
- * Created by caseyfroke on 1/29/17.
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
  */
-
-// This Fragment shows the My Concepts (all statuses)
-// on the My Concepts page. From here the member can
-// select a concept to view, edit , or delete its contents.
+package webdevils.webdevilsapp;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -32,8 +27,11 @@ import common.Concept;
 import common.User;
 import server.Services;
 
-
-
+/** This fragment shows the Featured Concepts (approved)
+ * on the Featured Concepts page. From here a user
+ * can select a concept to read more about it and rate
+ * and/or comment on it.
+ */
 public class ConceptsFragment extends Fragment {
     private final User currentUser = LoginActivity.currentUser;
 
