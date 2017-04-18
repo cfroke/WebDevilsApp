@@ -1,11 +1,6 @@
-//************************************************
-// This MainActivity is used to display the
-// navigation drawer and fragments for each page.
-// If adding a new page fragment, consider adding
-// it to the navigation_menu and to the page
-// switching logic in onNavigationItemSelected
-//************************************************
-
+/**
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
+ */
 package webdevils.webdevilsapp;
 
 import android.app.FragmentManager;
@@ -22,6 +17,13 @@ import android.view.MenuItem;
 
 import common.User;
 
+/**
+ * This MainActivity is used to display the
+ * navigation drawer and fragments for each page.
+ * If adding a new page fragment, consider adding
+ * it to the navigation_menu and to the page
+ * switching logic in onNavigationItemSelected
+ */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -48,19 +50,12 @@ public class MainActivity extends AppCompatActivity
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //Gets selected concept from Featured Concepts
-        //Intent intent = getIntent();
-        //String title = intent.getStringExtra("title");
-
-        // Passes title of selected concept to Voting page
-        //Bundle bundle=new Bundle();
-        //bundle.putString("title", title);
-        //set ConceptVoteFragment Arguments
-        //ConceptVoteFragment fragObj = new ConceptVoteFragment();
-        //fragObj.setArguments(bundle);
-
     }
 
+    /**
+     * Fragments can call this function to easily get the currently logged in user name
+     * @return User
+     */
     public User getUser() {
         Intent p = getIntent();
         final String name = p.getStringExtra("userName");
@@ -68,7 +63,10 @@ public class MainActivity extends AppCompatActivity
         return user;
     }
 
-    // opens concept from concept list using Title to grab information
+    /**
+     * Opens concept from Concept list using Title to grab information
+     * @param fTitle String
+     */
     public void openConcept(String fTitle) {
         ConceptVoteFragment fragObj = new ConceptVoteFragment();
         Bundle bundle = new Bundle();
@@ -81,7 +79,10 @@ public class MainActivity extends AppCompatActivity
                 .replace(R.id.content_frame, fragObj).commit();
     }
 
-    // opens concept from my concept list using Title to grab information
+    /**
+     * Opens concept from My Concept list using Title to grab information
+     * @param fTitle String
+     */
     public void openMyConcept(String fTitle) {
         ViewEditFragment fragObj = new ViewEditFragment();
         Bundle bundle = new Bundle();

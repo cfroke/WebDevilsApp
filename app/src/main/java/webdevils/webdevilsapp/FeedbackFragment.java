@@ -1,3 +1,6 @@
+/**
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
+ */
 package webdevils.webdevilsapp;
 
 import android.app.Fragment;
@@ -8,6 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+/**
+ * Simple fragment for the member to provide feedback to the company
+ * (not hooked up to any server)
+ */
 public class FeedbackFragment extends Fragment {
 
     @Override

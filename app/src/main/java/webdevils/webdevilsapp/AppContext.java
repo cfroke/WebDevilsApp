@@ -1,11 +1,11 @@
+/**
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
+ */
 package webdevils.webdevilsapp;
 
 import android.app.Application;
 import android.content.Context;
 
-/**
- * Created by Kevin on 2/18/2017.
- */
 public class AppContext extends Application {
 
     private static Context context;

@@ -1,3 +1,6 @@
+/**
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
+ */
 package webdevils.webdevilsapp;
 
 import android.app.Fragment;
@@ -16,12 +19,12 @@ import java.util.LinkedList;
 import common.User;
 import server.Services;
 
-
 /**
- * Created by Kyle3 on 1/23/2017.
+ * After logging in, the Landing page is the first interaction a member user
+ * sees. From here the user can see top users scores based upon concept votes,
+ * including their standing within all users. Buttons and nav drawer allow
+ * the user to navigate through out the app.
  */
-
-
 public class LandingFragment extends Fragment {
     private final User currentUser = LoginActivity.currentUser;
 

@@ -1,9 +1,7 @@
+/**
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
+ */
 package webdevils.webdevilsapp;
-
-// This fragment shows the Featured Concepts (approved)
-// on the Featured Concepts page. From here a user
-// can select a concept to read more about it and rate
-// and/or comment on it.
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -29,6 +27,12 @@ import java.util.Map;
 import common.Concept;
 import server.Services;
 
+/**
+ * This fragment shows the Featured Concepts (approved)
+ * on the Featured Concepts page. From here a user
+ * can select a concept to read more about it and rate
+ * and/or comment on it.
+ */
 public class FeaturedFragment extends Fragment {
 
     @Override

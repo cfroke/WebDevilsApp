@@ -1,3 +1,6 @@
+/**
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
+ */
 package webdevils.webdevilsapp;
 
 
@@ -14,9 +17,6 @@ import android.widget.ListView;
 import common.Concept;
 import server.Services;
 
-/**
- * Created by caseyfroke on 4/2/17.
- */
 public class CommentSubmission extends Fragment {
     Concept concept;
     Services services = new Services();

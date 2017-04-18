@@ -1,3 +1,6 @@
+/**
+ *    SER 401 / 402 -- Senior Project -- WebDevils -- Project 11
+ */
 package webdevils.webdevilsapp;
 
 import android.app.FragmentManager;
@@ -15,6 +18,11 @@ import android.widget.TextView;
 import common.Concept;
 import server.Services;
 
+/**
+ * When a user clicks on a concept in the Featured Concepts list
+ * they are brought to this fragment, where they can vote, and / or
+ * make a comment on the concept.
+ */
 public class ConceptVoteFragment extends Fragment {
     private Concept thisConcept;
     private TextView cScore;
