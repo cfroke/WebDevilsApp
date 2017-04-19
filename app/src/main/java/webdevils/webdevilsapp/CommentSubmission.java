@@ -4,10 +4,6 @@
 package webdevils.webdevilsapp;
 
 
-import android.app.ListActivity;
-import android.app.ListFragment;
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -17,14 +13,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import common.Concept;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
-
-import javax.sql.DataSource;
 
 
+/**
+ * This class connects to the Concept Vote Xml and allows interaction between pages
+ */
 public class CommentSubmission extends Fragment {
 
     List<Comment> commentList = SampleComments.commentList;
@@ -35,13 +29,6 @@ public class CommentSubmission extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_comment_submission, container, false);
-
-        //mDataSource = new CommentDataSource();
-        //mDataSource.open();
-        //mDataSource.seedDatabase(commentList);
-
-        //List<Comment> listFromDB = mDataSource.getAllComments();
-
     }
 
     @Override
