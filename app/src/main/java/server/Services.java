@@ -5,7 +5,6 @@ package server;
 
 import java.io.Serializable;
 import java.util.LinkedList;
-
 import common.Concept;
 import common.IServices;
 import common.User;
@@ -18,8 +17,8 @@ import common.User;
  */
 public class Services implements IServices, Serializable {
 
-	private static final long   serialVersionUID = -7875091839442836772L;
-	private static Storage      storage;
+	private static final long serialVersionUID = -7875091839442836772L;
+	private static Storage storage;
 
 	/**
 	 * Constructor -- grabs th singleton instance of Storage

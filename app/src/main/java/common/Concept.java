@@ -12,22 +12,22 @@ import java.util.LinkedList;
  */
 public class Concept implements Serializable {
 
-	private static final long 	serialVersionUID = -8873025068773379469L;
-	private final String		description;
-	private final String		title;
-	private final String		type;
-	private final String		collaborator;
-	private int			starCount;
-	private final User		userThatCreatedThisConcept;
-    	private String  		feedback = "";
-	private String			Status;
-	private final String		SUBMITTED_STATUS = "Submitted";
-	private final String		APPROVED_STATUS = "Approved";
-	private final String		REJECTED_STATUS = "Rejected";
-	private final String		EMPLOYEE_VIEWED_STATUS = "Employee Viewed";
-	private final String		EMPLOYEE_REVIEWED_STATUS = "Employee Reviewed";
-	private boolean			sticky;
-	private LinkedList<String> 	comments = new LinkedList<>();
+	private static final long serialVersionUID = -8873025068773379469L;
+	private final String description;
+	private final String title;
+	private final String type;
+	private final String collaborator;
+	private int	starCount;
+	private final User userThatCreatedThisConcept;
+    	private String feedback = "";
+	private String Status;
+	private final String SUBMITTED_STATUS = "Submitted";
+	private final String APPROVED_STATUS = "Approved";
+	private final String REJECTED_STATUS = "Rejected";
+	private final String EMPLOYEE_VIEWED_STATUS = "Employee Viewed";
+	private final String EMPLOYEE_REVIEWED_STATUS = "Employee Reviewed";
+	private boolean	sticky;
+	private LinkedList<String> comments = new LinkedList<>();
 
 	/**
 	 *  Instantiate a new concept

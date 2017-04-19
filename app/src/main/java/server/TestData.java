@@ -12,11 +12,11 @@ import common.User;
  */
 public class TestData {
 
-    private final Services          services = new Services();
-    private static final TestData   singleton = new TestData();
-    private static final String     product = "Product";
-    private static final String     service = "Service";
-    private static final String     improvement = "Improvement";
+    private final Services services = new Services();
+    private static final TestData singleton = new TestData();
+    private static final String product = "Product";
+    private static final String service = "Service";
+    private static final String improvement = "Improvement";
 
     /**
      * Constructor -- loads test data (must be private)
@@ -39,7 +39,7 @@ public class TestData {
         User testUser = services.createMemberUser("user","password");
         User bob = services.createMemberUser("bob","bob");
         User jane = services.createMemberUser("jane","jane");
-        User casey = services.createMemberUser("casey","casey");
+        User Casey = services.createMemberUser("casey","casey");
         User dan = services.createMemberUser("dan","dan");
         User KyleCarey = services.createMemberUser("kyle","kyle");
         User Kevin = services.createMemberUser("kevin","kevin");
@@ -64,14 +64,14 @@ public class TestData {
 
 
         Concept bobConcept3 = services.createConcept(bob,"Personal Adviser","It would be great if I had access to a" +
-                " personal financial advisor to make a .", service, "");
+                " personal financial adviser.", service, "");
         bobConcept3.setStatusToApproved();
         services.giveConceptStars(bobConcept3, 4);
         services.saveConcept(bobConcept3);
 
         //Jane test data
         Concept janeConcept = services.createConcept(jane,"Mortgage Rates","I would love to get a mortgage through you, but " +
-                "xyz competitor is offering lower rates", improvement, "bob");
+                "xyz competitor is offering lower rates.", improvement, "bob");
 
         Concept janeConcept2 = services.createConcept(jane,"Insurance Product","I think it would be fantastic to have this " +
                 "insurance product available for purchase.", product, "");
@@ -104,10 +104,8 @@ public class TestData {
         services.makeComment(bobConcept, "I like the idea you have, nice thinking!!");
         services.makeComment(bobConcept, "I was thinking the same thing!!");
         services.makeComment(bobConcept, "I really like the direction you went!!");
-
-        services.makeComment(bobConcept2, "Glad you chose that idea, hope they use it!!");
+        services.makeComment(bobConcept2, "Glad you had that idea, hope they use it!!");
         services.makeComment(bobConcept2, "I like what you have going there!!");
-
         services.makeComment(bobConcept3, "I like that you are thinking of these things!!");
     }
 

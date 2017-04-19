@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -27,6 +28,8 @@ public class ConceptVoteFragment extends Fragment {
     private Concept thisConcept;
     private TextView cScore;
     private final Services services = new Services();
+    private Comment comment;
+    EditText getComments;
     
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         String title = this.getArguments().getString("title");
@@ -103,6 +106,8 @@ public class ConceptVoteFragment extends Fragment {
         Button commentSubmit = (Button) getView().findViewById(R.id.commentSubmit);
         commentSubmit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                getComments = (EditText) getView().findViewById(R.id.commentText);
+                String commented = getComments.getText().toString();
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                         .addToBackStack(null)

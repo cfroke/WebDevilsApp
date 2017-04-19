@@ -4,6 +4,10 @@
 package webdevils.webdevilsapp;
 
 
+import android.app.ListActivity;
+import android.app.ListFragment;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -13,37 +17,42 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
-
 import common.Concept;
-import server.Services;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
+
+import javax.sql.DataSource;
+
 
 public class CommentSubmission extends Fragment {
-    Concept concept;
-    Services services = new Services();
+
+    List<Comment> commentList = SampleComments.commentList;
+    CommentDataSource mDataSource;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_comment_submission, container, false);
+
+        //mDataSource = new CommentDataSource();
+        //mDataSource.open();
+        //mDataSource.seedDatabase(commentList);
+
+        //List<Comment> listFromDB = mDataSource.getAllComments();
+
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        // Show list of comments
         /////////////////////Begin Load of Comments to comment page///////////////////////////////////
         ListView listView1 = (ListView) getView().findViewById(R.id.commentList);
 
-        /*LinkedList<Concept> allComments = concept.getComments(concept);
-        LinkedList<String> commentList = new LinkedList<String>();
-        for( Concept concept : allComments ) {
-            commentList.add(concept.getComments());
-        }*/
 
-        String[] listComments = new String[] { "bob: I like the idea you have, nice thinking!!",
-                "jane: I really like the direction you went!!", "casey: Glad you chose that idea, hope they use it!!" };
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, listComments);
+        ArrayAdapter<Comment> adapter = new ArrayAdapter<Comment>(getActivity(),
+                android.R.layout.simple_list_item_1, commentList);
         listView1.setAdapter(adapter);
         /////////////////////End Load of Comments to comment page/////////////////////////////////////
 

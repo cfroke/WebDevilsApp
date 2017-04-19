@@ -23,10 +23,10 @@ import webdevils.webdevilsapp.AppContext;
  */
 public class Storage implements Serializable {
 	
-	private static final long		serialVersionUID = -7857868388343559683L;
-	private static Storage			singleton = new Storage();
-	private static LinkedList<Concept>	conceptList = new LinkedList<Concept>();
-	private static LinkedList<User>		userList = new LinkedList<User>();
+	private static final long serialVersionUID = -7857868388343559683L;
+	private static Storage singleton = new Storage();
+	private static LinkedList<Concept> conceptList = new LinkedList<Concept>();
+	private static LinkedList<User> userList = new LinkedList<User>();
 
 	/**
 	 * Constructor -- Must be private
@@ -208,7 +208,7 @@ public class Storage implements Serializable {
 	 */
 	private static boolean saveLists(){
 
-		String fileName= "Storage.obj";
+		String fileName = "Storage.obj";
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
 		File filePath = new File(AppContext.getAppContext().getFilesDir() , fileName);
@@ -232,7 +232,7 @@ public class Storage implements Serializable {
 	 */
 	private static Storage restoreLists(){
 
-		String fileName= "Storage.obj";
+		String fileName = "Storage.obj";
 		FileInputStream fin;
 		ObjectInputStream ois;
 		File filePath = new File(AppContext.getAppContext().getFilesDir() , fileName);
