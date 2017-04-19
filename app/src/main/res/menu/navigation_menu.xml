@@ -17,6 +17,11 @@
         <item android:id="@+id/nav_submit_concept"
             android:icon="@mipmap/ic_add"
             android:title="Submit Concept" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@android:drawable/btn_dialog"
+            android:title="Logout" />
+
     </group>
 
     <item android:title="Communicate">
