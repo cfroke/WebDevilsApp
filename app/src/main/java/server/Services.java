@@ -5,7 +5,6 @@ package server;
 
 import java.io.Serializable;
 import java.util.LinkedList;
-
 import common.Concept;
 import common.IServices;
 import common.User;
@@ -18,8 +17,8 @@ import common.User;
  */
 public class Services implements IServices, Serializable {
 
-	private static final long   serialVersionUID = -7875091839442836772L;
-	private static Storage      storage;
+	private static final long serialVersionUID = -7875091839442836772L;
+	private static Storage storage;
 
 	/**
 	 * Constructor -- grabs th singleton instance of Storage
@@ -163,27 +162,6 @@ public class Services implements IServices, Serializable {
 			System.out.println("Try different username");
 			return null;
 		}
-	}
-
-	/**
-	 * Adds a comment to a list of comments in a given concept object and saves it on the server.
-	 * @param concept String
-	 * @param comment String
-	 */
-	public void makeComment(Concept concept, String comment){
-		concept.addComment(comment);
-		storage.saveConcept(concept);
-		System.out.println("***** Comment left and saved on the server for " +
-				concept.getTitle() + " *****");
-	}
-
-	/**
-	 * Returns a list of all comment associated with a given concept.
-	 * @param concept {@link common.Concept}
-	 * @return LinkedList<String>
-	 */
-	public LinkedList<String> getComments(Concept concept){
-		return concept.getComments();
 	}
 
 	/**

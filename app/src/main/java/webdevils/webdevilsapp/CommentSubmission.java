@@ -13,13 +13,18 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import java.util.List;
 
-import common.Concept;
-import server.Services;
 
+/**
+ * This class connects to the Concept Vote Xml and allows interaction between pages
+ */
 public class CommentSubmission extends Fragment {
-    Concept concept;
-    Services services = new Services();
+
+    List<Comment> commentList = SampleComments.commentList;
+    CommentDataSource mDataSource;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -29,21 +34,12 @@ public class CommentSubmission extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        // Show list of comments
         /////////////////////Begin Load of Comments to comment page///////////////////////////////////
         ListView listView1 = (ListView) getView().findViewById(R.id.commentList);
 
-        /*LinkedList<Concept> allComments = concept.getComments(concept);
-        LinkedList<String> commentList = new LinkedList<String>();
-        for( Concept concept : allComments ) {
-            commentList.add(concept.getComments());
-        }*/
 
-        String[] listComments = new String[] { "bob: I like the idea you have, nice thinking!!",
-                "jane: I really like the direction you went!!", "casey: Glad you chose that idea, hope they use it!!" };
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, listComments);
+        ArrayAdapter<Comment> adapter = new ArrayAdapter<Comment>(getActivity(),
+                android.R.layout.simple_list_item_1, commentList);
         listView1.setAdapter(adapter);
         /////////////////////End Load of Comments to comment page/////////////////////////////////////
 

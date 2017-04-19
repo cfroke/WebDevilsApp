@@ -12,14 +12,14 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
 	
-	private static final long 	serialVersionUID = 1866235317697481634L;
-	private final String 		name;
-	private String			password;
-	private final String 		MEMBER = "member";
-	private final String 		EMPLOYEE ="employee";
-	private final String 		DEVELOPER = "developer";
-	private final String 		UNDEFINED = "undefined";
-	private String			userType;
+	private static final long serialVersionUID = 1866235317697481634L;
+	private final String name;
+	private String password;
+	private final String MEMBER = "member";
+	private final String EMPLOYEE ="employee";
+	private final String DEVELOPER = "developer";
+	private final String UNDEFINED = "undefined";
+	private String userType;
 	
 	/**
 	 *  Instantiate a new user
