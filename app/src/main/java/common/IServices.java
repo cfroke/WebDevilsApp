@@ -21,8 +21,6 @@ public interface IServices {
 
 	User createEmployeeUser(String name, String password);
 
-	void makeComment(Concept concept, String comment);
-
 	void saveConcept(Concept concept);
 
 	void giveConceptStars(Concept concept, int numberOfStars);

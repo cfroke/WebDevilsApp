@@ -165,27 +165,6 @@ public class Services implements IServices, Serializable {
 	}
 
 	/**
-	 * Adds a comment to a list of comments in a given concept object and saves it on the server.
-	 * @param concept String
-	 * @param comment String
-	 */
-	public void makeComment(Concept concept, String comment){
-		concept.addComment(comment);
-		storage.saveConcept(concept);
-		System.out.println("***** Comment left and saved on the server for " +
-				concept.getTitle() + " *****");
-	}
-
-	/**
-	 * Returns a list of all comment associated with a given concept.
-	 * @param concept {@link common.Concept}
-	 * @return LinkedList<String>
-	 */
-	public LinkedList<String> getComments(Concept concept){
-		return concept.getComments();
-	}
-
-	/**
 	 * Makes a given concept "sticky" and updates it on the server
 	 * @param concept {@link common.Concept}
 	 */

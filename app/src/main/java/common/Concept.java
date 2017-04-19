@@ -119,22 +119,6 @@ public class Concept implements Serializable {
 	}
 
 	/**
-	* Adds a comment to the list of comments that have been made about this concept
-	* @param comment String
-	*/
-	public void addComment(String comment) {
-		this.comments.add(comment);
-	}
-
-	/**
-	* Returns a list of comments that have been made about this concept
-	* @return LinkedList<String>
-	*/
-	public LinkedList<String> getComments(){
-		return comments;
-	}
-
-	/**
 	 * Returns the concept type. A concept can be a Product, Service, or Improvement type.
 	 * @return String
 	 */

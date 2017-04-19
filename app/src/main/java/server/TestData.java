@@ -99,14 +99,6 @@ public class TestData {
         User carl = services.createEmployeeUser("carl","carl");
         User sue = services.createEmployeeUser("sue","sue");
 
-
-        //Comment Data
-        services.makeComment(bobConcept, "I like the idea you have, nice thinking!!");
-        services.makeComment(bobConcept, "I was thinking the same thing!!");
-        services.makeComment(bobConcept, "I really like the direction you went!!");
-        services.makeComment(bobConcept2, "Glad you had that idea, hope they use it!!");
-        services.makeComment(bobConcept2, "I like what you have going there!!");
-        services.makeComment(bobConcept3, "I like that you are thinking of these things!!");
     }
 
 }
