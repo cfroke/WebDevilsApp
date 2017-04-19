@@ -152,6 +152,9 @@ public class MainActivity extends AppCompatActivity
                     .addToBackStack(null)
                     .replace(R.id.content_frame
                     , new SubmitConceptFragment()).commit();
+        } else if (id == R.id.nav_logout) {
+            Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
